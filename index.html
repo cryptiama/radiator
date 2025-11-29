@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melikishvili Institute</title>
+    
+    <!-- Link to our CSS file -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Inline styles for the Custom Font and Canvas fix -->
+    <style>
+      
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <div class="logo-area">
+                <!-- UPDATED: Image Logo -->
+                <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
+                
+                <!-- Keep this text if the logo is just a symbol. 
+                     Delete this div if the logo image already contains the text. -->
+              
+                <!-- Inside <header> ... <div class="logo-area"> -->
+
+<div class="logo-text"> 
+    <span>Melikishvili Institute</span>
+</div>
+            </div>
+    
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Laboratories</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+    
+          <!-- SEARCH FOR THIS BLOCK IN index.html AND REPLACE IT -->
+          <!-- SEARCH FOR "header-actions" in your HTML and paste this -->
+<div class="header-actions">
+    
+    <!-- GEORGIAN BUTTON (Left) -->
+    <a href="#" class="lang-btn">
+        <!-- The Map Container -->
+        <div class="geo-icon"></div> 
+        GEO
+    </a>
+    
+    <span class="divider">|</span>
+    
+    <!-- ENGLISH BUTTON (Right) -->
+    <a href="#" class="lang-btn active-lang">
+        ENG
+    </a>
+
+</div>
+            
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <!-- This keeps the default font -->
+            <span class="hero-subtitle">Founded in 1929</span>
+            
+            <!-- Added class "hero-title" for the custom font -->
+            <h1 class="Nulshock">Advancing Chemistry <br> for a Better Future</h1> 
+        </div>
+
+
+        <!-- SPLINE 3D CONTAINER -->
+        <div id="spline-container">
+            <canvas id="canvas3d"></canvas>
+        </div>
+
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <i class="fa-solid fa-users"></i>
+                <h3>109</h3>
+                <p>Staff Members</p>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-microscope"></i>
+                <h3>6</h3>
+                <p>Advanced Laboratories</p>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-book-journal-whills"></i>
+                <h3>95+</h3>
+                <p>Annual Publications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT TEASER SECTION -->
+    <section class="about-section">
+        <div class="container split-layout">
+            <div class="about-text">
+                <h2 class="section-title">A Legacy of Science</h2>
+                <p>Named after the first Rector of Tbilisi State University, our institute combines historical tradition with modern innovation. From physical chemistry processes to organic synthesis, our team drives scientific progress in the region.</p>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> Fundamental Research</li>
+                    <li><i class="fa-solid fa-check"></i> Educational Programs</li>
+                    <li><i class="fa-solid fa-check"></i> Industrial Application</li>
+                </ul>
+                <a href="#" class="btn btn-secondary">Read Director's Message</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lab Equipment">
+            </div>
+        </div>
+    </section>
+
+    <!-- LABORATORIES PREVIEW -->
+    <section class="labs-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Laboratories</h2>
+                <p>State-of-the-art facilities for specialized chemical analysis.</p>
+            </div>
+
+            <div class="labs-grid">
+                <div class="lab-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Physical Chemistry">
+                    </div>
+                    <div class="card-content">
+                        <h3>Physical-Chemical Processes</h3>
+                        <p>Studying the kinetics and thermodynamics of chemical reactions.</p>
+                        <a href="#" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Organic Synthesis">
+                    </div>
+                    <div class="card-content">
+                        <h3>Organic Compound Chemistry</h3>
+                        <p>Synthesis and analysis of new organic compounds and materials.</p>
+                        <a href="#" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1581093588402-fdd11a091778?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Petrochemistry">
+                    </div>
+                    <div class="card-content">
+                        <h3>Petrochemistry</h3>
+                        <p>Advanced research into petroleum products and refining processes.</p>
+                        <a href="#" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h3>PMIOC</h3>
+                <p>Petre Melikishvili Institute of Physical and Organic Chemistry.</p>
+                <p>Part of Ivane Javakhishvili Tbilisi State University.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Structure</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Scientific Apparatus</a></li>
+                    <li><a href="#">Regulations (PDF)</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St, Tbilisi</p>
+                <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
+                <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Petre Melikishvili Institute. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SPLINE SCRIPT with NUCLEAR FIX -->
+    <script type="module">
+        import { Application } from 'https://unpkg.com/@splinetool/runtime@1.9.37/build/runtime.js';
+        
+        // This imports the big data object from your file
+        import { sceneData } from './xspline-data.js'; //delete this x for spline to work xspline-data.js
+        //###############################################################################################
+         //###############################################################################################
+         //###############################################################################################
+        
+
+        const canvas = document.getElementById('canvas3d');
+        const app = new Application(canvas);
+
+        // --- THE NUCLEAR FIX LOGIC ---
+        const cleanUpScene = () => {
+            // Wait to ensure Spline has built the scene (hidden behind opacity 0)
+            setTimeout(() => {
+                console.log("--- EXECUTING NUCLEAR DELETE ---");
+
+                // 1. Get Scene
+                const realScene = app.scene || app._scene;
+                if (!realScene) return;
+
+                // 2. Fix Background (Make transparent)
+                const realRenderer = app.renderer || app._renderer;
+                if (realRenderer) realRenderer.setClearColor(0x000000, 0);
+
+                // 3. Find Objects
+                let allMeshes = [];
+
+                realScene.traverse((obj) => {
+                    if (obj.isMesh && obj.geometry) {
+                        if (!obj.geometry.boundingSphere) obj.geometry.computeBoundingSphere();
+                        const radius = obj.geometry.boundingSphere.radius;
+                        const scale = Math.max(obj.scale.x, obj.scale.y, obj.scale.z);
+                        const totalSize = radius * scale;
+
+                        allMeshes.push({ mesh: obj, size: totalSize });
+                    }
+                });
+
+                // 4. Sort (Earth is assumed largest)
+                allMeshes.sort((a, b) => b.size - a.size);
+
+                if (allMeshes.length > 0) {
+                    const earth = allMeshes[0];
+                    console.log(`SAFE: Earth (${earth.size.toFixed(2)})`);
+
+                    // 5. DESTROY EVERYTHING ELSE
+                    for (let i = 1; i < allMeshes.length; i++) {
+                        const item = allMeshes[i];
+                        
+                        // Safety: Only delete if significantly smaller than Earth (e.g., < 80% size)
+                        if (item.size < (earth.size * 0.8)) {
+                            console.log(`DESTROYING: Cube/Satellite (${item.size.toFixed(2)})`);
+                            
+                            if (item.mesh.parent) item.mesh.parent.remove(item.mesh);
+                            if (item.mesh.geometry) item.mesh.geometry.dispose();
+                            if (item.mesh.material) item.mesh.material.dispose();
+                            item.mesh.visible = false; 
+                        }
+                    }
+                }
+
+                // --- FIX APPLIED HERE: REVEAL SCENE ---
+                // The cubes are deleted, now we turn the lights on.
+                canvas.style.opacity = '1';
+
+            }, 1000); 
+        };
+
+        // --- START SPLINE & RUN FIX ---
+        if (sceneData) {
+            app.start(sceneData);
+            console.log("Spline started.");
+            
+            // Run the fix
+            cleanUpScene();
+        } else {
+            console.error("Spline Data missing. Check xspline-data.js");
+        }
+    </script>
+
+</body>
+</html>
