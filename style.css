@@ -134,7 +134,7 @@ ul { list-style: none; }
     align-items: center;
 }
 
-.main-nav ul {
+.main-nav > ul {
     display: flex;
     gap: 30px;
     
@@ -144,7 +144,7 @@ ul { list-style: none; }
     padding: 0;
 }
 
-.main-nav li {
+.main-nav > ul > li {
     /* 5. Make list items fill the list height */
     height: 100%;
     display: flex;
