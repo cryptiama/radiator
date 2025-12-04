@@ -434,7 +434,7 @@ ul { list-style: none; }
 .hero-content {
     position: relative;
     z-index: 3; /* Above Spline (2) and Overlay (1) */
-    max-width: 1000px;
+    max-width: 1080px;
     padding: 0 20px;
     pointer-events: none; /* Allows clicking through text to globe */
 }
@@ -702,4 +702,104 @@ canvas,
 /* 3. Global focus reset (Optional: keeps clicks cleaner) */
 *:focus {
     outline: none !important;
+}
+
+
+/* =========================================
+   11. EQUIPMENT PAGE STYLES (STRIPS)
+   ========================================= */
+
+/* The Page Wrapper */
+.equipment-wrapper {
+    position: relative;
+    padding: 120px 0 80px 0;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* --- MOVING BACKGROUND (Dark Blue Gradient) --- */
+.animated-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    /* Deep academic/space blue mix */
+    background: linear-gradient(-45deg, #021b3d, #002f6c, #0d3b66, #00152e);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.relative-z {
+    position: relative;
+    z-index: 5;
+}
+
+.white-text { color: var(--white); }
+.page-header { margin-bottom: 50px; }
+
+/* --- THE EQUIPMENT LIST (VERTICAL STACK) --- */
+.equipment-list-container {
+    max-width: 900px; /* Limits width so lines aren't too long */
+    margin: 0 auto;   /* Centers the list */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* The gap between the white strips */
+}
+
+/* --- THE THIN WHITE STRIP --- */
+.equip-row {
+    /* "White. Not extremely white, but a little bit" */
+    background-color: rgba(255, 255, 255, 0.88); 
+    
+    /* "Purely white box with rounded edges" */
+    border-radius: 12px; 
+    
+    /* "Thin" */
+    padding: 15px 30px;
+    
+    /* "On the right side... on the left side" */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* No shadows, no borders, just the box */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Subtle hover effect for interactivity */
+.equip-row:hover {
+    background-color: rgba(255, 255, 255, 1); /* Pure white on hover */
+    transform: scale(1.01); /* Tiny pop */
+}
+
+/* Typography for the strip */
+.equip-name {
+    font-weight: 600;
+    color: var(--dark-text);
+    font-size: 1rem;
+}
+
+.equip-year {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* Mobile Tweak: Stack them if screen is tiny */
+@media (max-width: 600px) {
+    .equip-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .equip-year {
+        align-self: flex-end; /* Push year to right even when stacked */
+        font-size: 0.8rem;
+    }
 }

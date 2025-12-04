@@ -94,77 +94,95 @@
    
    
    /* =========================================
-      3. SCENE LOADING & NUCLEAR CLEANUP
-      ========================================= */
-   if (sceneData) {
-       app.start(sceneData).then(() => {
-           console.log("3D Loaded. Executing Optimization...");
-   
-           // Wait for Spline to construct the scene graph
-           setTimeout(() => {
-               const realScene = app.scene || app._scene;
-               const realRenderer = app.renderer || app._renderer;
-   
-               if (realScene) {
-                   // 1. Fix Background Transparency
-                   if (realRenderer) realRenderer.setClearColor(0x000000, 0);
-   
-                   // 2. Identify Objects
-                   let meshes = [];
-                   realScene.traverse((obj) => {
-                       if (obj.isMesh) {
-                           // Calculate bounding sphere if missing
-                           if (obj.geometry && !obj.geometry.boundingSphere) {
-                               obj.geometry.computeBoundingSphere();
-                           }
-                           
-                           let size = 0;
-                           if(obj.geometry && obj.geometry.boundingSphere) {
-                               const scale = Math.max(obj.scale.x, obj.scale.y, obj.scale.z);
-                               size = obj.geometry.boundingSphere.radius * scale;
-                           }
-                           meshes.push({ obj, size });
-                       }
-                   });
-   
-                   // 3. Sort by size (Largest = Earth)
-                   meshes.sort((a, b) => b.size - a.size);
-   
-                   // 4. DESTROY SMALL OBJECTS
-                   if (meshes.length > 0) {
-                       const earthSize = meshes[0].size;
-                       
-                       for (let i = 1; i < meshes.length; i++) {
-                           const item = meshes[i];
-                           
-                           // If it's smaller than 80% of the Earth, KILL IT.
-                           if (item.size < (earthSize * 0.8)) {
-                               const mesh = item.obj;
-   
-                               // A. Remove from Scene
-                               if (mesh.parent) mesh.parent.remove(mesh);
-   
-                               // B. Dispose Geometry (Frees VRAM)
-                               if (mesh.geometry) mesh.geometry.dispose();
-   
-                               // C. Dispose Material (Frees VRAM)
-                               if (mesh.material) {
-                                   if (Array.isArray(mesh.material)) {
-                                       mesh.material.forEach(m => m.dispose());
-                                   } else {
-                                       mesh.material.dispose();
-                                   }
-                               }
-                           }
-                       }
-                   }
-               }
-   
-               // 5. Fade In
-               canvas.style.opacity = '1';
-   
-           }, 500); // Shorter timeout for faster response
-       });
-   } else {
-       console.error("DATA ERROR: 'sceneData' failed to import.");
-   }
+   3. SCENE LOADING & NUCLEAR CLEANUP
+   ========================================= */
+if (sceneData) {
+    app.start(sceneData).then(() => {
+        console.log("3D Loaded. Executing Optimization...");
+
+        setTimeout(() => {
+            try {
+                const realScene = app.scene || app._scene;
+                const realRenderer = app.renderer || app._renderer;
+
+                if (realScene) {
+                    // 1. Fix Background Transparency
+                    if (realRenderer) realRenderer.setClearColor(0x000000, 0);
+
+                    // 2. Identify Objects
+                    let meshes = [];
+                    realScene.traverse((obj) => {
+                        if (obj.isMesh) {
+                            if (obj.geometry && !obj.geometry.boundingSphere) {
+                                obj.geometry.computeBoundingSphere();
+                            }
+                            let size = 0;
+                            if (obj.geometry && obj.geometry.boundingSphere) {
+                                const scale = Math.max(obj.scale.x, obj.scale.y, obj.scale.z);
+                                size = obj.geometry.boundingSphere.radius * scale;
+                            }
+                            meshes.push({ obj, size });
+                        }
+                    });
+
+                    // 3. Sort by size (Largest = Earth)
+                    meshes.sort((a, b) => b.size - a.size);
+
+                    // 4. NUKE EVERYTHING EXCEPT THE EARTH
+                    // This guarantees the "Black Thing" (index 1, 2, etc.) is destroyed.
+                    if (meshes.length > 0) {
+                        
+                        // A. KILL ALL OTHER OBJECTS FIRST (Index 1 to end)
+                        for (let i = 1; i < meshes.length; i++) {
+                            const item = meshes[i];
+                            const mesh = item.obj;
+                            if (mesh.parent) mesh.parent.remove(mesh);
+                            if (mesh.geometry) mesh.geometry.dispose();
+                            if (mesh.material) {
+                                if (Array.isArray(mesh.material)) mesh.material.forEach(m => m.dispose());
+                                else mesh.material.dispose();
+                            }
+                        }
+
+                        // B. ROTATE THE SURVIVOR (Index 0 - The Earth)
+                        // We use geometry rotation because texture sliding was clamped.
+                        const earthMesh = meshes[0].obj;
+                        
+                        const safeRotate = (mesh, angle) => {
+                            if (!mesh.geometry) return;
+
+                            // 1. Calculate Center
+                            mesh.geometry.computeBoundingBox();
+                            const box = mesh.geometry.boundingBox;
+                            const Vector3 = mesh.position.constructor;
+                            const center = new Vector3();
+                            center.x = (box.max.x + box.min.x) / 2;
+                            center.y = (box.max.y + box.min.y) / 2;
+                            center.z = (box.max.z + box.min.z) / 2;
+
+                            // 2. Move to Origin -> Rotate -> Move Back
+                            // This ensures it spins in place and doesn't fly away.
+                            mesh.geometry.translate(-center.x, -center.y, -center.z);
+                            
+                            // CHANGE THIS NUMBER to find China.
+                            // 3.5 is roughly 200 degrees rotation from USA.
+                            mesh.geometry.rotateY(0.6); 
+                            
+                            mesh.geometry.translate(center.x, center.y, center.z);
+                        };
+
+                        safeRotate(earthMesh, 3.5);
+                    }
+                }
+            } catch (err) {
+                console.error("Optimization Warning:", err);
+            }
+
+            // 5. Fade In
+            canvas.style.opacity = '1';
+
+        }, 500);
+    });
+} else {
+    console.error("DATA ERROR: 'sceneData' failed to import.");
+}

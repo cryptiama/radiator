@@ -1,0 +1,583 @@
+/* ==========================================================================
+   DEVELOPMENT MODE: EQUIPMENT PAGE
+   ========================================================================== */
+
+/* =========================================
+   1. VARIABLES & RESET 
+   ========================================= */
+   :root {
+    --primary-blue: #002f6c;
+    --accent-cyan: #00b4d8;
+    --dark-text: #333333;
+    --light-text: #666666;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --container-width: 1200px;
+    --header-height: 60px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark-text);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+
+@font-face {
+    font-family: 'Nulshock';
+    src: url('fonts/nulshock-light.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* =========================================
+   2. HEADER & NAVIGATION 
+   ========================================= */
+.main-header {
+    background-color: var(--white);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    height: var(--header-height); 
+    display: flex;
+    align-items: center; 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .nav-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100%; 
+    display: flex;
+    align-items: center;       
+    justify-content: space-between; 
+    padding-left: 30px;   
+    padding-right: 30px;  
+}
+
+.logo-area { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
+.logo-img { height: 50px; width: auto; object-fit: contain; }
+.logo-text span { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--dark-text); }
+
+.main-nav { position: absolute; height: 100%; top: 0; left: 50%; transform: translateX(-50%); display: flex; align-items: center; }
+.main-nav > ul { display: flex; gap: 30px; height: 100%; }
+.main-nav > ul > li { height: 100%; display: flex; align-items: center; }
+.main-nav a { font-weight: 500; color: var(--dark-text); display: flex; align-items: center; height: 100%; padding: 0 5px; }
+.main-nav a:hover, .main-nav a.active { color: var(--primary-blue); }
+
+.nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; cursor: pointer; }
+.main-nav .dropdown-menu {
+    position: absolute; top: 100%; left: 50%; display: block !important; width: 265px; 
+    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+    border-radius: 8px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); padding: 10px 0; 
+    opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(20px); 
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1100;
+}
+.nav-item-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0px); }
+.main-nav .dropdown-menu li a { display: block !important; width: 100%; padding: 12px 25px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); text-align: left; }
+.main-nav .dropdown-menu li a:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--accent-cyan); padding-left: 30px; }
+
+.header-actions { display: flex; align-items: center; gap: 15px; font-size: 0.9rem; font-weight: 700; }
+.lang-btn { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.divider { color: #ccc; font-weight: 300; }
+.geo-icon { width: 30px; height: 30px; position: relative; top: 1px; background-image: url('images/georgia.svg'); background-size: contain; background-repeat: no-repeat; background-position: center; }
+.geo-icon::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--dark-text); -webkit-mask-image: url('images/georgia.svg'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('images/georgia.svg'); mask-size: contain; mask-repeat: no-repeat; mask-position: center; transition: opacity 0.4s ease; opacity: 1; }
+.lang-btn:hover .geo-icon::after { opacity: 0; }
+.lang-btn:hover, .active-lang { color: var(--primary-blue); }
+.mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; margin-left: 20px; }
+
+@media (max-width: 768px) {
+    .main-nav { display: none; }
+    .mobile-menu-btn { display: block; }
+}
+
+/* =========================================
+   3. FOOTER 
+   ========================================= */
+.main-footer { background-color: #001a3d; color: #cccccc; padding-top: 70px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.footer-col h3 { color: var(--white); margin-bottom: 20px; font-size: 1.5rem; }
+.footer-col h4 { color: var(--white); margin-bottom: 25px; font-size: 1.1rem; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a:hover { color: var(--accent-cyan); padding-left: 5px; }
+.footer-col p { margin-bottom: 15px; font-size: 0.95rem; display: flex; align-items: center; gap: 10px;}
+.footer-col i { color: var(--accent-cyan); }
+.footer-bottom { text-align: center; padding: 25px 0; font-size: 0.85rem; opacity: 0.6; }
+
+
+/* =========================================
+   4. EQUIPMENT PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* The Page Wrapper - Dark Background */
+.equipment-wrapper {
+    position: relative;
+    padding: 120px 0 80px 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #020c1b; /* Deepest dark blue/black */
+}
+
+/* Moving Background Container */
+.animated-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* =========================================
+   UPDATED ORBS (15 Subtle Layers)
+   ========================================= */
+
+   .orb {
+    position: absolute;
+    border-radius: 50%;
+    
+    /* 
+       15-LAYER GRADIENT (Contour Map Effect)
+       - Starts at Center (#0d2136)
+       - Ends at Background (#020c1b)
+       - 15 hard steps (bands) to create the "layered" look.
+       - Each step is approx 4.5% width.
+    */
+    background: radial-gradient(
+        circle, 
+        /* Layer 1 (Center) */
+        #0d2136 0%,   #0d2136 4.5%,
+        /* Layer 2 */
+        #0c2034 4.5%, #0c2034 9%,
+        /* Layer 3 */
+        #0b1e32 9%,   #0b1e32 13.5%,
+        /* Layer 4 */
+        #0b1d31 13.5%,#0b1d31 18%,
+        /* Layer 5 */
+        #0a1c2f 18%,  #0a1c2f 22.5%,
+        /* Layer 6 */
+        #091a2d 22.5%,#091a2d 27%,
+        /* Layer 7 */
+        #09192b 27%,  #09192b 31.5%,
+        /* Layer 8 */
+        #08172a 31.5%,#08172a 36%,
+        /* Layer 9 */
+        #071628 36%,  #071628 40.5%,
+        /* Layer 10 */
+        #071426 40.5%,#071426 45%,
+        /* Layer 11 */
+        #061324 45%,  #061324 49.5%,
+        /* Layer 12 */
+        #051123 49.5%,#051123 54%,
+        /* Layer 13 */
+        #051021 54%,  #051021 58.5%,
+        /* Layer 14 */
+        #040e1f 58.5%,#040e1f 63%,
+        /* Layer 15 (Edge - blends to BG) */
+        #030d1d 63%,  #030d1d 70%,
+        
+        transparent 70.1%
+    );
+    
+    opacity: 0.8; /* Slightly higher opacity to see the dark layers */
+    filter: blur(1px); /* Tiny blur to soften the jagged edges of bands */
+    transition: all 1s ease;
+}
+
+/* Orb 1: Top Rightish */
+.orb-1 {
+    width: 45vw; 
+    height: 45vw;
+    top: -5%;
+    right: -10%;
+    animation: morphFloat1 25s ease-in-out infinite alternate;
+}
+
+/* Orb 2: Bottom Leftish */
+.orb-2 {
+    width: 40vw;
+    height: 40vw;
+    bottom: -10%;
+    left: -10%;
+    animation: morphFloat2 30s ease-in-out infinite alternate;
+}
+
+/* NEW: Orb 3 (Middle / Center) */
+.orb-3 {
+    width: 35vw;
+    height: 35vw;
+    top: 40%;
+    left: 30%;
+    /* Use a slightly different timing to sync differently */
+    animation: morphFloat1 28s ease-in-out infinite reverse;
+    opacity: 0.6; /* Slightly dimmer to not obscure text */
+}
+
+/* MORPHING ANIMATION (Kept shape changing) */
+@keyframes morphFloat1 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    33% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    66% {
+        border-radius: 70% 30% 50% 50% / 30% 40% 60% 70%;
+    }
+    100% {
+        transform: translate(-30px, 40px) rotate(10deg);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+}
+
+@keyframes morphFloat2 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
+    }
+    33% {
+        border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+    }
+    66% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    100% {
+        transform: translate(40px, -30px) rotate(-10deg);
+        border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
+    }
+}
+
+.relative-z { position: relative; z-index: 5; }
+.white-text { color: var(--white); }
+.page-header { margin-bottom: 50px; text-align: center; }
+.Nulshock { font-family: 'Nulshock', sans-serif; font-size: 3rem; letter-spacing: 4px; }
+
+/* The List Container */
+.equipment-list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* TRANSPARENT ROW STYLES (Glassmorphism) */
+.equip-row {
+    background-color: rgba(255, 255, 255, 0.03); /* Very transparent */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
+    border-radius: 12px; 
+    
+    /* Blur effect BEHIND the row */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    padding: 18px 30px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    transition: all 0.1s ease;
+}
+
+
+
+.equip-row:hover {
+    /* 1. Make it much brighter (opacity increased from 0.08 to 0.2) */
+    background-color: rgba(255, 255, 255, 0.2);
+    
+    /* 2. Make the border almost solid white to pop out */
+    border-color: rgba(255, 255, 255, 0.9);
+    
+    /* 3. Scale makes it grow left AND right simultaneously */
+    transform: scale(1.02);
+    
+    /* 4. Add a shadow so it looks like it lifts off the page */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    /* 5. Ensure it sits on top of the other list items */
+    z-index: 10;
+}
+
+/* Text Colors for Dark Mode */
+.equip-name {
+    font-weight: 400;
+    color: #e0e0e0; 
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    
+    /* Settings for smooth animation */
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform-origin: left center; /* Text expands outwards from the left */
+}
+
+.equip-year {
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-size: 0.95rem;
+    opacity: 0.9;
+    
+    /* Settings for smooth animation */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: right center; /* Year expands outwards from the right */
+}
+
+/* NEW: Make text specifically bigger when hovering the row */
+.equip-row:hover .equip-name {
+    transform: scale(1.1); /* Increases name size by 10% */
+    color: #ffffff; /* Brightens the text to pure white */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* Adds subtle glow */
+}
+
+.equip-row:hover .equip-year {
+    transform: scale(1.2); /* Increases year size by 20% */
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .orb { width: 80vw; height: 80vw; opacity: 0.3; }
+    .equip-row { flex-direction: column; align-items: flex-start; gap: 5px; }
+    
+    /* Reset transforms on mobile to prevent layout overlapping */
+    .equip-name, .equip-year { transform-origin: left center; }
+    .equip-row:hover .equip-year { transform: scale(1.1); transform-origin: left center; }
+    
+    .equip-year { align-self: flex-start; font-size: 0.8rem; }
+}
+
+
+/* =========================================
+   5. FLOATING CHEMISTRY ICONS
+   ========================================= */
+
+   .chem-floating-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicking through the images */
+    z-index: 2; /* Above orbs, below text */
+    overflow: hidden;
+}
+
+.chem-item {
+    position: absolute;
+    opacity: 0; /* Start invisible */
+    width: 140px; /* Adjust size of icons here */
+    height: auto;
+    filter: invert(1) brightness(2); /* Makes black SVGs white/bright */
+    
+    /* The Animation: 
+       6s total cycle. 
+       1s fade in, visible for a bit, 1s fade out. 
+    */
+    animation: fadeFloat 6s ease-in-out infinite;
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes fadeFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); /* Slight movement up */
+    }
+    15% {
+        opacity: 0.25; /* Max brightness (keep low to be subtle) */
+    }
+    85% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* --- POSITIONING (Left/Right Columns) --- */
+/* We use percentages to keep them away from the center content */
+
+/* Left Side */
+.pos-left-1 { top: 15%; left: 5%; animation-delay: 0s; }
+.pos-left-2 { top: 45%; left: 8%; animation-delay: 2s; }
+.pos-left-3 { top: 75%; left: 4%; animation-delay: 4s; }
+
+/* Right Side */
+.pos-right-1 { top: 20%; right: 5%; animation-delay: 1s; }
+.pos-right-2 { top: 50%; right: 7%; animation-delay: 3s; }
+.pos-right-3 { top: 80%; right: 5%; animation-delay: 5s; }
+
+
+/* --- MANUAL ROTATION ZONE --- */
+/* Edit the deg values below to rotate molecules manually */
+
+.manual-rotate-1 {
+    /* Molecule on Left */
+    transform: rotate(45deg); 
+    /* We must re-declare animation because transform overrides it, 
+       so we combine rotate with the animation's translate effect */
+    animation-name: fadeFloatRotate1; 
+}
+
+.manual-rotate-2 {
+    /* Molecule on Right Top */
+    transform: rotate(120deg);
+    animation-name: fadeFloatRotate2;
+}
+
+.manual-rotate-3 {
+    /* Molecule on Right Bottom */
+    transform: rotate(-15deg);
+    animation-name: fadeFloatRotate3;
+}
+
+/* 
+   We need specific keyframes for rotated items 
+   so the rotation stays while they float.
+*/
+
+@keyframes fadeFloatRotate1 {
+    0%   { opacity: 0;    transform: translateY(10px) rotate(45deg); }
+    15%  { opacity: 0.3; }
+    85%  { opacity: 0.3; }
+    100% { opacity: 0;    transform: translateY(-10px) rotate(45deg); }
+}
+
+@keyframes fadeFloatRotate2 {
+    0%   { opacity: 0;    transform: translateY(10px) rotate(120deg); }
+    15%  { opacity: 0.3; }
+    85%  { opacity: 0.3; }
+    100% { opacity: 0;    transform: translateY(-10px) rotate(120deg); }
+}
+
+@keyframes fadeFloatRotate3 {
+    0%   { opacity: 0;    transform: translateY(10px) rotate(-15deg); }
+    15%  { opacity: 0.3; }
+    85%  { opacity: 0.3; }
+    100% { opacity: 0;    transform: translateY(-10px) rotate(-15deg); }
+}
+
+
+/* --- MOBILE HIDE --- */
+/* Hide these on small screens so they don't overlap text */
+@media (max-width: 1100px) {
+    .chem-floating-container {
+        display: none;
+    }
+}
+
+/* =========================================
+   5. FLOATING CHEMISTRY ICONS (DIRECTIONAL)
+   ========================================= */
+
+.chem-floating-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 3; 
+    overflow: hidden;
+}
+
+/* --- BASE STYLES --- */
+.chem-wrapper {
+    position: absolute;
+    width: 190px; 
+    opacity: 0.6; /* Base visibility */
+    animation-timing-function: linear; /* Constant speed, no easing */
+    animation-iteration-count: infinite;
+}
+
+.chem-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+/* --- 1. VERTICAL MOVEMENT (Up / Down) --- */
+
+/* Moves from Top (-20%) to Bottom (110%) */
+@keyframes moveDown {
+    0%   { top: -20%; }
+    100% { top: 110%; }
+}
+
+/* Moves from Bottom (110%) to Top (-20%) */
+@keyframes moveUp {
+    0%   { top: 110%; }
+    100% { top: -20%; }
+}
+
+/* --- 2. HORIZONTAL MOVEMENT (Moving Outwards) --- */
+
+/* Spawns at 15% Left, Moves out to -20% Left */
+@keyframes moveLeftOut {
+    0%   { left: 15%; opacity: 0; } /* Start invisible to avoid 'pop' */
+    10%  { left: 12%; opacity: 0.6; } /* Fade in quickly */
+    100% { left: -20%; opacity: 0.6; } /* Exit screen */
+}
+
+/* Spawns at 85% Left, Moves out to 120% Left */
+@keyframes moveRightOut {
+    0%   { left: 85%; opacity: 0; }
+    10%  { left: 88%; opacity: 0.6; }
+    100% { left: 120%; opacity: 0.6; }
+}
+
+/* --- CLASS ASSIGNMENTS --- */
+
+/* Top Item moving Down */
+.flow-down {
+    left: 10%; /* Positioned on left side of screen */
+    animation-name: moveDown;
+}
+
+/* Bottom Item moving Up */
+.flow-up {
+    left: 80%; /* Positioned on right side of screen */
+    animation-name: moveUp;
+}
+
+/* Left Item moving Left (Away from text) */
+.flow-left {
+    animation-name: moveLeftOut;
+}
+
+.flow-right {
+    animation-name: moveRightOut;
+}
+
+
+/* --- SPEED CONTROL (Adjust Seconds Here) --- */
+
+/* The standard calm speed */
+.speed-calm { animation-duration: 40s; }
+
+/* Slightly faster */
+.speed-normal { animation-duration: 40s; }
+
+/* Fast (if you want one to zoom) */
+.speed-fast { animation-duration: 40s; }
+
+/* Very Slow (Glacial) */
+.speed-glacial { animation-duration: 40s; }
+
+
+/* --- ROTATION PRESETS --- */
+.rotate-45  { transform: rotate(45deg); }
+.rotate-90  { transform: rotate(90deg); }
+.rotate-120 { transform: rotate(120deg); }
+.rotate-neg-30 { transform: rotate(-30deg); }
+
+
+/* Hide on mobile */
+@media (max-width: 1000px) {
+    .chem-floating-container { display: none; }
+}
