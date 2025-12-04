@@ -532,7 +532,9 @@ ul { list-style: none; }
    7. STATS SECTION
    ========================================= */
 .stats-section {
-    background-color: var(--primary-blue);
+    /* background-color: var(--primary-blue); */
+    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+    
     color: var(--white);
     padding: 60px 0;
     margin-top: -50px; /* Overlaps Hero slightly */
@@ -548,7 +550,7 @@ ul { list-style: none; }
     gap: 20px;
 }
 
-.stat-item i { font-size: 2.2rem; margin-bottom: 15px; color: var(--accent-cyan); }
+.stat-item i { font-size: 3.2rem; margin-bottom: 15px; color: var(--accent-cyan); }
 .stat-item h3 { font-size: 2.8rem; font-weight: 700; margin-bottom: 5px; }
 .stat-item p { font-size: 1rem; opacity: 0.8; }
 
@@ -618,8 +620,22 @@ ul { list-style: none; }
 /* =========================================
    9. FOOTER
    ========================================= */
-.main-footer {
-    background-color: #001a3d; /* Darker than primary blue */
+ 
+   .main-footer {
+    /* Replaced solid color with the Dropdown Menu Gradient */
+    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+    
+    color: #cccccc;
+    padding-top: 70px;
+}
+/* =========================================
+   9. FOOTER
+   ========================================= */
+   .main-footer {
+    /* Changed to match the Georgia Map Icon (Dark Gray) */
+    background: var(--dark-text);
+    background-color: #1c2026;  
+    
     color: #cccccc;
     padding-top: 70px;
 }

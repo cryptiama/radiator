@@ -102,7 +102,7 @@ ul { list-style: none; }
 /* =========================================
    3. FOOTER 
    ========================================= */
-.main-footer { background-color: #001a3d; color: #cccccc; padding-top: 70px; }
+.main-footer { background-color: #1c2026; color: #cccccc; padding-top: 70px; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .footer-col h3 { color: var(--white); margin-bottom: 20px; font-size: 1.5rem; }
 .footer-col h4 { color: var(--white); margin-bottom: 25px; font-size: 1.1rem; }

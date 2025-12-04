@@ -4,13 +4,15 @@
     <!-- 
       DEVELOPMENT FILE: EQUIPMENT
       This file uses 'equipment.css' to isolate the token context.
+      if you create new HTML file write same instructions and create separate css file to save tokens
+      When finishing the project, change the link back to 'style.css'.
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratory Equipment | Melikishvili Institute</title>
     
     <!-- LINKED TO THE ISOLATED CSS FILE -->
-    <link rel="stylesheet" href="equipment.css">
+    <link rel="stylesheet" href="equipment2.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -21,18 +23,15 @@
     <!-- NAVIGATION HEADER -->
     <header class="main-header">
         <div class="container nav-container">
-           <!-- Inside <div class="container nav-container"> -->
-
-<!-- REPLACE THE OLD LOGO DIV WITH THIS LINK BLOCK -->
-<a href="index.html" class="logo-area">
-    <!-- Image Logo -->
-    <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
-    
-    <!-- Text -->
-    <div class="logo-text"> 
-        <span>Melikishvili Institute</span>
-    </div>
-</a>
+            <a href="index.html" class="logo-area">
+                <!-- Image Logo -->
+                <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
+                
+                <!-- Text -->
+                <div class="logo-text"> 
+                    <span>Melikishvili Institute</span>
+                </div>
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -65,63 +64,25 @@
         </div>
     </header>
 
-   <!-- EQUIPMENT SECTION -->
-<section class="equipment-wrapper">
-    <div class="animated-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    
-        <!-- EMPTY CONTAINER - JS WILL FILL THIS -->
-        <div class="chem-floating-container" id="chem-spawner"></div>
-    </div>
-    
-    <!-- Rest of your content... -->
-            
-                    <!-- 1. TOP LEFT -->
-                    <!-- Position: 5% from top. Delay: 0s (Starts right away) -->
-                    <!-- CHANGE THE SVG HERE: src="images/svg-chem/YOUR_NAME.svg" -->
-                    <div class="chem-wrapper flow-left speed-calm" style="top: 5%; animation-delay: 0s;">
-                        <img src="images/svg-chem/hero-molecule-3.svg" class="chem-icon rotate-neg-0" alt="molecule">
-                    </div>
-                
-                    <!-- 2. UPPER RIGHT -->
-                    <!-- Position: 30% from top. Delay: 15s -->
-                    <div class="chem-wrapper flow-right speed-normal" style="top: 30%; animation-delay: 15s;">
-                        <img src="images/svg-chem/hero-molecule-1.svg" class="chem-icon rotate-0" alt="molecule">
-                    </div>
-                
-                    <!-- 3. LOWER LEFT -->
-                    <!-- Position: 55% from top. Delay: 25s -->
-                    <div class="chem-wrapper flow-left speed-glacial" style="top: 55%; animation-delay: 25s;">
-                        <img src="images/svg-chem/hero-molecule-3.svg" class="chem-icon rotate-0" alt="molecule">
-                    </div>
-                
-                    <!-- 4. BOTTOM RIGHT -->
-                    <!-- Position: 80% from top. Delay: 5s -->
-                    <div class="chem-wrapper flow-right speed-calm" style="top: 80%; animation-delay: 5s;">
-                        <img src="images/svg-chem/hero-molecule-2.svg" class="chem-icon rotate-0" alt="molecule">
-                    </div>
-                
-                </div>
-        </div>
-    </div>
+    <!-- EQUIPMENT SECTION -->
+    <section class="equipment-wrapper">
+        <!-- Moving Background -->
+        <div class="animated-bg"></div>
 
-    <div class="container relative-z">
-        <!-- ... existing content ... -->
+        <div class="container relative-z">
             <div class="page-header text-center">
                 <h1 class="Nulshock white-text">Laboratory Equipment</h1>
             </div>
 
             <!-- THE LIST CONTAINER -->
             <div class="equipment-list-container" id="equipment-list">
-                <!-- Javascript will put the transparent bars here -->
+                <!-- Javascript will put the thin white bars here -->
             </div>
         </div>
     </section>
 
-     <!-- FOOTER -->
-     <footer class="main-footer">
+    <!-- FOOTER -->
+    <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col">
                 <h3>PMIOC</h3>
@@ -160,7 +121,7 @@
     <script>
         // ADD / REMOVE ITEMS HERE
         const equipmentData = [
-        
+              
   { name: "ვაკუუმის ტუმბო", year: "2022" },
   { name: "ლღობის აპარატი", year: "2022" },
   { name: "ულტრათერმოსტატი", year: "2022" },
@@ -181,7 +142,6 @@
   { name: "ბურთულებიანი წისქვილი", year: "1976" },
   { name: "მემბრანული კომპრესორი", year: "1971" }
 
-
         ];
 
         const listContainer = document.getElementById('equipment-list');
@@ -199,23 +159,7 @@
 
             listContainer.appendChild(row);
         });
-
-
-
-
-        
     </script>
-
-
-
-
-
-
     <script type="module" src="script.js"></script>
-
-
-
-
-    
 </body>
 </html>
