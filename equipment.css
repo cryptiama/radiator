@@ -1,11 +1,17 @@
 /* ==========================================================================
-   DEVELOPMENT MODE: EQUIPMENT PAGE
+   DEVELOPMENT MODE: EQUIPMENT PAGE (VARIANT 2)
+   ==========================================================================
+   INSTRUCTION FOR AI & DEVELOPER:
+   This is the "White Strip" variant of the Equipment Page.
+   
+   SECTIONS 1-3: Synced with main equipment.css (Header, Footer, Vars).
+   SECTION 4:    Unique "White Strip" list style.
    ========================================================================== */
 
 /* =========================================
-   1. VARIABLES & RESET 
+   1. VARIABLES & RESET (Synced with equipment.css)
    ========================================= */
-   :root {
+:root {
     --primary-blue: #002f6c;
     --accent-cyan: #00b4d8;
     --dark-text: #333333;
@@ -16,7 +22,11 @@
     --header-height: 60px;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Inter', sans-serif;
@@ -26,27 +36,38 @@ body {
     overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; }
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
 
-.container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
 @font-face {
     font-family: 'Nulshock';
-    src: url('fonts/nulshock-light.otf') format('opentype'); 
+    src: url('fonts/nulshock-light.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 /* =========================================
-   2. HEADER & NAVIGATION 
+   2. HEADER & NAVIGATION (Synced with equipment.css)
    ========================================= */
 .main-header {
     background-color: var(--white);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    height: var(--header-height); 
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    height: var(--header-height);
     display: flex;
-    align-items: center; 
+    align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -55,529 +76,678 @@ ul { list-style: none; }
 .main-header .nav-container {
     width: 100%;
     max-width: 100%;
-    height: 100%; 
+    height: 100%;
     display: flex;
-    align-items: center;       
-    justify-content: space-between; 
-    padding-left: 30px;   
-    padding-right: 30px;  
-}
-
-.logo-area { display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
-.logo-img { height: 50px; width: auto; object-fit: contain; }
-.logo-text span { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--dark-text); }
-
-.main-nav { position: absolute; height: 100%; top: 0; left: 50%; transform: translateX(-50%); display: flex; align-items: center; }
-.main-nav > ul { display: flex; gap: 30px; height: 100%; }
-.main-nav > ul > li { height: 100%; display: flex; align-items: center; }
-.main-nav a { font-weight: 500; color: var(--dark-text); display: flex; align-items: center; height: 100%; padding: 0 5px; }
-.main-nav a:hover, .main-nav a.active { color: var(--primary-blue); }
-
-.nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; cursor: pointer; }
-.main-nav .dropdown-menu {
-    position: absolute; top: 100%; left: 50%; display: block !important; width: 265px; 
-    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
-    border-radius: 8px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); padding: 10px 0; 
-    opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(20px); 
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1100;
-}
-.nav-item-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0px); }
-.main-nav .dropdown-menu li a { display: block !important; width: 100%; padding: 12px 25px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); text-align: left; }
-.main-nav .dropdown-menu li a:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--accent-cyan); padding-left: 30px; }
-
-.header-actions { display: flex; align-items: center; gap: 15px; font-size: 0.9rem; font-weight: 700; }
-.lang-btn { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.divider { color: #ccc; font-weight: 300; }
-.geo-icon { width: 30px; height: 30px; position: relative; top: 1px; background-image: url('images/georgia.svg'); background-size: contain; background-repeat: no-repeat; background-position: center; }
-.geo-icon::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--dark-text); -webkit-mask-image: url('images/georgia.svg'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-image: url('images/georgia.svg'); mask-size: contain; mask-repeat: no-repeat; mask-position: center; transition: opacity 0.4s ease; opacity: 1; }
-.lang-btn:hover .geo-icon::after { opacity: 0; }
-.lang-btn:hover, .active-lang { color: var(--primary-blue); }
-.mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; margin-left: 20px; }
-
-@media (max-width: 768px) {
-    .main-nav { display: none; }
-    .mobile-menu-btn { display: block; }
-}
-
-/* =========================================
-   3. FOOTER 
-   ========================================= */
-.main-footer { background-color: #1c2026; color: #cccccc; padding-top: 70px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.footer-col h3 { color: var(--white); margin-bottom: 20px; font-size: 1.5rem; }
-.footer-col h4 { color: var(--white); margin-bottom: 25px; font-size: 1.1rem; }
-.footer-col ul li { margin-bottom: 12px; }
-.footer-col ul li a:hover { color: var(--accent-cyan); padding-left: 5px; }
-.footer-col p { margin-bottom: 15px; font-size: 0.95rem; display: flex; align-items: center; gap: 10px;}
-.footer-col i { color: var(--accent-cyan); }
-.footer-bottom { text-align: center; padding: 25px 0; font-size: 0.85rem; opacity: 0.6; }
-
-
-/* =========================================
-   4. EQUIPMENT PAGE SPECIFIC STYLES
-   ========================================= */
-
-/* The Page Wrapper - Dark Background */
-.equipment-wrapper {
-    position: relative;
-    padding: 120px 0 80px 0;
-    min-height: 100vh;
-    overflow: hidden;
-    background-color: #020c1b; /* Deepest dark blue/black */
-}
-
-/* Moving Background Container */
-.animated-bg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-    overflow: hidden;
-}
-
-/* =========================================
-   UPDATED ORBS (15 Subtle Layers)
-   ========================================= */
-
-   .orb {
-    position: absolute;
-    border-radius: 50%;
-    
-    /* 
-       15-LAYER GRADIENT (Contour Map Effect)
-       - Starts at Center (#0d2136)
-       - Ends at Background (#020c1b)
-       - 15 hard steps (bands) to create the "layered" look.
-       - Each step is approx 4.5% width.
-    */
-    background: radial-gradient(
-        circle, 
-        /* Layer 1 (Center) */
-        #0d2136 0%,   #0d2136 4.5%,
-        /* Layer 2 */
-        #0c2034 4.5%, #0c2034 9%,
-        /* Layer 3 */
-        #0b1e32 9%,   #0b1e32 13.5%,
-        /* Layer 4 */
-        #0b1d31 13.5%,#0b1d31 18%,
-        /* Layer 5 */
-        #0a1c2f 18%,  #0a1c2f 22.5%,
-        /* Layer 6 */
-        #091a2d 22.5%,#091a2d 27%,
-        /* Layer 7 */
-        #09192b 27%,  #09192b 31.5%,
-        /* Layer 8 */
-        #08172a 31.5%,#08172a 36%,
-        /* Layer 9 */
-        #071628 36%,  #071628 40.5%,
-        /* Layer 10 */
-        #071426 40.5%,#071426 45%,
-        /* Layer 11 */
-        #061324 45%,  #061324 49.5%,
-        /* Layer 12 */
-        #051123 49.5%,#051123 54%,
-        /* Layer 13 */
-        #051021 54%,  #051021 58.5%,
-        /* Layer 14 */
-        #040e1f 58.5%,#040e1f 63%,
-        /* Layer 15 (Edge - blends to BG) */
-        #030d1d 63%,  #030d1d 70%,
-        
-        transparent 70.1%
-    );
-    
-    opacity: 0.8; /* Slightly higher opacity to see the dark layers */
-    filter: blur(1px); /* Tiny blur to soften the jagged edges of bands */
-    transition: all 1s ease;
-}
-
-/* Orb 1: Top Rightish */
-.orb-1 {
-    width: 45vw; 
-    height: 45vw;
-    top: -5%;
-    right: -10%;
-    animation: morphFloat1 25s ease-in-out infinite alternate;
-}
-
-/* Orb 2: Bottom Leftish */
-.orb-2 {
-    width: 40vw;
-    height: 40vw;
-    bottom: -10%;
-    left: -10%;
-    animation: morphFloat2 30s ease-in-out infinite alternate;
-}
-
-/* NEW: Orb 3 (Middle / Center) */
-.orb-3 {
-    width: 35vw;
-    height: 35vw;
-    top: 40%;
-    left: 30%;
-    /* Use a slightly different timing to sync differently */
-    animation: morphFloat1 28s ease-in-out infinite reverse;
-    opacity: 0.6; /* Slightly dimmer to not obscure text */
-}
-
-/* MORPHING ANIMATION (Kept shape changing) */
-@keyframes morphFloat1 {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
-    33% {
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    }
-    66% {
-        border-radius: 70% 30% 50% 50% / 30% 40% 60% 70%;
-    }
-    100% {
-        transform: translate(-30px, 40px) rotate(10deg);
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
-}
-
-@keyframes morphFloat2 {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
-    }
-    33% {
-        border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
-    }
-    66% {
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    }
-    100% {
-        transform: translate(40px, -30px) rotate(-10deg);
-        border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
-    }
-}
-
-.relative-z { position: relative; z-index: 5; }
-.white-text { color: var(--white); }
-.page-header { margin-bottom: 50px; text-align: center; }
-.Nulshock { font-family: 'Nulshock', sans-serif; font-size: 3rem; letter-spacing: 4px; }
-
-/* The List Container */
-.equipment-list-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* TRANSPARENT ROW STYLES (Glassmorphism) */
-.equip-row {
-    background-color: rgba(255, 255, 255, 0.03); /* Very transparent */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border */
-    border-radius: 12px; 
-    
-    /* Blur effect BEHIND the row */
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    padding: 18px 30px;
-    
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    
-    transition: all 0.1s ease;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-
-
-.equip-row:hover {
-    /* 1. Make it much brighter (opacity increased from 0.08 to 0.2) */
-    background-color: rgba(255, 255, 255, 0.2);
-    
-    /* 2. Make the border almost solid white to pop out */
-    border-color: rgba(255, 255, 255, 0.9);
-    
-    /* 3. Scale makes it grow left AND right simultaneously */
-    transform: scale(1.02);
-    
-    /* 4. Add a shadow so it looks like it lifts off the page */
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    
-    /* 5. Ensure it sits on top of the other list items */
-    z-index: 10;
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
 }
 
-/* Text Colors for Dark Mode */
-.equip-name {
-    font-weight: 400;
-    color: #e0e0e0; 
-    font-size: 1.05rem;
-    letter-spacing: 0.5px;
-    
-    /* Settings for smooth animation */
-    transition: transform 0.3s ease, color 0.3s ease;
-    transform-origin: left center; /* Text expands outwards from the left */
+.logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
-.equip-year {
-    font-weight: 700;
-    color: var(--accent-cyan);
-    font-size: 0.95rem;
-    opacity: 0.9;
-    
-    /* Settings for smooth animation */
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: right center; /* Year expands outwards from the right */
+.logo-text span {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--dark-text);
 }
 
-/* NEW: Make text specifically bigger when hovering the row */
-.equip-row:hover .equip-name {
-    transform: scale(1.1); /* Increases name size by 10% */
-    color: #ffffff; /* Brightens the text to pure white */
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.1); /* Adds subtle glow */
+.main-nav {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
 }
 
-.equip-row:hover .equip-year {
-    transform: scale(1.2); /* Increases year size by 20% */
+.main-nav>ul {
+    display: flex;
+    gap: 30px;
+    height: 100%;
+}
+
+.main-nav>ul>li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--dark-text);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 5px;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--primary-blue);
+}
+
+.nav-item-dropdown {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.main-nav .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    display: block !important;
+    width: 265px;
+    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1100;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
     opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0px);
 }
 
-@media (max-width: 600px) {
-    .orb { width: 80vw; height: 80vw; opacity: 0.3; }
-    .equip-row { flex-direction: column; align-items: flex-start; gap: 5px; }
-    
-    /* Reset transforms on mobile to prevent layout overlapping */
-    .equip-name, .equip-year { transform-origin: left center; }
-    .equip-row:hover .equip-year { transform: scale(1.1); transform-origin: left center; }
-    
-    .equip-year { align-self: flex-start; font-size: 0.8rem; }
+.main-nav .dropdown-menu li a {
+    display: block !important;
+    width: 100%;
+    padding: 12px 25px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: left;
 }
 
+.main-nav .dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--accent-cyan);
+    padding-left: 30px;
+}
 
-/* =========================================
-   5. FLOATING CHEMISTRY ICONS
-   ========================================= */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
 
-   .chem-floating-container {
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.divider {
+    color: #ccc;
+    font-weight: 300;
+}
+
+.geo-icon {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 1px;
+    background-image: url('images/georgia.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.geo-icon::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Allows clicking through the images */
-    z-index: 2; /* Above orbs, below text */
-    overflow: hidden;
+    background-color: var(--dark-text);
+    -webkit-mask-image: url('images/georgia.svg');
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url('images/georgia.svg');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition: opacity 0.4s ease;
+    opacity: 1;
 }
 
-.chem-item {
-    position: absolute;
-    opacity: 0; /* Start invisible */
-    width: 140px; /* Adjust size of icons here */
-    height: auto;
-    filter: invert(1) brightness(2); /* Makes black SVGs white/bright */
-    
-    /* The Animation: 
-       6s total cycle. 
-       1s fade in, visible for a bit, 1s fade out. 
-    */
-    animation: fadeFloat 6s ease-in-out infinite;
+.lang-btn:hover .geo-icon::after {
+    opacity: 0;
 }
 
-/* --- ANIMATION KEYFRAMES --- */
-@keyframes fadeFloat {
-    0% {
-        opacity: 0;
-        transform: translateY(10px); /* Slight movement up */
-    }
-    15% {
-        opacity: 0.25; /* Max brightness (keep low to be subtle) */
-    }
-    85% {
-        opacity: 0.25;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+.lang-btn:hover,
+.active-lang {
+    color: var(--primary-blue);
 }
 
-/* --- POSITIONING (Left/Right Columns) --- */
-/* We use percentages to keep them away from the center content */
-
-/* Left Side */
-.pos-left-1 { top: 15%; left: 5%; animation-delay: 0s; }
-.pos-left-2 { top: 45%; left: 8%; animation-delay: 2s; }
-.pos-left-3 { top: 75%; left: 4%; animation-delay: 4s; }
-
-/* Right Side */
-.pos-right-1 { top: 20%; right: 5%; animation-delay: 1s; }
-.pos-right-2 { top: 50%; right: 7%; animation-delay: 3s; }
-.pos-right-3 { top: 80%; right: 5%; animation-delay: 5s; }
-
-
-/* --- MANUAL ROTATION ZONE --- */
-/* Edit the deg values below to rotate molecules manually */
-
-.manual-rotate-1 {
-    /* Molecule on Left */
-    transform: rotate(45deg); 
-    /* We must re-declare animation because transform overrides it, 
-       so we combine rotate with the animation's translate effect */
-    animation-name: fadeFloatRotate1; 
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 20px;
 }
 
-.manual-rotate-2 {
-    /* Molecule on Right Top */
-    transform: rotate(120deg);
-    animation-name: fadeFloatRotate2;
-}
-
-.manual-rotate-3 {
-    /* Molecule on Right Bottom */
-    transform: rotate(-15deg);
-    animation-name: fadeFloatRotate3;
-}
-
-/* 
-   We need specific keyframes for rotated items 
-   so the rotation stays while they float.
-*/
-
-@keyframes fadeFloatRotate1 {
-    0%   { opacity: 0;    transform: translateY(10px) rotate(45deg); }
-    15%  { opacity: 0.3; }
-    85%  { opacity: 0.3; }
-    100% { opacity: 0;    transform: translateY(-10px) rotate(45deg); }
-}
-
-@keyframes fadeFloatRotate2 {
-    0%   { opacity: 0;    transform: translateY(10px) rotate(120deg); }
-    15%  { opacity: 0.3; }
-    85%  { opacity: 0.3; }
-    100% { opacity: 0;    transform: translateY(-10px) rotate(120deg); }
-}
-
-@keyframes fadeFloatRotate3 {
-    0%   { opacity: 0;    transform: translateY(10px) rotate(-15deg); }
-    15%  { opacity: 0.3; }
-    85%  { opacity: 0.3; }
-    100% { opacity: 0;    transform: translateY(-10px) rotate(-15deg); }
-}
-
-
-/* --- MOBILE HIDE --- */
-/* Hide these on small screens so they don't overlap text */
-@media (max-width: 1100px) {
-    .chem-floating-container {
+@media (max-width: 768px) {
+    .main-nav {
         display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
     }
 }
 
 /* =========================================
-   5. FLOATING CHEMISTRY ICONS (DIRECTIONAL)
+   3. FOOTER (Synced with equipment.css)
+   ========================================= */
+.main-footer {
+    background-color: #1c2026;
+    color: #cccccc;
+    padding-top: 70px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-col h3 {
+    color: var(--white);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a:hover {
+    color: var(--accent-cyan);
+    padding-left: 5px;
+}
+
+.footer-col p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-col i {
+    color: var(--accent-cyan);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+/* =========================================
+   4. EQUIPMENT PAGE SPECIFIC STYLES
    ========================================= */
 
-.chem-floating-container {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 3; 
-    overflow: hidden;
+/* --- UTILITIES --- */
+.relative-z {
+    position: relative;
+    z-index: 5;
 }
 
-/* --- BASE STYLES --- */
-.chem-wrapper {
-    position: absolute;
-    width: 190px; 
-    opacity: 0.6; /* Base visibility */
-    animation-timing-function: linear; /* Constant speed, no easing */
-    animation-iteration-count: infinite;
+.white-text {
+    color: var(--white);
 }
 
-.chem-icon {
+.Nulshock {
+    font-family: 'Nulshock', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 4px;
+}
+
+/* --- PAGE WRAPPER & BACKGROUND --- */
+.equipment-wrapper {
+    position: relative;
+    padding: 0px 0 10px 0;
+    min-height: 100vh;
+    overflow: visible !important;
+}
+
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #002f6c; /* Solid Blue Background */
+}
+
+/* --- PAGE HEADER (Floating Title) --- */
+.page-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 40px; /*laboratory equipment gap with header*/
+
+    z-index: 20;
+    pointer-events: none; /* Allows clicks to pass through to sidebar */
+}
+
+/* --- LAYOUT GRID --- */
+.equipment-wrapper .container {
+    width: 100%;
+    max-width: 1920px; /* Fluid Cap */
+    margin: 0 auto;
+    padding: 0 0 0 20px; /* Left padding only, Sidebar hits right edge */
+}
+
+.content-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    position: relative;
+}
+
+/* --- LEFT COLUMN: THE LIST --- */
+.equipment-list-container {
+    /* Fluid width: Grows/Shrinks, Basis 600px */
+    flex: 1 1 600px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+
+    /* Push list down because Title is floating above it */
+    padding-top: 240px;  
+    padding-bottom: 50px;   /* Add space below all rows */
+
+
+}
+
+/* --- LIST ITEM: WHITE STRIP --- */
+.equip-row {
+    background-color: rgba(255, 255, 255, 0.88);
+    border-radius: 12px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.equip-row:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+.equip-name {
+    font-weight: 600;
+    color: var(--dark-text);
+    font-size: 1rem;
+}
+
+.equip-year {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* --- HEADER ROW SPECIAL STYLE --- */ 
+.equipment-list-container .equip-row.header-row {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 75px; 
+    z-index: 100;
+    
+    /* Make parent transparent so we can layer pseudos */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0px;
+    
+    /* Lock interactions */
+    transition: none !important;
+    transform: none !important;
+    cursor: default;
+    
+    /* Ensure text sits on top of the pseudo layers */
+    isolation: isolate;
+}
+
+/* --- START OF REPLACEMENT CODE --- */
+
+/* 1. THE BLUE BLOCKER (Back Layer) 
+   Square edges + Wider Left/Right (-50px) to catch everything */
+.equipment-list-container .equip-row.header-row::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    
+    /* Vertical: Top covers scrolling, Bottom extends for the mist */
+    top: -15px;
+    bottom: -15px;
+    
+    /* Horizontal: Extend WIDE to hide scrolling corners */
+    left: -50px;
+    right: -50px;
+    
+    /* MIST EFFECT: Solid Blue body -> Transparent Fade in the bottom 15px gap */
+    background: linear-gradient(
+        to bottom, 
+        var(--primary-blue) calc(100% - 15px), 
+        rgba(0, 47, 108, 0) 100%
+    );
+    
+    border-radius: 0; /* Square edges */
+}
+
+/* --- END OF REPLACEMENT CODE --- */
+
+/* 2. THE VISUAL HEADER (Middle Layer) 
+   The Grey Gradient, Rounded, Exact Size */
+.equipment-list-container .equip-row.header-row::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    
+    /* Exact match to parent size */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background: linear-gradient(180deg, #5A6B85 0%, #2A3649 100%);
+    border-radius: 12px; /* Keeps your design look */
+}
+/* --- START OF NEW CODE --- */
+
+/* BOTTOM MIST: Sticky fade-in effect (30px) */
+.equipment-list-container::after {
+    content: '';
+    /* Sticks to the bottom of the viewport inside the container */
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    z-index: 10; /* Sit on top of scrolling items */
+    
+    height: 30px;
+    width: 100%;
+    flex-shrink: 0; /* Prevent collapsing in flex container */
+    
+    /* Gradient: Solid Blue at bottom -> Transparent top */
+    background: linear-gradient(to top, var(--primary-blue), transparent);
+    
+    pointer-events: none; /* Let clicks pass through */
+}
+
+/* --- END OF NEW CODE --- */
+
+
+/* Hover: Ensure no shifting happens */
+.equipment-list-container .equip-row.header-row:hover {
+    transform: none !important;
+    background: transparent;
+}
+
+/* Text Styling */
+.equipment-list-container .equip-row.header-row .equip-name,
+.equipment-list-container .equip-row.header-row .equip-year {
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    z-index: 5; /* Sit above both pseudo layers */
+}
+
+/* --- RIGHT COLUMN: STICKY SIDEBAR --- */
+.sticky-sidebar {
+    /* Fixed 35% width, min 400px. No shrinking */
+    flex: 0 0 35%;
+    min-width: 400px;
+    
+    position: -webkit-sticky;
+    position: sticky;
+    
+    /* --- FIX START --- */
+    /* 1. Stick exactly below the header (which is 60px) */
+    top: var(--header-height); 
+    
+    /* 2. Calculate height: Full Screen MINUS Header Height */
+    /* This prevents the "shifting" because the container fits perfectly */
+    height: calc(100vh - var(--header-height));
+    /* --- FIX END --- */
+
+     /* background-color: tomato;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.image-preview-container {
     width: 100%;
     height: auto;
-    display: block;
-    filter: brightness(0) invert(1);
-}
-
-/* --- 1. VERTICAL MOVEMENT (Up / Down) --- */
-
-/* Moves from Top (-20%) to Bottom (110%) */
-@keyframes moveDown {
-    0%   { top: -20%; }
-    100% { top: 110%; }
-}
-
-/* Moves from Bottom (110%) to Top (-20%) */
-@keyframes moveUp {
-    0%   { top: 110%; }
-    100% { top: -20%; }
-}
-
-/* --- 2. HORIZONTAL MOVEMENT (Moving Outwards) --- */
-
-/* Spawns at 15% Left, Moves out to -20% Left */
-@keyframes moveLeftOut {
-    0%   { left: 15%; opacity: 0; } /* Start invisible to avoid 'pop' */
-    10%  { left: 12%; opacity: 0.6; } /* Fade in quickly */
-    100% { left: -20%; opacity: 0.6; } /* Exit screen */
-}
-
-/* Spawns at 85% Left, Moves out to 120% Left */
-@keyframes moveRightOut {
-    0%   { left: 85%; opacity: 0; }
-    10%  { left: 88%; opacity: 0.6; }
-    100% { left: 120%; opacity: 0.6; }
-}
-
-/* --- CLASS ASSIGNMENTS --- */
-
-/* Top Item moving Down */
-.flow-down {
-    left: 10%; /* Positioned on left side of screen */
-    animation-name: moveDown;
-}
-
-/* Bottom Item moving Up */
-.flow-up {
-    left: 80%; /* Positioned on right side of screen */
-    animation-name: moveUp;
-}
-
-/* Left Item moving Left (Away from text) */
-.flow-left {
-    animation-name: moveLeftOut;
-}
-
-.flow-right {
-    animation-name: moveRightOut;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
-/* --- SPEED CONTROL (Adjust Seconds Here) --- */
 
-/* The standard calm speed */
-.speed-calm { animation-duration: 40s; }
+/* --- ELASTIC POP ANIMATION (Mac OS Style) --- */
+@keyframes elasticPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.05); /* Starts as a tiny point */
+        filter: blur(10px);     /* Blurry dimension effect */
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05); /* Expands past 100% (Overshoot) */
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);    /* Snaps back to normal */
+    }
+}
 
-/* Slightly faster */
-.speed-normal { animation-duration: 40s; }
-
-/* Fast (if you want one to zoom) */
-.speed-fast { animation-duration: 40s; }
-
-/* Very Slow (Glacial) */
-.speed-glacial { animation-duration: 40s; }
+.preview-img.warp-entrance {
+    transform-origin: center center;
+    /* The cubic-bezier creates the "bouncy" spring effect */
+    animation: elasticPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
 
 
-/* --- ROTATION PRESETS --- */
-.rotate-45  { transform: rotate(45deg); }
-.rotate-90  { transform: rotate(90deg); }
-.rotate-120 { transform: rotate(120deg); }
-.rotate-neg-30 { transform: rotate(-30deg); }
+/* --- MICROSCOPE FOCUS ANIMATION (ADDED, DOES NOT REPLACE EXISTING) --- */
+@keyframes microscopeFocus {
+    0% {
+        opacity: 0.2;
+        /* opacity: 1; */
+        transform: scale(1.0);
+        /* Preserve your shadow while blurring */
+        filter: blur(0px) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0px) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    }
+}
+
+/* This class is added by JS for subsequent hovers */
+.preview-img.focus-active {
+    will-change: transform, filter, opacity;
+    animation: microscopeFocus 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
 
 
-/* Hide on mobile */
-@media (max-width: 1000px) {
-    .chem-floating-container { display: none; }
+
+/* --- RIGHT COLUMN: STICKY SIDEBAR --- */
+ 
+
+.preview-img {
+    /* === SIZE CONTROLS === */
+    max-width: 400px;   /* CHANGE THIS to limit Width (e.g. 400px, 600px) */
+    max-height: 400px;  /* CHANGE THIS to limit Height */
+    
+    width: auto;        /* Keeps the image proportional */
+    height: auto;       /* Keeps the image proportional */
+    /* ===================== */
+
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+
+ /* --- STAGE LIGHT EFFECT --- */
+.image-preview-container {
+    position: relative;
+    z-index: 1;
+}
+
+.stage-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    
+    /* CHANGED: Base State is now visible (Ambient Light) */
+    opacity: 0.3; 
+    
+    /* The Glow Gradient */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(0, 47, 108, 0) 70%);
+    
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    
+    mix-blend-mode: screen; 
+}
+
+/* THE ANIMATION CLASS */
+.stage-light.active-flash {
+    /* We use 'forwards' to ensure it stays at the end state of the animation */
+    animation: flashAndSettle 1.2s forwards ease-out;
+}
+
+/* KEYFRAMES: The Physics of the Flash */
+@keyframes flashAndSettle {
+    /* 0%: Start at the normal ambient level (not invisible) */
+    0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    
+    /* 40%: THE PEAK - Bright flash & slight expansion */
+    40% {
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+    
+    /* 100%: Return to ambient level */
+    100% {
+        opacity: 0.3; 
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+
+
+
+
+.preview-img {
+    position: relative;
+    z-index: 2;
+    /* ... existing styles ... */
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    /* Hide sidebar on tablets/mobile */
+    .sticky-sidebar {
+        display: none;
+    }
+
+    /* List takes full width */
+    .equipment-list-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-right: auto;
+        padding-top: 140px; /* Slightly less padding */
+    }
+    
+    /* Restore right padding since sidebar is gone */
+    .equipment-wrapper .container {
+        padding: 0 20px; 
+    }
+}
+
+@media (max-width: 600px) {
+    .Nulshock {
+        font-size: 2rem;
+    }
+
+    .equip-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .equip-year {
+        align-self: flex-end;
+        font-size: 0.8rem;
+    }
 }

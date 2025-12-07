@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Equipment | Melikishvili Institute</title>
+
+    <!-- LINKED TO THE ISOLATED CSS FILE -->
+    <link rel="stylesheet" href="equipment.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="images/favicon.png" sizes="64x64">
+  <style>
+    :root{
+      /* === VIDEO SIZE CONTROLS ===
+         Change these to control the video size.
+         You can use px, %, vw, vh, etc.
+      */
+      --video-width: min(900px, 90vw);
+    --video-aspect: 1472 / 1404; /* or simplified: 368 / 351 */
+
+      /* === BACKGROUND CONTROL === */
+      --bg-color: #456E82;
+      --padding-top: 0px;   /* adjust later if header overlaps */
+      --padding-bottom: 0px;/* adjust later if footer overlaps */
+    }
+
+    /* This file is ONLY the middle section layout.
+       You can later remove body height rules and
+       apply these styles to your main content wrapper instead.
+    */
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background-color: #456E82;
+      color: #fff;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    /* Middle section container */
+    .middle-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: var(--padding-top);
+      padding-bottom: var(--padding-bottom);
+      padding-left: 4vw;
+      padding-right: 4vw;
+      box-sizing: border-box;
+    }
+
+    /* Video frame */
+    .video-wrap {
+      width: var(--video-width);
+      aspect-ratio: var(--video-aspect);
+      border-radius: 14px;
+      overflow: hidden;
+
+      /* subtle polish */
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.45),
+        0 0 0 1px rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; /* change to 'contain' if you don't want cropping */
+    }
+
+    /* Optional: quick responsive tweak for very small screens */
+    @media (max-width: 480px) {
+      :root{
+        --video-width: 94vw;
+      }
+    }
+    :root{
+  --bg-color: #0b0f14;
+}
+
+/* center area */
+.middle-section{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background-color: #456E82;
+  padding: 4vw;
+  box-sizing: border-box;
+}
+
+/* the resizable container */
+.video-box{
+  /* you control size here */
+  width: 200px;              /* change this */
+  max-width: 90vw;           /* keeps it responsive */
+  aspect-ratio: 1472 / 1404; /* your video ratio */
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+/* video fills the box */
+.video-box > video{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;   /* or contain if you want zero cropping */
+}
+
+/* optional size presets */
+.size-sm{ width: 520px; }
+.size-md{ width: 720px; }
+.size-lg{ width: 900px; }
+.size-xl{ width: 1100px; }
+
+  </style>
+</head>
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-area">
+                <!-- Image Logo -->
+                <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
+                <!-- Text -->
+                <div class="logo-text">
+                    <span>Melikishvili Institute</span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="#">Laboratories <i class="fa-solid fa-chevron-down"
+                                style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Physical-Chemical Processes</a></li>
+                            <li><a href="#">Organic Compound Chemistry</a></li>
+                            <li><a href="#">High Molecular Compounds</a></li>
+                            <li><a href="#">Agrarian Chemistry</a></li>
+                            <li><a href="#">Chemical Ecology</a></li>
+                            <li><a href="#">Petrochemistry</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="equipment.html" class="active">Equipment</a></li>
+                    <li><a href="#">Structure</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="lang-btn" id="lang-geo">
+                    <div class="geo-icon"></div> GEO
+                </a>
+                <span class="divider">|</span>
+                <a href="#" class="lang-btn active-lang" id="lang-eng">ENG</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+  <!-- This is your middle section.
+       You can move this div into your page layout
+       between header and footer.
+  -->
+<main class="middle-section">
+<div class="video-box" style="width: 480px;">
+  <video autoplay muted loop playsinline>
+    <source src="images/video/struqtura.mp4" type="video/mp4" />
+  </video>
+</div>
+
+</main>
+
+
+</body>
+</html>

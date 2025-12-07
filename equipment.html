@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- 
       DEVELOPMENT FILE: EQUIPMENT
       This file uses 'equipment.css' to isolate the token context.
+      if you create new HTML file write same instructions and create separate css file to save tokens
+      When finishing the project, change the link back to 'style.css'.
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratory Equipment | Melikishvili Institute</title>
-    
+
     <!-- LINKED TO THE ISOLATED CSS FILE -->
     <link rel="stylesheet" href="equipment.css">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="images/favicon.png" sizes="64x64">
 </head>
+
 <body class="equipment-page">
 
     <!-- NAVIGATION HEADER -->
     <header class="main-header">
         <div class="container nav-container">
-           <!-- Inside <div class="container nav-container"> -->
-
-<!-- REPLACE THE OLD LOGO DIV WITH THIS LINK BLOCK -->
-<a href="index.html" class="logo-area">
-    <!-- Image Logo -->
-    <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
-    
-    <!-- Text -->
-    <div class="logo-text"> 
-        <span>Melikishvili Institute</span>
-    </div>
-</a>
+            <a href="index.html" class="logo-area">
+                <!-- Image Logo -->
+                <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
+                <!-- Text -->
+                <div class="logo-text">
+                    <span>Melikishvili Institute</span>
+                </div>
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">About Us</a></li>
                     <li class="nav-item-dropdown">
-                        <a href="#">Laboratories <i class="fa-solid fa-chevron-down" style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
+                        <a href="#">Laboratories <i class="fa-solid fa-chevron-down"
+                                style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Physical-Chemical Processes</a></li>
                             <li><a href="#">Organic Compound Chemistry</a></li>
@@ -49,13 +50,14 @@
                         </ul>
                     </li>
                     <li><a href="equipment.html" class="active">Equipment</a></li>
-                    <li><a href="equipment2.html" class="active">Equipment 2</a></li>
-                    <li><a href="#">Structure</a></li>
+                    <li><a href="struqtura.html">Structure</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#" class="lang-btn" id="lang-geo"><div class="geo-icon"></div> GEO</a>
+                <a href="#" class="lang-btn" id="lang-geo">
+                    <div class="geo-icon"></div> GEO
+                </a>
                 <span class="divider">|</span>
                 <a href="#" class="lang-btn active-lang" id="lang-eng">ENG</a>
             </div>
@@ -65,63 +67,39 @@
         </div>
     </header>
 
-   <!-- EQUIPMENT SECTION -->
-<section class="equipment-wrapper">
-    <div class="animated-bg">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    
-        <!-- EMPTY CONTAINER - JS WILL FILL THIS -->
-        <div class="chem-floating-container" id="chem-spawner"></div>
-    </div>
-    
-    <!-- Rest of your content... -->
-            
-                    <!-- 1. TOP LEFT -->
-                    <!-- Position: 5% from top. Delay: 0s (Starts right away) -->
-                    <!-- CHANGE THE SVG HERE: src="images/svg-chem/YOUR_NAME.svg" -->
-                    <div class="chem-wrapper flow-left speed-calm" style="top: 5%; animation-delay: 0s;">
-                        <img src="images/svg-chem/hero-molecule-3.svg" class="chem-icon rotate-neg-0" alt="molecule">
-                    </div>
-                
-                    <!-- 2. UPPER RIGHT -->
-                    <!-- Position: 30% from top. Delay: 15s -->
-                    <div class="chem-wrapper flow-right speed-normal" style="top: 30%; animation-delay: 15s;">
-                        <img src="images/svg-chem/hero-molecule-1.svg" class="chem-icon rotate-0" alt="molecule">
-                    </div>
-                
-                    <!-- 3. LOWER LEFT -->
-                    <!-- Position: 55% from top. Delay: 25s -->
-                    <div class="chem-wrapper flow-left speed-glacial" style="top: 55%; animation-delay: 25s;">
-                        <img src="images/svg-chem/hero-molecule-3.svg" class="chem-icon rotate-0" alt="molecule">
-                    </div>
-                
-                    <!-- 4. BOTTOM RIGHT -->
-                    <!-- Position: 80% from top. Delay: 5s -->
-                    <div class="chem-wrapper flow-right speed-calm" style="top: 80%; animation-delay: 5s;">
-                        <img src="images/svg-chem/hero-molecule-2.svg" class="chem-icon rotate-0" alt="molecule">
-                    </div>
-                
-                </div>
-        </div>
-    </div>
+    <!-- EQUIPMENT SECTION -->
+    <section class="equipment-wrapper">
+        <!-- Background -->
+        <div class="animated-bg"></div>
 
-    <div class="container relative-z">
-        <!-- ... existing content ... -->
-            <div class="page-header text-center">
-                <h1 class="Nulshock white-text">Laboratory Equipment</h1>
+        <!-- TITLE IS OUTSIDE GRID (ABSOLUTE POSITIONED) -->
+        <div class="page-header text-center">
+            <h1 class="Nulshock white-text">Laboratory Equipment</h1>
+        </div>
+
+        <!-- GRID LAYOUT -->
+        <div class="content-grid">
+
+            <!-- MIDDLE: The List -->
+            <div class="equipment-list-container" id="equipment-list">
+                <!-- Javascript fills this -->
             </div>
 
-            <!-- THE LIST CONTAINER -->
-            <div class="equipment-list-container" id="equipment-list">
-                <!-- Javascript will put the transparent bars here -->
+            <!-- RIGHT STICKY SIDEBAR -->
+            <!-- RIGHT STICKY SIDEBAR -->
+            <div class="sticky-sidebar right">
+                <div class="image-preview-container">
+                    <!-- NEW: The Stage Light -->
+                    <div class="stage-light"></div>
+
+                    <img id="dynamic-preview-img" src="images/logo.png" alt="Preview" class="preview-img active">
+                </div>
             </div>
         </div>
     </section>
 
-     <!-- FOOTER -->
-     <footer class="main-footer">
+    <!-- FOOTER -->
+    <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col">
                 <h3>PMIOC</h3>
@@ -148,74 +126,128 @@
             <p>&copy; 2024 Petre Melikishvili Institute. All Rights Reserved.</p>
         </div>
     </footer>
-
     <!-- LINK TO YOUR NEW JS FILE -->
-   <!-- MAIN SCRIPT (Must be type="module" to allow imports) -->
-   <script type="module" src="script.js"></script>
- 
-
     <!-- ============================================ -->
     <!-- EASY EDIT ZONE: DATA SCRIPT                  -->
     <!-- ============================================ -->
+
+
     <script>
-        // ADD / REMOVE ITEMS HERE
+        // 1. CONFIGURATION
+        const imageFolder = "images/equipment/";
+
+        // 2. DATA ARRAY
         const equipmentData = [
-        
-  { name: "ვაკუუმის ტუმბო", year: "2022" },
-  { name: "ლღობის აპარატი", year: "2022" },
-  { name: "ულტრათერმოსტატი", year: "2022" },
-  { name: "ჰიდრავლიკური პრესი", year: "2019" },
-  { name: "გაჭიმვა შეკუმჰვა ღუნვაზე გამოსაცდელი დანადგარი", year: "2019" },
-  { name: "საფქვავი  ჭიქები საპირწონე", year: "2015" },
-  { name: "სანჯღრეველა ", year: "2015" },
-  { name: "საფქვავი", year: "2015" },
-  { name: "პლანეტარული მიკროსაფქვავი", year: "2015" },
-  { name: "ანალიზური სასწორი", year: "2015" },
-  { name: "ლაბორატორიული სასწორი ", year: "2014" },
-  { name: "ტრანსფორმატორი", year: "1987" },
-  { name: "საშრობი კარადა", year: "1986" },
-  { name: "ვაკუუმის კარადა", year: "1984" },
-  { name: "ქრომატოგრაფი АМ-8МД", year: "1977" },
-  { name: "ვისკოზიმეტრი მოც-108", year: "1977" },
-  { name: "წყლის გამოსახდელი კუბი", year: "1977" },
-  { name: "ბურთულებიანი წისქვილი", year: "1976" },
-  { name: "მემბრანული კომპრესორი", year: "1971" }
-
-
+            { name: "Device Name", year: "Since", isHeader: true },
+            { name: "ვაკუუმის ტუმბო", year: "2022", image: "pump.png" },
+            { name: "ლღობის აპარატი", year: "2022", image: "ლღობის.png" },
+            { name: "ულტრათერმოსტატი", year: "2022", image: "ultrathermostat.png" },
+            { name: "ჰიდრავლიკური პრესი", year: "2019", image: "პრესი.png" },
+            { name: "გაჭიმვა შეკუმჰვა ღუნვის დანადგარი", year: "2019", image: "გაჭიმვა.png" },
+            { name: "საფქვავი ჭიქები საპირწონე", year: "2015", image: "ჭიქა.png" },
+            { name: "სანჯღრეველა ", year: "2015", image: "სანჯღრეველა.png" },
+            { name: "საფქვავი", year: "2015", image: "საფქვავი.png" },
+            { name: "პლანეტარული მიკროსაფქვავი", year: "2015", image: "პლანეტარული.png" },
+            { name: "ანალიზური სასწორი", year: "2015", image: "ანალიზსასწორი.png" },
+            { name: "ლაბორატორიული სასწორი ", year: "2014", image: "სასწორი.png" },
+            { name: "ტრანსფორმატორი", year: "1987", image: "" },
+            { name: "საშრობი კარადა", year: "1986", image: "საშრობი.png" },
+            { name: "ვაკუუმის კარადა", year: "1984", image: "ვაკუმ.png" },
+            { name: "ქრომატოგრაფი АМ-8МД", year: "1977", image: "" },
+            { name: "ვისკოზიმეტრი მოც-108", year: "1977", image: "" },
+            { name: "წყლის გამოსახდელი კუბი", year: "1977", image: "" },
+            { name: "ბურთულებიანი წისქვილი", year: "1976", image: "" },
+            { name: "მემბრანული კომპრესორი", year: "1971", image: "" }
         ];
 
+        // 3. LOGIC
         const listContainer = document.getElementById('equipment-list');
-        
-        equipmentData.forEach(item => {
-            // Create the row
-            const row = document.createElement('div');
-            row.className = 'equip-row';
+        const previewImg = document.getElementById('dynamic-preview-img');
+        const stageLight = document.querySelector('.stage-light');
 
-            // Add simple Name (Left) and Year (Right)
+        // Global State
+        let hasFlashed = false;
+
+        // INITIALIZATION
+        previewImg.style.opacity = '0';
+        previewImg.src = '';
+
+        equipmentData.forEach((item) => {
+            const row = document.createElement('div');
+            row.className = item.isHeader ? 'equip-row header-row' : 'equip-row';
+
             row.innerHTML = `
-                <div class="equip-name">${item.name}</div>
-                <div class="equip-year">${item.year}</div>
-            `;
+        <div class="equip-name">${item.name}</div>
+        <div class="equip-year">${item.year}</div>
+        `;
+
+            if (!item.isHeader) {
+
+                row.addEventListener('mouseenter', () => {
+
+                    const isFirstTime = !hasFlashed;
+
+                    // 1. TRIGGER LIGHT (First time only)
+                    if (isFirstTime) {
+                        stageLight.classList.add('active-flash');
+                        hasFlashed = true;
+                    }
+
+                    // 2. TIMING (Slow for first, Fast for rest)
+                    let delayTime = isFirstTime ? 400 : 100;
+
+                    if (item.image && item.image !== "") {
+                        // Reset opacity to prepare for entry
+                        if (!isFirstTime) previewImg.style.opacity = '0';
+
+                        setTimeout(() => {
+                            // Reset both animation states
+                            previewImg.classList.remove('warp-entrance', 'focus-active');
+                            void previewImg.offsetWidth; // Reflow to restart animations cleanly
+
+                            // Set new image
+                            previewImg.src = imageFolder + item.image;
+
+                            // 3. APPLY ANIMATION
+                            if (isFirstTime) {
+                                // Keep your existing first-time "big bang / Mac pop"
+                                previewImg.classList.add('warp-entrance');
+                                previewImg.style.opacity = ''; // Let keyframes control opacity
+                            } else {
+                                // New microscope focus for every subsequent hover
+                                previewImg.classList.add('focus-active');
+                                previewImg.style.opacity = ''; // Let keyframes control opacity
+                            }
+                        }, delayTime);
+
+
+                    } else {
+                        previewImg.style.opacity = '0';
+                    }
+                });
+
+                row.addEventListener('mouseleave', () => {
+                    // If we are NOT in the middle of the first animation, hide it.
+                    if (
+                        !previewImg.classList.contains('warp-entrance') &&
+                        !previewImg.classList.contains('focus-active')
+                    ) {
+                        previewImg.style.opacity = '0';
+                    }
+
+                    // If it IS the warp entrance, we let it stay visible until the next hover clears it
+                });
+
+                row.style.cursor = "pointer";
+            }
 
             listContainer.appendChild(row);
         });
-
-
-
-
-        
     </script>
 
 
-
-
-
-
+    <!-- MAIN SCRIPT (Must be type="module" to allow imports) -->
     <script type="module" src="script.js"></script>
-
-
-
-
-    
 </body>
+
 </html>
