@@ -5,7 +5,7 @@
 
    // !IMPORTANT! : Make sure this filename matches exactly what is in your folder.
    // You had 'xxspline-data.js' and 'xspline-data.js' in previous files. Check it.
-   import { sceneData } from './xxspline-data.js'; 
+   import { sceneData } from './xspline-data.js'; 
    
    /* =========================================
       1. UI LOGIC (Menus & Buttons)
