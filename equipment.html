@@ -132,7 +132,7 @@
     <!-- ============================================ -->
 
 
-    <script>
+  <script>
         // 1. CONFIGURATION
         const imageFolder = "images/equipment/";
 
@@ -167,6 +167,7 @@
 
         // Global State
         let hasFlashed = false;
+        let currentActiveImage = null; // Tracks which image is currently showing
 
         // INITIALIZATION
         previewImg.style.opacity = '0';
@@ -177,13 +178,21 @@
             row.className = item.isHeader ? 'equip-row header-row' : 'equip-row';
 
             row.innerHTML = `
-        <div class="equip-name">${item.name}</div>
-        <div class="equip-year">${item.year}</div>
-        `;
+                <div class="equip-name">${item.name}</div>
+                <div class="equip-year">${item.year}</div>
+            `;
 
             if (!item.isHeader) {
-
                 row.addEventListener('mouseenter', () => {
+                    
+                    // === THE FIX ===
+                    // If we are hovering the item that is ALREADY showing, STOP here.
+                    if (currentActiveImage === item.image) {
+                        return; 
+                    }
+
+                    // Update the tracker so we know this is now the active one
+                    currentActiveImage = item.image;
 
                     const isFirstTime = !hasFlashed;
 
@@ -193,58 +202,46 @@
                         hasFlashed = true;
                     }
 
-                    // 2. TIMING (Slow for first, Fast for rest)
+                    // 2. TIMING
                     let delayTime = isFirstTime ? 400 : 100;
 
                     if (item.image && item.image !== "") {
-                        // Reset opacity to prepare for entry
+                        // Fade out old image to prepare for new one
                         if (!isFirstTime) previewImg.style.opacity = '0';
 
                         setTimeout(() => {
-                            // Reset both animation states
+                            // Reset animation classes
                             previewImg.classList.remove('warp-entrance', 'focus-active');
-                            void previewImg.offsetWidth; // Reflow to restart animations cleanly
+                            void previewImg.offsetWidth; // Force Reflow
 
-                            // Set new image
+                            // Set new image source
                             previewImg.src = imageFolder + item.image;
 
-                            // 3. APPLY ANIMATION
+                            // Apply Animation
                             if (isFirstTime) {
-                                // Keep your existing first-time "big bang / Mac pop"
                                 previewImg.classList.add('warp-entrance');
-                                previewImg.style.opacity = ''; // Let keyframes control opacity
+                                previewImg.style.opacity = ''; 
                             } else {
-                                // New microscope focus for every subsequent hover
                                 previewImg.classList.add('focus-active');
-                                previewImg.style.opacity = ''; // Let keyframes control opacity
+                                previewImg.style.opacity = ''; 
                             }
                         }, delayTime);
 
-
                     } else {
+                        // If item has no image, hide the preview
                         previewImg.style.opacity = '0';
                     }
                 });
 
-                row.addEventListener('mouseleave', () => {
-                    // If we are NOT in the middle of the first animation, hide it.
-                    if (
-                        !previewImg.classList.contains('warp-entrance') &&
-                        !previewImg.classList.contains('focus-active')
-                    ) {
-                        previewImg.style.opacity = '0';
-                    }
-
-                    // If it IS the warp entrance, we let it stay visible until the next hover clears it
-                });
-
+                // No mouseleave listener here, so image stays visible.
+                
                 row.style.cursor = "pointer";
             }
 
             listContainer.appendChild(row);
         });
     </script>
-
+  
 
     <!-- MAIN SCRIPT (Must be type="module" to allow imports) -->
     <script type="module" src="script.js"></script>
