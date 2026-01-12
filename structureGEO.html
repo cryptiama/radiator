@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200">
+  <title>სტრუქტურა | მელიქიშვილის ინსტიტუტი</title>
+
+  <!-- 1. HEADER & FOOTER CSS -->
+  <link rel="stylesheet" href="headfooter.css" />
+
+  <!-- 2. PAGE SPECIFIC CSS -->
+  <link rel="stylesheet" href="structure.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="icon" href="images/favicon.png" sizes="64x64" />
+</head>
+
+<body class="structure-page lang-ge">
+  <!-- NAVIGATION HEADER -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-area">
+        <img src="images/logo.png" alt="PMIOC Logo" class="logo-img" />
+        <div class="logo-text">
+          <span>მელიქიშვილის ინსტიტუტი</span>
+        </div>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">მთავარი</a></li>
+          <li><a href="about-us.html">ჩვენს შესახებ</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#">ლაბორატორიები
+              <i class="fa-solid fa-chevron-down" style="font-size: 0.65em; margin-left: 8px; opacity: 0.7"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">ფიზიკურ-ქიმიური პროცესები</a></li>
+              <li><a href="#">ორგანულ ნაერთთა ქიმია</a></li>
+              <li><a href="#">მაღალმოლეკულური ნაერთები</a></li>
+              <li><a href="#">აგრარული ქიმია</a></li>
+              <li><a href="#">ქიმიური ეკოლოგია</a></li>
+              <li><a href="#">ნავთობქიმია</a></li>
+            </ul>
+          </li>
+          <li><a href="equipment.html">აპარატურა</a></li>
+          <li><a href="structure.html" class="active">სტრუქტურა</a></li>
+          <li><a href="contact.html">კონტაქტი</a></li>
+        </ul>
+        <div class="slide-line"></div> 
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="lang-btn active-lang" id="lang-geo">
+          <div class="geo-icon"></div>
+          ქარ
+        </a>
+        <span class="divider">|</span>
+        <a href="structure.html" class="lang-btn" id="lang-eng">ENG</a>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT (Image, Video & Periodic Stats) -->
+  <main class="structure-content">
+    <div class="structure-title">
+      <h1>ჩვენი გუნდი</h1>
+    </div>
+    <div class="structure-items-row">
+      <!-- 1. LEFT: IMAGE -->
+      <div class="person-image">
+        <img src="images/structure/qeti.png" alt="Qeti" />
+      </div>
+      <!-- 2. MIDDLE: VIDEO -->
+      <div class="crop-window">
+        <div class="video-wrapper">
+          <video src="images/structure/1.mp4" autoplay loop muted playsinline preload="auto"></video>
+
+          <!-- Special Style (2 Boxes) -->
+          <div class="video-text text-special" style="top: 11%; left: 29%">
+            დირექტორი
+          </div>
+          <div class="video-text text-special" style="top: 10%; left: 60%">
+            სამეცნიერო საბჭო
+          </div>
+
+          <!-- Standard Style (9 Boxes) -->
+          <div class="video-text text-standard" style="top: 27%; left: 35%">
+            დირექტორის<br /> მოადგილე
+          </div>
+
+          <div class="video-text text-standard" style="top: 41%; left: 35%">
+            სწავლული მდივანი
+          </div>
+          <div class="video-text text-standard" style="top: 56.5%; left: 35%">
+            საორგანიზაციო და <br />
+            საინჟინრო  <br />
+            განყოფილება
+          </div>
+          <div class="video-text text-standard" style="top: 24%; left: 59.3%">
+            ორგანულ ნაერთთა <br />
+            ქიმია
+          </div>
+
+          <div class="video-text text-standard" style="top: 36.7%; left: 59.3%">
+             აგრარული <br />
+            ქიმია 
+          </div>
+          <div class="video-text text-standard" style="top: 48%; left: 59.3%">
+            ფიზიკურ-ქიმიური <br />პროცესები
+          </div>
+          <div class="video-text text-standard" style="top: 59%; left: 59.3%">
+           მაღალმოლეკულური <br />
+            ნაერთები
+          </div>
+
+          <div class="video-text text-standard" style="top: 70%; left: 59.3%">
+           ნავთობქიმია 
+          </div>
+          <div class="video-text text-standard" style="top: 80%; left: 59.3%">
+            ქიმიური ეკოლოგია
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. RIGHT: PERIODIC TABLE STATS -->
+      <div class="periodic-section">
+        <!-- Top Element: Total -->
+        <div class="element-box main-box">
+          <span class="atomic-label">სულ</span>
+          <strong class="symbol">109</strong>
+          <span class="element-name">თანამშრომელი</span>
+        </div>
+
+        <!-- Bond Lines -->
+        <div class="bond-connector">
+          <div class="bond-vertical"></div>
+          <div class="bond-horizontal"></div>
+        </div>
+        <!-- Middle Row: Scientists & Admin -->
+        <div class="split-elements">
+          <div class="element-wrapper">
+            <div class="bond-vertical-small"></div>
+            <div class="element-box sub-box scientist">
+              <span class="atomic-label">შტატი</span>
+              <strong class="symbol">79</strong>
+              <span class="element-name">მეცნიერ-თანამშრომელი</span>
+            </div>
+          </div>
+          <div class="element-wrapper">
+            <div class="bond-vertical-small"></div>
+            <div class="element-box sub-box admin">
+              <span class="atomic-label">შტატი</span>
+              <strong class="symbol">30</strong>
+              <span class="element-name">ადმინისტრაცია</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM ROW: Infrastructure Elements -->
+        <div class="bond-connector">
+          <div class="bond-vertical"></div>
+          <div class="bond-horizontal bond-wide"></div>
+        </div>
+
+        <div class="infrastructure-row">
+          <!-- 1. Laboratories -->
+          <div class="element-wrapper">
+            <div class="bond-vertical-small"></div>
+            <div class="element-box sub-box lab-box">
+              <span class="atomic-label">ერთეული</span>
+              <strong class="symbol">6</strong>
+              <span class="element-name">ლაბორატორია</span>
+            </div>
+          </div>
+
+          <!-- 3. Library -->
+          <div class="element-wrapper">
+            <div class="bond-vertical-small"></div>
+            <div class="element-box sub-box lib-box">
+              <span class="atomic-label">სივრცე</span>
+              <strong class="symbol icon-symbol"><i class="fa-solid fa-book"></i></strong>
+              <span class="element-name">ბიბლიოთეკა</span>
+            </div>
+          </div>
+
+          <!-- 2. Department -->
+          <div class="element-wrapper">
+            <div class="bond-vertical-small"></div>
+            <div class="element-box sub-box dept-box">
+              <span class="atomic-label">ერთეული</span>
+              <strong class="symbol">1</strong>
+              <span class="element-name">განყოფილება</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PDF DOWNLOAD SECTION -->
+        <div class="pdf-container">
+          <a href="assets/docs/structure.pdf" target="_blank" class="pdf-button">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>სტრუქტურის PDF-ის ნახვა</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer main-footer--with-ocean">
+    <div class="container footer-centered-wrapper">
+      <div class="footer-grid">
+        <!-- COLUMN 1: INSTITUTION INFO -->
+        <div class="footer-col">
+          <h3>1929 წლიდან</h3>
+          <ul class="footer-custom-list">
+            <li>პეტრე მელიქიშვილის სახელობის</li>
+            <li>ფიზიკური და</li>
+            <li>ორგანული ქიმიის ინსტიტუტი</li>
+          </ul>
+        </div>
+
+        <!-- COLUMN 2: QUICK LINKS -->
+        <div class="footer-col">
+          <h3>სწრაფი ბმულები</h3>
+          <ul class="footer-custom-list footer-links">
+            <li><a href="about-us.html">ინსტიტუტის შესახებ</a></li>
+            <li><a href="equipment.html">აპარატურის ჩამონათვალი</a></li>
+            <li><a href="structure.html">ორგანიზაციული სტრუქტურა</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUMN 3: CONTACT US -->
+        <div class="footer-col">
+          <h3>კონტაქტი</h3>
+          <div class="contact-info">
+            <p>
+              <i class="fa-solid fa-location-dot"></i> პოლიტკოვსკაიას ქ. 31, თბილისი
+            </p>
+            <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
+            <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy;eveloped by I.Chachava</p>
+      </div>
+    </div>
+    <div class="overocean"></div>
+    <div class="footer-ocean" aria-hidden="true">
+      <div id="footer_wave"></div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="assets/vendor/three/r128/three.min.js"></script>
+  <script src="footer-ocean.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>

@@ -3,17 +3,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Melikishvili Institute</title>
     
-    <!-- 1. NEW HEADER CSS (Variables, Reset, Navbar) -->
-    <link rel="stylesheet" href="header.css">
-    
-    <!-- 2. MAIN CONTENT CSS (Hero, Footer, Sections) -->
-    <link rel="stylesheet" href="style.css">
-    
+ <!-- 1. HEADER & FOOTER CSS (Variables, Fonts, Nav, Footer) -->
+<link rel="stylesheet" href="headfooter.css">
+
+<!-- 2. MAIN CONTENT CSS (Hero, Sections, Partners, Equipment) -->
+<link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
 
     <!-- Inline styles for the Custom Font and Canvas fix -->
     <link rel="icon" href="images/favicon.png" sizes="64x64">
@@ -39,7 +39,7 @@
                <!-- Inside <nav class="main-nav"> -->
 <ul>
     <li><a href="#" class="active">Home</a></li>
-    <li><a href="#">About Us</a></li>
+    <li><a href="about-us.html">About Us</a></li>
     
     <!-- DROPDOWN MENU START -->
     <li class="nav-item-dropdown">
@@ -56,8 +56,8 @@
     <!-- DROPDOWN MENU END -->
 
     <li><a href="equipment.html" class="active">Equipment</a></li>
-    <li><a href="struqtura.html">Structure</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="structure.html">Structure</a></li>
+    <li><a href="contact.html">Contact</a></li>
 </ul>
                 <div class="slide-line"></div> 
             </nav>
@@ -106,8 +106,7 @@
             <canvas id="canvas3d"></canvas>
         </div>
 
-    </section>
-
+    </section> 
     <!-- STATS STRIP -->
     <section class="stats-section">
         <div class="container stats-grid">
@@ -193,38 +192,150 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <h3>PMIOC</h3>
-                <p>Petre Melikishvili Institute of Physical and Organic Chemistry.</p>
-                <p>Part of Ivane Javakhishvili Tbilisi State University.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Structure</a></li>
-                    <li><a href="#">History</a></li>
-                    <li><a href="#">Scientific Apparatus</a></li>
-                    <li><a href="#">Regulations (PDF)</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p><i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St, Tbilisi</p>
-                <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
-                <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Petre Melikishvili Institute. All Rights Reserved.</p>
-        </div>
-    </footer>
 
-    <!-- LINK TO YOUR NEW JS FILE -->
-   <!-- MAIN SCRIPT (Must be type="module" to allow imports) -->
-   <script type="module" src="script.js"></script>
- 
+<!-- 1. FULL WIDTH SCROLLING LOGOS -->
+<div class="partners-section">
+    <div class="container">
+        <div class="partners-grid">
+            
+            <!-- Item 1 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/1.png" alt="Ministry Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">MINISTRY OF EDUCATION, <br>SCIENCE AND YOUTH OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 2 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/2.png" alt="TSU Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">IVANE JAVAKHISHVILI <br>TBILISI STATE UNIVERSITY</span>
+                </div>
+            </a>
+
+            <!-- Item 3 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/3.png" alt="Academy Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">NATIONAL ACADEMY <br> OF SCINCES OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 4 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/4.png" alt="Foundation Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">SHOTA RUSTAVELI NATIONAL <br>SCIENCE FOUNDATION OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 5 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/5.png" alt="Sakpatenti Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">SAKPATENTI <br> NATIONAL INTELLECTUAL <br>PROPERTY CENTER OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 6 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/6.png" alt="Institute Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">PETRE MELIKISHVILI <br> INSTITUTE OF PHYSICAL <br> AND ORGANIC CHEMISTRY</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- END OF .partners-section content -->
+    </div>
+
+    <!-- NEW TRANSITION DIV -->
+    <div class="mist-transition"></div>
+
+ <div class="overfooter"></div>
+
+<!-- FOOTER -->
+
+
+
+
+ <div class="overfooterglobal"></div>
+  <footer class="main-footer main-footer--with-ocean">
+      <div class="container footer-centered-wrapper">
+        <!-- REPLACE YOUR EXISTING FOOTER-GRID WITH THIS -->
+        <div class="footer-grid">
+          <!-- COLUMN 1: INSTITUTION INFO -->
+          <div class="footer-col">
+            <h3>Since 1929</h3>
+            <ul class="footer-custom-list">
+              <li>Petre Melikishvili Institute</li>
+              <li>Of Physical and</li>
+              <li>Organic Chemistry</li>
+            </ul>
+          </div>
+
+          <!-- COLUMN 2: QUICK LINKS -->
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-custom-list footer-links">
+              <li><a href="about-us.html">About Institute</a></li>
+              <li><a href="equipment.html">Equipment List</a></li>
+              <li><a href="structure.html">Organizational Structure</a></li>
+            </ul>
+          </div>
+
+          <!-- COLUMN 3: CONTACT US -->
+          <div class="footer-col">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+              <p>
+                <i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St,
+                Tbilisi
+              </p>
+              <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
+              <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; Developed by I.Chachava</p>
+        </div>
+      </div>
+      <div class="overocean"></div>
+      <div class="footer-ocean" aria-hidden="true">
+        <div id="footer_wave"></div>
+      </div>
+    </footer>
+ <!-- ... End of Footer ... -->
+
+    <!-- 1. Load Three.js Library (ONLY ONCE) -->
+    <script src="assets/vendor/three/r128/three.min.js"></script>
+
+    <!-- 2. Load the Ocean Script (Now External) -->
+    <!-- This will create the canvas inside #footer_wave, giving the footer height -->
+    <script src="footer-ocean.js"></script>
+
+    <!-- 3. Main Script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
 </body>
 </html>

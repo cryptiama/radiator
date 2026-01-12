@@ -11,7 +11,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratory Equipment | Melikishvili Institute</title>
-
+    
+ <!-- 1. HEADER & FOOTER CSS (Variables, Fonts, Nav, Footer) -->
+<link rel="stylesheet" href="headfooter.css">
+ 
     <!-- LINKED TO THE ISOLATED CSS FILE -->
     <link rel="stylesheet" href="equipment.css">
 
@@ -21,7 +24,7 @@
 </head>
 
 <body class="equipment-page">
-
+<div id="site-wrapper">
     <!-- NAVIGATION HEADER -->
     <header class="main-header">
         <div class="container nav-container">
@@ -36,7 +39,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
                     <li class="nav-item-dropdown">
                         <a href="#">Laboratories <i class="fa-solid fa-chevron-down"
                                 style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
@@ -50,9 +53,10 @@
                         </ul>
                     </li>
                     <li><a href="equipment.html" class="active">Equipment</a></li>
-                    <li><a href="struqtura.html">Structure</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="structure.html">Structure</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
+                <div class="slide-line"></div> 
             </nav>
             <div class="header-actions">
                 <a href="#" class="lang-btn" id="lang-geo">
@@ -98,41 +102,61 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <h3>PMIOC</h3>
-                <p>Petre Melikishvili Institute of Physical and Organic Chemistry.</p>
-                <p>Part of Ivane Javakhishvili Tbilisi State University.</p>
+  
+<!-- FOOTER -->
+  <footer class="main-footer main-footer--with-ocean">
+      <div class="container footer-centered-wrapper">
+        <!-- REPLACE YOUR EXISTING FOOTER-GRID WITH THIS -->
+        <div class="footer-grid">
+          <!-- COLUMN 1: INSTITUTION INFO -->
+          <div class="footer-col">
+            <h3>Since 1929</h3>
+            <ul class="footer-custom-list">
+              <li>Petre Melikishvili Institute</li>
+              <li>Of Physical and</li>
+              <li>Organic Chemistry</li>
+            </ul>
+          </div>
+
+          <!-- COLUMN 2: QUICK LINKS -->
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-custom-list footer-links">
+              <li><a href="about-us.html">About Institute</a></li>
+              <li><a href="equipment.html">Equipment List</a></li>
+              <li><a href="structure.html">Organizational Structure</a></li>
+            </ul>
+          </div>
+
+          <!-- COLUMN 3: CONTACT US -->
+          <div class="footer-col">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+              <p>
+                <i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St,
+                Tbilisi
+              </p>
+              <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
+              <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Structure</a></li>
-                    <li><a href="#">History</a></li>
-                    <li><a href="#">Scientific Apparatus</a></li>
-                    <li><a href="#">Regulations (PDF)</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p><i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St, Tbilisi</p>
-                <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
-                <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
-            </div>
+          </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2024 Petre Melikishvili Institute. All Rights Reserved.</p>
+          <p>&copy; Developed by I.Chachava</p>
         </div>
+      </div>
+      <div class="overocean"></div>
+      <div class="footer-ocean" aria-hidden="true">
+        <div id="footer_wave"></div>
+      </div>
     </footer>
-    <!-- LINK TO YOUR NEW JS FILE -->
-    <!-- ============================================ -->
+
+  
+<!-- ============================================ -->
     <!-- EASY EDIT ZONE: DATA SCRIPT                  -->
     <!-- ============================================ -->
-
-
-  <script>
+    <script>
         // 1. CONFIGURATION
         const imageFolder = "images/equipment/";
 
@@ -140,8 +164,8 @@
         const equipmentData = [
             { name: "Device Name", year: "Since", isHeader: true },
             { name: "ვაკუუმის ტუმბო", year: "2022", image: "pump.png" },
-            { name: "ლღობის აპარატი", year: "2022", image: "ლღობის.png" },
             { name: "ულტრათერმოსტატი", year: "2022", image: "ultrathermostat.png" },
+            { name: "ლღობის აპარატი", year: "2022", image: "ლღობის.png" },
             { name: "ჰიდრავლიკური პრესი", year: "2019", image: "პრესი.png" },
             { name: "გაჭიმვა შეკუმჰვა ღუნვის დანადგარი", year: "2019", image: "გაჭიმვა.png" },
             { name: "საფქვავი ჭიქები საპირწონე", year: "2015", image: "ჭიქა.png" },
@@ -160,91 +184,170 @@
             { name: "მემბრანული კომპრესორი", year: "1971", image: "" }
         ];
 
-        // 3. LOGIC
+        // 3. LOGIC ELEMENTS
         const listContainer = document.getElementById('equipment-list');
         const previewImg = document.getElementById('dynamic-preview-img');
         const stageLight = document.querySelector('.stage-light');
 
-        // Global State
-        let hasFlashed = false;
-        let currentActiveImage = null; // Tracks which image is currently showing
+        // 4. BACKGROUND DOWNLOADER (Standard)
+        let backgroundController = new AbortController(); 
+        let downloadQueue = []; 
+        
+        equipmentData.forEach(item => {
+            if (item.image && item.image !== "") {
+                item.loaded = false;
+                item.blobUrl = null;
+                item.fullUrl = imageFolder + item.image;
+                downloadQueue.push(item);
+            } else {
+                item.loaded = true; 
+            }
+        });
 
-        // INITIALIZATION
+        async function processDownloadQueue() {
+            if (downloadQueue.length === 0) return; 
+
+            // Skip items already loaded by hover
+            while(downloadQueue.length > 0 && downloadQueue[0].loaded) {
+                downloadQueue.shift();
+            }
+            if (downloadQueue.length === 0) return;
+
+            const item = downloadQueue[0];
+
+            try {
+                const response = await fetch(item.fullUrl, { signal: backgroundController.signal });
+                const blob = await response.blob();
+                item.blobUrl = URL.createObjectURL(blob);
+                item.loaded = true;
+                downloadQueue.shift();
+                processDownloadQueue(); 
+            } catch (err) {
+                // Ignore intentional stops
+            }
+        }
+        processDownloadQueue(); // Start automatically
+
+
+        // 5. HOVER LOGIC (Strict ID + State Check)
+        let hasFlashed = false;
+        let globalRequestId = 0; 
+        let currentDisplayedItem = null; // Keeps track of what is VISIBLE right now
+
+        // Init
         previewImg.style.opacity = '0';
         previewImg.src = '';
 
         equipmentData.forEach((item) => {
             const row = document.createElement('div');
             row.className = item.isHeader ? 'equip-row header-row' : 'equip-row';
-
-            row.innerHTML = `
-                <div class="equip-name">${item.name}</div>
-                <div class="equip-year">${item.year}</div>
-            `;
+            row.innerHTML = `<div class="equip-name">${item.name}</div><div class="equip-year">${item.year}</div>`;
 
             if (!item.isHeader) {
                 row.addEventListener('mouseenter', () => {
                     
-                    // === THE FIX ===
-                    // If we are hovering the item that is ALREADY showing, STOP here.
-                    if (currentActiveImage === item.image) {
-                        return; 
-                    }
+                    // === CHECK 1: STATE CHECK ===
+                    // If this item is ALREADY the one on screen, stop immediately.
+                    // This prevents re-animating when moving mouse away and back.
+                    if (currentDisplayedItem === item) return;
 
-                    // Update the tracker so we know this is now the active one
-                    currentActiveImage = item.image;
+                    // === START NEW REQUEST ===
+                    globalRequestId++;
+                    const myRequestId = globalRequestId; 
 
-                    const isFirstTime = !hasFlashed;
-
-                    // 1. TRIGGER LIGHT (First time only)
-                    if (isFirstTime) {
+                    // First flash logic
+                    if (!hasFlashed) {
                         stageLight.classList.add('active-flash');
                         hasFlashed = true;
                     }
 
-                    // 2. TIMING
-                    let delayTime = isFirstTime ? 400 : 100;
+                    // Debounce (Wait 50ms to see if user stays)
+                    setTimeout(async () => {
+                        
+                        // === CHECK 2: RACE CONDITION CHECK ===
+                        // Did user move to another item while we were waiting?
+                        if (myRequestId !== globalRequestId) return; 
 
-                    if (item.image && item.image !== "") {
-                        // Fade out old image to prepare for new one
-                        if (!isFirstTime) previewImg.style.opacity = '0';
+                        if (item.image && item.image !== "") {
+                            
+                            // LOAD LOGIC
+                            if (!item.loaded) {
+                                backgroundController.abort(); // Stop background
+                                backgroundController = new AbortController();
 
-                        setTimeout(() => {
-                            // Reset animation classes
-                            previewImg.classList.remove('warp-entrance', 'focus-active');
-                            void previewImg.offsetWidth; // Force Reflow
-
-                            // Set new image source
-                            previewImg.src = imageFolder + item.image;
-
-                            // Apply Animation
-                            if (isFirstTime) {
-                                previewImg.classList.add('warp-entrance');
-                                previewImg.style.opacity = ''; 
-                            } else {
-                                previewImg.classList.add('focus-active');
-                                previewImg.style.opacity = ''; 
+                                try {
+                                    const response = await fetch(item.fullUrl);
+                                    const blob = await response.blob();
+                                    item.blobUrl = URL.createObjectURL(blob);
+                                    item.loaded = true;
+                                    processDownloadQueue(); // Resume background
+                                } catch (e) {
+                                    console.error(e);
+                                }
                             }
-                        }, delayTime);
 
-                    } else {
-                        // If item has no image, hide the preview
-                        previewImg.style.opacity = '0';
-                    }
+                            // === CHECK 3: POST-LOAD CHECK ===
+                            // Did user move while downloading?
+                            if (myRequestId !== globalRequestId) return;
+
+                            // VISUAL TRANSITION
+                            if (hasFlashed) previewImg.style.opacity = '0';
+
+                            setTimeout(() => {
+                                // === CHECK 4: FADE CHECK ===
+                                // Did user move while fading out?
+                                if (myRequestId !== globalRequestId) return;
+
+                                // Update the global state tracker!
+                                currentDisplayedItem = item;
+
+                                // DOM Updates
+                                previewImg.classList.remove('warp-entrance', 'focus-active');
+                                void previewImg.offsetWidth; 
+
+                                previewImg.src = item.blobUrl;
+
+                                if (!previewImg.classList.contains('active')) {
+                                    previewImg.classList.add('warp-entrance', 'active');
+                                } else {
+                                    previewImg.classList.add('focus-active');
+                                }
+                                previewImg.style.opacity = '1';
+
+                            }, 50); 
+
+                        } else {
+                            // Item has no image
+                            previewImg.style.opacity = '0';
+                            currentDisplayedItem = item; // Still update state so we know "No Image" is active
+                        }
+
+                    }, 50); 
                 });
-
-                // No mouseleave listener here, so image stays visible.
                 
                 row.style.cursor = "pointer";
             }
-
             listContainer.appendChild(row);
         });
     </script>
-  
 
-    <!-- MAIN SCRIPT (Must be type="module" to allow imports) -->
+
+
+
+    
+<!-- 1. Load Three.js Library first -->
+<script src="assets/vendor/three/r128/three.min.js"></script>
+
+<!-- 2. Load the Ocean Script -->
+<script src="footer-ocean.js"></script>
+
+<!-- MAIN SCRIPT (Must be type="module" to allow imports) -->
     <script type="module" src="script.js"></script>
+
+
+
+    
+</div>
 </body>
 
 </html>

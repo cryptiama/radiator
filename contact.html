@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=1200">
+    <title>Page Title | Melikishvili Institute</title>
+    
+    <!-- 1. HEADER & FOOTER CSS (Shared across all pages) -->
+    <link rel="stylesheet" href="headfooter.css">
+ 
+    <!-- 2. PAGE SPECIFIC CSS (Change this for every new page) -->
+    <link rel="stylesheet" href="CHANGE_ME.css">
+
+    <!-- EXTERNAL ASSETS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="images/favicon.png" sizes="64x64">
+<style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+ 
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 1200px;  /* The Floor: prevents shrinking */
+    max-width: 1920px;  /* The Ceiling: prevents stretching */
+    margin: 0 auto;     /* Centers the whole site on 4K screens */
+    background-color: #c7c7c7;
+    position: relative;
+    overflow-x: auto;   /* Allows horizontal scroll if window is < 1200px */
+    box-shadow: 0 0 100px rgba(0,0,0,0.5); /* Optional: shadows the site edges on 4K */
+}
+
+ .animation-container {
+    width: 1920px;
+    /* 100vh is full screen height. 80px is the header. */
+    height: calc(110vh - 80px); 
+    min-height: 700px; /* Keeps it from breaking on very short windows */
+    background-color: #c7c7c7;
+    overflow: hidden;
+    position: relative;
+}
+
+    /* 2. THE HANDS (Stay in one place) */
+    .photo-stage {
+        position: absolute; 
+        left: -5px;   
+        top: 30px;    
+        width: 899px;  
+        height: 650px; 
+        z-index: 10;
+    }
+
+    .overlay-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill; 
+        pointer-events: none; 
+        z-index: 1; 
+    }
+
+    .photo-stage img:nth-of-type(2) {
+        z-index: 30; /* This keeps hand2.png on top of everything */
+    }
+
+/* 3. THE MOVING CIRCLE */
+.map-circle {
+    position: absolute;
+    z-index: 20; 
+    border-radius: 50%; 
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    
+    /* SET THE BASE POSITION HERE */
+    top: 88px;      
+    left: 432px;    
+    width: 446px;   
+    height: 446px;
+
+    /* Transition only the transform (movement) and opacity */
+    transition: transform 5.0s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    transform: translateY(0); /* Start at original position */
+}
+/* When this class is added, it moves 40px down from wherever it started */
+.state-move-down {
+    transform: translateY(420px);
+}
+    /* ---------------------------------------------------------
+       ADJUST THESE COORDINATES BELOW
+    --------------------------------------------------------- */
+
+    /* WHERE THE PHOTO STARTS */
+    .state-start {
+      top: 88px;      
+        left: 432px;    
+        width: 446px;   
+        height: 446px;
+    }
+
+    /* WHERE THE MAP ENDS */
+    .state-end {
+        top: 88px;      
+        left: 432px;    
+        width: 446px;   
+        height: 446px;
+    }
+/* INTERNAL LAYERING */
+.map-circle iframe, 
+.map-circle video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130%; 
+    height: 130%;
+    object-fit: cover;
+}
+
+.map-circle video {
+    z-index: 25; 
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.map-circle iframe {
+    z-index: 22; 
+    pointer-events: none; 
+}
+
+/* Logic to hide video and show map later */
+.show-map video {
+    opacity: 0;
+    pointer-events: none;
+}
+.show-map iframe {
+    pointer-events: all; 
+}
+
+
+
+/* 4. CENTERED CONTACT INFO */
+.contact-card {
+    position: absolute;
+    left: 70%;
+    top: 40%;
+    transform: translate(-50%, -50%); 
+    
+    width: 450px; /* Increased width slightly for Nulshock font */
+    background: rgba(255, 255, 255, 0.9); 
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    z-index: 100;
+    font-family: 'Inter', sans-serif;
+    color: #555;
+    text-align: center; /* This centers the info-wrapper */
+}
+
+.contact-card h2 {
+    /* Apply Nulshock font here */
+    font-family: 'Nulshock', 'Inter', sans-serif; 
+    font-size: 1.1rem; /* Adjust size as Nulshock is usually quite wide */
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    text-transform: uppercase; /* Optional: Nulshock looks best in caps */
+    letter-spacing: 1px;
+}
+
+/* This container is centered by the parent, but its content is left-aligned */
+.info-wrapper {
+    display: block;
+    white-space: nowrap; /* Prevents text from jumping to next line */
+    text-align: left;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.info-row i {
+    font-size: 1.1rem;
+    color: #777;
+    margin-right: 20px; /* Space between icon and text */
+    margin-top: 4px;
+    width: 25px; /* FIXED WIDTH ensures text starts at the same spot */
+    text-align: center; /* Centers the icon within its 25px box */
+}
+
+.info-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.info-content a {
+    display: block;
+    text-decoration: none;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.info-content a:hover {
+    color: #0056b3;
+}
+   /* =========================================================
+   HORIZONTAL TRANSITION 1 (Mid-screen)
+   Approx 1550px or smaller
+   ========================================================= */
+@media screen and (max-width: 1400px) {
+    /* The Images & Map */
+    .photo-stage {
+        left: -40px;  /* Adjust this manually */
+        top: 30px;    /* Adjust this manually */
+    }
+
+    /* The Text Box */
+    .contact-card {
+        left: 125%;    /* Adjust this manually */
+        top: 40%;     /* Adjust this manually */
+    }
+     .animation-container {
+    width: 1400px;
+    
+}
+}
+
+/* =========================================================
+   HORIZONTAL TRANSITION 2 (The Floor)
+   1250px or smaller (Close to your 1200px limit)
+   ========================================================= */
+@media screen and (max-width: 1200px) {
+    /* The Images & Map */
+    .photo-stage {
+        left: -110px; /* Adjust this manually */
+        top: 20px;    /* Adjust this manually */
+    }
+
+    /* The Text Box */
+    .contact-card {
+        left: 158%;    /* Adjust this manually */
+        top: 40%;     /* Adjust this manually */
+    }
+     
+     .animation-container {
+    width: 1200px;
+    
+}
+}
+
+/* =========================================================
+   VERTICAL TRANSITION
+   Max height 800 pixels
+   ========================================================= */
+@media screen and (max-height: 800px) {
+    /* The Images & Map */
+    .photo-stage {
+        top: 0px;      /* Move up to save space */
+        left: -5px;    /* Adjust this manually */
+        /* Optional: add 'transform: scale(0.9);' if it feels too cramped */
+    }
+
+    /* The Text Box */
+    .contact-card {
+        top: 300px;      /* Move up to prevent footer overlap */
+        left: 70%;     /* Adjust this manually */
+    }
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
+                <div class="logo-text">
+                    <span>Melikishvili Institute</span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="#">Laboratories <i class="fa-solid fa-chevron-down" style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Physical-Chemical Processes</a></li>
+                            <li><a href="#">Organic Compound Chemistry</a></li>
+                            <li><a href="#">High Molecular Compounds</a></li>
+                            <li><a href="#">Agrarian Chemistry</a></li>
+                            <li><a href="#">Chemical Ecology</a></li>
+                            <li><a href="#">Petrochemistry</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="equipment.html">Equipment</a></li>
+                    <li><a href="structure.html">Structure</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <div class="slide-line"></div> 
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="lang-btn" id="lang-geo">
+                    <div class="geo-icon"></div> GEO
+                </a>
+                <span class="divider">|</span>
+                <a href="#" class="lang-btn active-lang" id="lang-eng">ENG</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+  <main class="page-wrapper">
+        
+<section class="animation-container">
+    <div class="photo-stage">
+        <img src="contact/hand1.png" alt="Base Layer" class="overlay-photo">
+        <img src="contact/hand2.png" alt="Detail Layer" class="overlay-photo">
+
+        <!-- This is the container that moves -->
+        <div id="dynamic-container" class="map-circle state-start">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1we0KDJUbYjBzdhfrMDo4Q7qOLTDUxRI&ehbc=2E312F"></iframe>
+            <video id="overlay-video" muted playsinline poster="contact/images/earth-first-frame.jpg">
+                <source src="contact/earth.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- NEW CONTACT TEXT SECTION START -->
+    <div class="contact-card">
+        <h2>Petre Melikishvili Institute <br> of Physical and <br>Organic Chemistry</h2>
+  <div class="info-wrapper">
+        <!-- Address -->
+        <div class="info-row">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="info-content">
+                Georgia, Tbilisi 0186,<br>
+                A. Politkovskaya st. 31
+            </div>
+        </div>
+
+        <!-- Phones -->
+        <div class="info-row">
+            <i class="fa-solid fa-phone"></i>
+            <div class="info-content">
+                <a href="tel:+995322541571">+(995 32) 254 15 71</a>
+                <a href="tel:+995322541572">+(995 32) 254 15 72</a>
+                <a href="tel:+995322541562">+(995 32) 254 15 62</a>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="info-row">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="info-content">
+                <a href="mailto:physorgchem@gmail.com">physorgchem@gmail.com</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- NEW CONTACT TEXT SECTION END -->
+
+</section>
+    </main>
+  
+<!-- FOOTER -->
+
+<footer class="main-footer main-footer--with-ocean">
+    
+
+    <!-- 2. CENTERED CONTENT (Contact & Copyright) -->
+    <div class="container footer-centered-wrapper">
+        
+       <!-- SEARCH FOR footer-grid AND REPLACE WITH THIS -->
+<div class="footer-grid">
+    
+    <!-- COLUMN 1: INSTITUTION INFO -->
+    <div class="footer-col">
+        <h3>Since 1929</h3>
+        <ul class="footer-custom-list">
+            <li>Petre Melikishvili Institute</li>
+            <li> Of Physical and </li>
+            <li>Organic Chemistry</li>
+        </ul>
+    </div>
+
+    <!-- COLUMN 2: QUICK LINKS -->
+    <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-custom-list footer-links">
+            <li><a href="about-us.html">About Institute</a></li>
+            <li><a href="equipment.html">Equipment List</a></li>
+            <li><a href="structure.html">Organizational Structure</a></li>
+       
+        </ul>
+    </div>
+
+    <!-- COLUMN 3: CONTACT US -->
+    <div class="footer-col">
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+            <p><i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St, Tbilisi</p>
+            <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
+            <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
+        </div>
+    </div>
+
+</div>
+
+
+        <div class="footer-bottom">
+            <p>&copy; Developed by I.Chachava</p>
+        </div>
+
+    </div>
+<div class="overocean"></div>
+    <!-- Ocean particles area -->
+    <div class="footer-ocean" aria-hidden="true">
+        <div id="footer_wave"></div>
+    </div>
+</footer>
+   
+    <!-- SCRIPTS -->
+    <!-- 1. Load Three.js Library -->
+    <script src="assets/vendor/three/r128/three.min.js"></script>
+
+    <!-- 2. Load the Ocean Effect Script -->
+    <script src="footer-ocean.js"></script>
+
+    <!-- 3. MAIN SCRIPT (Navigation, Mobile Menu, etc.) -->
+    <script type="module" src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('dynamic-container');
+    const video = document.getElementById('overlay-video');
+    const pauseDuration = 2000; 
+
+    // List the 3 images that must load first
+    const imagesToLoad = [
+        'hand1.png',
+        'hand2.png',
+        'images/earth-first-frame.jpg'
+    ];
+
+    let loadedCount = 0;
+
+    imagesToLoad.forEach(src => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+            loadedCount++;
+            // Once all 3 images are loaded
+            if (loadedCount === imagesToLoad.length) {
+                startSequence();
+            }
+        };
+        img.onerror = () => {
+            loadedCount++;
+            if (loadedCount === imagesToLoad.length) startSequence();
+        };
+    });
+
+    function startSequence() {
+        // Show the photos/container
+        document.body.classList.add('images-loaded');
+
+        // Your original logic: wait for pauseDuration, then move and play
+        setTimeout(() => {
+            video.play();
+
+            container.classList.remove('state-start');
+            container.classList.add('state-end');
+
+            setTimeout(() => {
+                container.classList.add('show-map');
+            }, 7500); 
+            
+        }, pauseDuration);
+    }
+});
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

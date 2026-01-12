@@ -3,10 +3,15 @@
    ========================================= */
    import { Application } from 'https://unpkg.com/@splinetool/runtime@1.9.37/build/runtime.js';
 
-   // !IMPORTANT! : Make sure this filename matches exactly what is in your folder.
-   // You had 'xxspline-data.js' and 'xspline-data.js' in previous files. Check it.
-   import { sceneData } from './xspline-data.js'; 
    
+// --- DEVELOPMENT MODE: 3D DISABLED ---
+// 1. We comment out the import so it doesn't look for the file.
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+import { sceneData } from './xspline-data.js'; 
+
+// 2. We create a fake variable so the rest of the script doesn't crash.
+// const sceneData = null; 
+//    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    /* =========================================
       1. UI LOGIC (Menus & Buttons)
       ========================================= */
@@ -48,141 +53,182 @@
            });
        }
    });
-   
    /* =========================================
-      2. HIGH-PERFORMANCE 3D ENGINE
-      ========================================= */
-   
-   const canvas = document.getElementById('canvas3d');
-   const app = new Application(canvas);
-   
-   // --- PERFORMANCE FIX 1: CLAMP PIXEL RATIO ---
-   // Prevents 4K rendering on Retina screens. Drastically reduces GPU heat.
-   // Spline defaults to window.devicePixelRatio (which is 2 or 3 on Macs). We force 1.
-   try {
-       const renderer = app.renderer || app._renderer;
-       if(renderer) renderer.setPixelRatio(1);
-   } catch(e) {}
-   
-   
-   // --- PERFORMANCE FIX 2: INTERSECTION OBSERVER ---
-   // Instead of listening to every scroll pixel, we ask the browser:
-   // "Is the Hero Section on screen?"
-   const heroSection = document.querySelector('.hero-section');
-   
-   const observer = new IntersectionObserver((entries) => {
-       entries.forEach(entry => {
-           if (entry.isIntersecting) {
-               // --- ON SCREEN ---
-               canvas.style.display = 'block';
-               try { app.play(); } catch(e){}
-           } else {
-               // --- OFF SCREEN ---
-               // 1. Stop Calculation Loop
-               try { app.stop(); } catch(e){}
-               // 2. Hide Canvas (Removes from GPU Rasterizer)
-               canvas.style.display = 'none'; 
-           }
-       });
-   }, {
-       root: null,
-       threshold: 0 // Trigger as soon as 1 pixel leaves/enters
-   });
-   
-   // Start observing
-   if (heroSection) observer.observe(heroSection);
-   
-   
-   /* =========================================
-   3. SCENE LOADING & NUCLEAR CLEANUP
+   2. HIGH-PERFORMANCE 3D ENGINE
    ========================================= */
-if (sceneData) {
-    app.start(sceneData).then(() => {
-        console.log("3D Loaded. Executing Optimization...");
 
-        setTimeout(() => {
-            try {
-                const realScene = app.scene || app._scene;
-                const realRenderer = app.renderer || app._renderer;
+const canvas = document.getElementById('canvas3d');
 
-                if (realScene) {
-                    // 1. Fix Background Transparency
-                    if (realRenderer) realRenderer.setClearColor(0x000000, 0);
+// WE ONLY RUN 3D LOGIC IF THE CANVAS EXISTS (Prevents crash on Equipment Page)
+if (canvas) {
+    const app = new Application(canvas);
 
-                    // 2. Identify Objects
-                    let meshes = [];
-                    realScene.traverse((obj) => {
-                        if (obj.isMesh) {
-                            if (obj.geometry && !obj.geometry.boundingSphere) {
-                                obj.geometry.computeBoundingSphere();
-                            }
-                            let size = 0;
-                            if (obj.geometry && obj.geometry.boundingSphere) {
-                                const scale = Math.max(obj.scale.x, obj.scale.y, obj.scale.z);
-                                size = obj.geometry.boundingSphere.radius * scale;
-                            }
-                            meshes.push({ obj, size });
-                        }
-                    });
+    // --- PERFORMANCE FIX 1: CLAMP PIXEL RATIO ---
+    try {
+        const renderer = app.renderer || app._renderer;
+        if(renderer) renderer.setPixelRatio(1);
+    } catch(e) {}
 
-                    // 3. Sort by size (Largest = Earth)
-                    meshes.sort((a, b) => b.size - a.size);
-
-                    // 4. NUKE EVERYTHING EXCEPT THE EARTH
-                    // This guarantees the "Black Thing" (index 1, 2, etc.) is destroyed.
-                    if (meshes.length > 0) {
-                        
-                        // A. KILL ALL OTHER OBJECTS FIRST (Index 1 to end)
-                        for (let i = 1; i < meshes.length; i++) {
-                            const item = meshes[i];
-                            const mesh = item.obj;
-                            if (mesh.parent) mesh.parent.remove(mesh);
-                            if (mesh.geometry) mesh.geometry.dispose();
-                            if (mesh.material) {
-                                if (Array.isArray(mesh.material)) mesh.material.forEach(m => m.dispose());
-                                else mesh.material.dispose();
-                            }
-                        }
-
-                        // B. ROTATE THE SURVIVOR (Index 0 - The Earth)
-                        // We use geometry rotation because texture sliding was clamped.
-                        const earthMesh = meshes[0].obj;
-                        
-                        const safeRotate = (mesh, angle) => {
-                            if (!mesh.geometry) return;
-
-                            // 1. Calculate Center
-                            mesh.geometry.computeBoundingBox();
-                            const box = mesh.geometry.boundingBox;
-                            const Vector3 = mesh.position.constructor;
-                            const center = new Vector3();
-                            center.x = (box.max.x + box.min.x) / 2;
-                            center.y = (box.max.y + box.min.y) / 2;
-                            center.z = (box.max.z + box.min.z) / 2;
-
-                            // 2. Move to Origin -> Rotate -> Move Back
-                            // This ensures it spins in place and doesn't fly away.
-                            mesh.geometry.translate(-center.x, -center.y, -center.z);
-                            
-                            // CHANGE THIS NUMBER to find China.
-                            // 3.5 is roughly 200 degrees rotation from USA.
-                            mesh.geometry.rotateY(0.6); 
-                            
-                            mesh.geometry.translate(center.x, center.y, center.z);
-                        };
-
-                        safeRotate(earthMesh, 3.5);
-                    }
-                }
-            } catch (err) {
-                console.error("Optimization Warning:", err);
+    // --- PERFORMANCE FIX 2: INTERSECTION OBSERVER ---
+    const heroSection = document.querySelector('.hero-section');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                canvas.style.display = 'block';
+                try { app.play(); } catch(e){}
+            } else {
+                try { app.stop(); } catch(e){}
+                canvas.style.display = 'none'; 
             }
+        });
+    }, { root: null, threshold: 0 });
+    
+    if (heroSection) observer.observe(heroSection);
 
-            // 5. Fade In
-            canvas.style.opacity = '1';
+    /* =========================================
+    3. SCENE LOADING & NUCLEAR CLEANUP
+    ========================================= */
+    if (sceneData) {
+        app.start(sceneData).then(() => {
+            console.log("3D Loaded. Executing Optimization...");
 
-        }, 500);
-    });
-} else {
-    console.error("DATA ERROR: 'sceneData' failed to import.");
+            setTimeout(() => {
+                try {
+                    const realScene = app.scene || app._scene;
+                    const realRenderer = app.renderer || app._renderer;
+
+                    if (realScene) {
+                        // 1. Fix Background Transparency
+                        if (realRenderer) realRenderer.setClearColor(0x000000, 0);
+
+                        // 2. Identify Objects
+                        let meshes = [];
+                        realScene.traverse((obj) => {
+                            if (obj.isMesh) {
+                                if (obj.geometry && !obj.geometry.boundingSphere) {
+                                    obj.geometry.computeBoundingSphere();
+                                }
+                                let size = 0;
+                                if (obj.geometry && obj.geometry.boundingSphere) {
+                                    const scale = Math.max(obj.scale.x, obj.scale.y, obj.scale.z);
+                                    size = obj.geometry.boundingSphere.radius * scale;
+                                }
+                                meshes.push({ obj, size });
+                            }
+                        });
+
+                        // 3. Sort by size (Largest = Earth)
+                        meshes.sort((a, b) => b.size - a.size);
+
+                        // 4. NUKE EVERYTHING EXCEPT THE EARTH
+                        if (meshes.length > 0) {
+                            // A. KILL ALL OTHER OBJECTS FIRST
+                            for (let i = 1; i < meshes.length; i++) {
+                                const item = meshes[i];
+                                const mesh = item.obj;
+                                if (mesh.parent) mesh.parent.remove(mesh);
+                                if (mesh.geometry) mesh.geometry.dispose();
+                                if (mesh.material) {
+                                    if (Array.isArray(mesh.material)) mesh.material.forEach(m => m.dispose());
+                                    else mesh.material.dispose();
+                                }
+                            }
+
+                            // B. ROTATE THE SURVIVOR
+                            const earthMesh = meshes[0].obj;
+                            const safeRotate = (mesh, angle) => {
+                                if (!mesh.geometry) return;
+                                mesh.geometry.computeBoundingBox();
+                                const box = mesh.geometry.boundingBox;
+                                const Vector3 = mesh.position.constructor;
+                                const center = new Vector3();
+                                center.x = (box.max.x + box.min.x) / 2;
+                                center.y = (box.max.y + box.min.y) / 2;
+                                center.z = (box.max.z + box.min.z) / 2;
+
+                                mesh.geometry.translate(-center.x, -center.y, -center.z);
+                                mesh.geometry.rotateY(0.6); 
+                                mesh.geometry.translate(center.x, center.y, center.z);
+                            };
+                            safeRotate(earthMesh, 3.5);
+                        }
+                    }
+                } catch (err) {
+                    console.error("Optimization Warning:", err);
+                }
+                // 5. Fade In
+                canvas.style.opacity = '1';
+            }, 500);
+        });
+    }
+} // <--- END OF "IF CANVAS" CHECK
+
+/* =========================================
+   FOOTER SOFT MAGNET (TRIGGER ON EMAIL)
+   ========================================= */
+let lastScrollY = window.scrollY;
+let magnetLocked = false;
+
+// [CONTROL] DURATION (Higher = Slower)
+const SCROLL_DURATION = 500; 
+
+function smoothScrollToBottom(duration) {
+    const start = window.scrollY;
+    const end = document.documentElement.scrollHeight - window.innerHeight;
+    const distance = end - start;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        let progress = Math.min(timeElapsed / duration, 1);
+        
+        // Ease In-Out
+        let ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+
+        window.scrollTo(0, start + (distance * ease));
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+    requestAnimationFrame(animation);
 }
+
+window.addEventListener('scroll', () => {
+    //  return; // <--- ADD THIS LINE
+    //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // 1. Target the specific email paragraph using the envelope icon
+    const emailIcon = document.querySelector('.fa-envelope');
+    const triggerElement = emailIcon ? emailIcon.closest('p') : null;
+    
+    if (!triggerElement) return;
+
+    const currentScrollY = window.scrollY;
+    const rect = triggerElement.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // 2. Detect Downward Scroll
+    if (currentScrollY > lastScrollY) {
+        
+        // 3. Trigger ONLY when the email element enters the viewport (is visible)
+        if (rect.top < windowHeight && !magnetLocked) {
+            magnetLocked = true;
+            smoothScrollToBottom(SCROLL_DURATION);
+        }
+    } else {
+        // 4. Reset lock only if email goes back below the screen (user scrolled up away from it)
+        if (rect.top > windowHeight) {
+            magnetLocked = false;
+        }
+    }
+
+    lastScrollY = currentScrollY;
+}, { passive: true });

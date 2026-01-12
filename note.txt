@@ -1,0 +1,13 @@
+
+This method is called a Fixed-Width Desktop-Scaling Layout.
+Instead of "Responsive Design" (where elements stack and shrink to fit the screen), this method treats the website like a digital canvas that is permanently locked to 1,200 pixels wide.
+On screens smaller than 1,200px (like mobile phones), the browser is forced to "zoom out" to show the full desktop layout, or provide a horizontal scrollbar, rather than allowing the layout to break or collapse.
+The "1200px Guardrail" Prompt
+If you are building new pages or adjusting old ones, use this prompt to ensure the logic stays consistent:
+"Apply a Fixed-Width Desktop-Scaling method to this page. The layout must be locked at a minimum width of 1200px.
+The Rules:
+Wrapper Lock: The main site container must have width: 1200px and min-width: 1200px.
+No Collapsing: Disable all media queries or flex-wrap behaviors that cause elements to stack vertically on smaller screens.
+Viewport Control: Use <meta name="viewport" content="width=1200"> in the HTML head to force mobile browsers to render the full 1200px width.
+Overflow Visibility: Ensure overflow-x: auto is set on the html and body tags, and remove any overflow-x: hidden from the main wrapper so horizontal scrolling is possible on desktop.
+Header/Footer Guardrails: All fixed or sticky elements must have a min-width: 1200px to prevent them from cutting off when the user scrolls horizontally."
