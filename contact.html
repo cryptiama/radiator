@@ -42,22 +42,20 @@
     }
 
 /* 3. FLUID CONTAINER (The Elastic Zone) */
-.animation-container {
-        width: 100%; 
-        
-        /* 1920px CEILING STRATEGY: Center content on large screens */
-        max-width: 1920px;
-        margin: 0 auto;
+ .animation-container {
+    width: 100%; 
+    max-width: 1920px;
+    margin: 0 auto;
+    
+    background-color: #c7c7c7;
+    overflow: hidden;
+    position: relative;
 
-        /* CHANGED: Removed '110vh'. Switched to fixed pixels. 
-           The hand image is 650px tall + top padding. 
-           750px creates a tight fit for the footer like structure.html */
-        height: 750px; 
-        
-        background-color: #c7c7c7;
-        overflow: hidden;
-        position: relative;
-    }
+    /* DESKTOP BEHAVIOR: 
+       Make the section at least as tall as the viewport minus the header (approx 80px).
+       This pushes the footer below the fold. */
+    min-height: calc(110vh - 80px);
+}
     /* 2. THE HANDS (Stay in one place) */
     .photo-stage {
         position: absolute; 
@@ -247,9 +245,16 @@
         left: 80%;    /* Adjusted from 125% to keep it visible inside fluid layout */
         top: 40%;     
     }
+    .animation-container {
+        /* MOBILE BEHAVIOR:
+           Disable the screen-height logic and force a tight pixel height.
+           Adjust '750px' manually:
+           - Increase if the hands/text get cut off.
+           - Decrease if there is still too much grey space. */
+        min-height: 0;   /* Resets the desktop rule */
+        height: 750px;   /* The fixed height for the "tight" look */
+    }
     
-    /* REMOVED: .animation-container { width: 1400px; } 
-       Reason: Setting fixed width breaks elasticity. 100% handles this automatically. */
 }
 
 @media screen and (max-width: 1200px) {
@@ -265,7 +270,15 @@
         top: 40%;     
     }
      
-    /* REMOVED: .animation-container { width: 1200px; } */
+    .animation-container {
+        /* MOBILE BEHAVIOR:
+           Disable the screen-height logic and force a tight pixel height.
+           Adjust '750px' manually:
+           - Increase if the hands/text get cut off.
+           - Decrease if there is still too much grey space. */
+        min-height: 0;   /* Resets the desktop rule */
+        height: 750px;   /* The fixed height for the "tight" look */
+    }
 }
 
 /* =========================================================
@@ -300,7 +313,7 @@
             <a href="index.html" class="logo-area">
                 <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
                 <div class="logo-text">
-                    <span>Melikishvili Institute 1</span>
+                    <span>Melikishvili Institute 2</span>
                 </div>
             </a>
             <nav class="main-nav">
