@@ -2,16 +2,24 @@
 * { box-sizing: border-box; }
 img { max-width: 100%; height: auto; }
 
-html, body.structure-page {
+html {
+    height: 100%;
+}
+
+body.structure-page {
     margin: 0;
     padding: 0;
-    background: #f4f4f4; 
+    background: #f4f4f4;
     width: 100%;
     
-    /* THE FLOOR: Force document to be at least 1200px wide */
-    min-width: 1200px; 
+    /* THE FLOOR */
+    min-width: 1200px;
     
-    /* Disable scrolling interaction on mobile so it acts like a static image/desktop */
+    /* NEW: Flexbox Setup for Sticky Footer */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Forces body to be at least as tall as the screen */
+    
     overflow-x: hidden; 
 }
  
@@ -31,18 +39,20 @@ html, body.structure-page {
 }
 /* CONTAINER STRATEGY */
 .structure-content {
-    /* THE LOCKS */
+    /* Existing styles... */
     width: 100%;
-    max-width: 1920px;  /* Ceiling: Stops spreading on 4K */
-    min-width: 1200px;  /* Floor: Stops collapsing on small screens */
-    
-    margin: 0 auto;     /* Centering the design on 4K screens */
+    max-width: 1920px;
+    min-width: 1200px;
+    margin: 0 auto;
     padding: 60px 0;
-    background: #fff;   
+    background: #fff;
     
     display: flex;
-    flex-direction: column; 
-    align-items: center;    
+    flex-direction: column;
+    align-items: center;
+
+    /* NEW: This pushes the footer down */
+    flex: 1; 
 }
 
 .structure-items-row {
