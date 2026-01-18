@@ -40,9 +40,10 @@ body.structure-page {
 }
 /* CONTAINER STRATEGY */
 .structure-content {
-    /* Existing styles... */
     width: 100%;
-    max-width: 1920px;
+    /* REMOVED: max-width: 1920px; */ 
+    /* Now the white background stretches to infinity */
+    
     min-width: 1200px;
     margin: 0 auto;
     padding: 60px 0;
@@ -52,7 +53,6 @@ body.structure-page {
     flex-direction: column;
     align-items: center;
 
-    /* NEW: This pushes the footer down */
     flex: 1; 
 }
 
@@ -66,7 +66,7 @@ body.structure-page {
        On 1920px screens, gap is 80px. 
        On 1200px screens, gap automatically shrinks to 15px. 
     */
-    gap: clamp(15px, 5vw, 480px); 
+    gap: clamp(15px, 4vw, 100px); 
     
     width: 100%;
     transition: gap 0.2s ease;
@@ -458,7 +458,7 @@ body.structure-page {
 /* 4. FULL HD TWEAK */
 @media (min-width: 1920px) {
     .structure-items-row {
-        gap: 340px; 
+        gap: 100px; 
     }
 }
 
