@@ -2,12 +2,17 @@
 * { box-sizing: border-box; }
 img { max-width: 100%; height: auto; }
 
-body.structure-page {
+html, body.structure-page {
     margin: 0;
     padding: 0;
-    background: #f4f4f4; /* Optional: a background color for the 'void' on 4K screens */
-    overflow-x: auto;
+    background: #f4f4f4; 
     width: 100%;
+    
+    /* THE FLOOR: Force document to be at least 1200px wide */
+    min-width: 1200px; 
+    
+    /* Disable scrolling interaction on mobile so it acts like a static image/desktop */
+    overflow-x: hidden; 
 }
  
 
@@ -230,13 +235,6 @@ body.structure-page {
 .orange-bg { background-color: #ff9800; }
 .purple-bg { background-color: #9c27b0; }
 
-/* MOBILE RESPONSIVENESS */
-@media (max-width: 1200px) {
-    /* If screen gets tight, wrap naturally */
-    .structure-content {
-        justify-content: center;
-    }
-}
 
  
 
@@ -375,48 +373,7 @@ body.structure-page {
 
 
 
-@media (max-width: 1400px) {
-    .structure-items-row {
-        gap: 15px; /* Minimum gap to ensure everything fits inside 1200px */
-    }
-    
-    /* Optional: slightly scale down the person image to give more breathing room at the 1200px floor */
-    .person-image {
-        flex: 0 0 280px;
-    }
-    .person-image img {
-        width: 280px;
-    }
-}
 
-/* For 4K Screens: We ensure the layout looks exactly like Full HD */
-@media (min-width: 1921px) {
-    .structure-content {
-        /* This centers the 1920px "Full HD" slice in the middle of the 4K screen */
-        box-shadow: 0 0 50px rgba(0,0,0,0.05); /* Optional: slight shadow to define the edge */
-    }
-}
-
-
-/* Only triggers if the browser window is shorter than 800px vertically */
-@media (max-height: 800px) {
-    .structure-content {
-        padding-top: 20px; /* Minimal gap at the very top */
-    }
-    .structure-title {
-        margin-bottom: 5px; /* Pulls the video/image almost touching the title */
-    }
-    .periodic-section {
-        margin-top: 30px; /* Pulls the right stats up to match the video top */
-    }
-    .person-image {
-        margin-top: -20px; /* Pulls the person image slightly higher */
-    }
-     .pdf-container {
-        /* ADJUST THIS: Pulls it closer to the video when screen is short */
-        margin-top: 10px; 
-    }
-}
 
 
 /* PDF CONTAINER */
@@ -464,10 +421,54 @@ body.structure-page {
     color: white;
 }
 
- /* Specific adjustment for Full HD screens (1920px and up) */
+ 
+
+
+/* 2. 4K SCREENS (>1920px) 
+   Result: Content stays 1920px wide and centered.
+*/
+@media (min-width: 1921px) {
+    .structure-content {
+        box-shadow: 0 0 50px rgba(0,0,0,0.05);
+    }
+}
+
+/* 3. VERTICAL HEIGHT FIXES 
+   For short laptops or landscape tablets 
+*/
+@media (max-height: 800px) {
+    .structure-content { padding-top: 20px; }
+    .structure-title { margin-bottom: 5px; }
+    .periodic-section { margin-top: 30px; }
+    .person-image { margin-top: -20px; }
+    .pdf-container { margin-top: 10px; }
+}
+
+/* 4. FULL HD TWEAK */
 @media (min-width: 1920px) {
     .structure-items-row {
-        /* Manually set the exact pixel gap here */
         gap: 340px; 
+    }
+}
+
+ @media (max-width: 1400px) {
+    .structure-items-row {
+        gap: 15px; /* Minimum gap to ensure everything fits inside 1200px */
+    }
+    
+    /* Optional: slightly scale down the person image to give more breathing room at the 1200px floor */
+    .person-image {
+        flex: 0 0 280px;
+    }
+    .person-image img {
+        width: 280px;
+    }
+}
+ 
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 1200px) {
+    /* If screen gets tight, wrap naturally */
+    .structure-content {
+        justify-content: center;
     }
 }
