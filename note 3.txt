@@ -1,3 +1,5 @@
+
+Don't fix anything that I don't tell you to fix. Fix only what I'm requesting. Don't add any feature which directly is not connected to what I'm asking you to do.
 give me only code snippet whatever you are changing 
 
 this is my general idea what to do but some thing might not work dont take this as an exact instruction we need to experiment what works and what does not

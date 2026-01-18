@@ -17,37 +17,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="images/favicon.png" sizes="64x64">
 <style>
-    html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+   html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        /* 1. Fixes the "ugly" sides when zoomed out by extending color infinitely */
+        background-color: #c7c7c7; 
+        
+    }
 
+     body {
+        /* 1. UNCHAIN THE BODY: Allow it to span 100% of viewport always.
+           This ensures Header/Footer backgrounds touch the screen edges. */
+        margin: 0;     
+        padding: 0;
+        height: 100%;
+        width: 100%;        
+        min-width: 1200px; /* Triggers Horizontal Scroll below this */
+        
+        background-color: #c7c7c7; 
+        position: relative;
+        /* Moved box-shadow to the container so it doesn't float in void */
+    }
 
- 
+/* 3. FLUID CONTAINER (The Elastic Zone) */
+.animation-container {
+        width: 100%; 
+        
+        /* 1920px CEILING STRATEGY: Center content on large screens */
+        max-width: 1920px;
+        margin: 0 auto;
 
-body {
-    margin: 0;
-    padding: 0;
-    min-width: 1200px;  /* The Floor: prevents shrinking */
-    max-width: 1920px;  /* The Ceiling: prevents stretching */
-    margin: 0 auto;     /* Centers the whole site on 4K screens */
-    background-color: #c7c7c7;
-    position: relative;
-    overflow-x: auto;   /* Allows horizontal scroll if window is < 1200px */
-    box-shadow: 0 0 100px rgba(0,0,0,0.5); /* Optional: shadows the site edges on 4K */
-}
-
- .animation-container {
-    width: 1920px;
-    /* 100vh is full screen height. 80px is the header. */
-    height: calc(110vh - 80px); 
-    min-height: 700px; /* Keeps it from breaking on very short windows */
-    background-color: #c7c7c7;
-    overflow: hidden;
-    position: relative;
-}
-
+        /* CHANGED: Removed '110vh'. Switched to fixed pixels. 
+           The hand image is 650px tall + top padding. 
+           750px creates a tight fit for the footer like structure.html */
+        height: 750px; 
+        
+        background-color: #c7c7c7;
+        overflow: hidden;
+        position: relative;
+    }
     /* 2. THE HANDS (Stay in one place) */
     .photo-stage {
         position: absolute; 
@@ -228,42 +238,34 @@ body {
 @media screen and (max-width: 1400px) {
     /* The Images & Map */
     .photo-stage {
-        left: -40px;  /* Adjust this manually */
-        top: 30px;    /* Adjust this manually */
+        left: -40px;  
+        top: 30px;    
     }
 
     /* The Text Box */
     .contact-card {
-        left: 125%;    /* Adjust this manually */
-        top: 40%;     /* Adjust this manually */
+        left: 80%;    /* Adjusted from 125% to keep it visible inside fluid layout */
+        top: 40%;     
     }
-     .animation-container {
-    width: 1400px;
     
-}
+    /* REMOVED: .animation-container { width: 1400px; } 
+       Reason: Setting fixed width breaks elasticity. 100% handles this automatically. */
 }
 
-/* =========================================================
-   HORIZONTAL TRANSITION 2 (The Floor)
-   1250px or smaller (Close to your 1200px limit)
-   ========================================================= */
 @media screen and (max-width: 1200px) {
     /* The Images & Map */
     .photo-stage {
-        left: -110px; /* Adjust this manually */
-        top: 20px;    /* Adjust this manually */
+        left: -110px; 
+        top: 20px;    
     }
 
     /* The Text Box */
     .contact-card {
-        left: 158%;    /* Adjust this manually */
-        top: 40%;     /* Adjust this manually */
+        left: 75%;    /* Adjusted from 158% to stay visible */
+        top: 40%;     
     }
      
-     .animation-container {
-    width: 1200px;
-    
-}
+    /* REMOVED: .animation-container { width: 1200px; } */
 }
 
 /* =========================================================
@@ -298,7 +300,7 @@ body {
             <a href="index.html" class="logo-area">
                 <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
                 <div class="logo-text">
-                    <span>Melikishvili Institute</span>
+                    <span>Melikishvili Institute 1</span>
                 </div>
             </a>
             <nav class="main-nav">
