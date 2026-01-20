@@ -1,0 +1,485 @@
+/* GLOBAL RESET & BASICS */
+* { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+html {
+    height: 100%;
+    background-color: #051025;
+}
+
+body.structure-page {
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    width: 100%;
+    
+    /* THE FLOOR */
+    min-width: 1200px;
+    
+    /* NEW: Flexbox Setup for Sticky Footer */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Forces body to be at least as tall as the screen */
+    
+    overflow-x: hidden; 
+}
+ 
+
+/* HEADLINE STYLING */
+.structure-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.structure-title h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+/* CONTAINER STRATEGY */
+.structure-content {
+    width: 100%;
+    /* REMOVED: max-width: 1920px; */ 
+    /* Now the white background stretches to infinity */
+    
+    min-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
+    background: #fff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 1; 
+}
+
+.structure-items-row {
+    display: flex;
+    flex-wrap: nowrap;      /* STRICT: NO COLLAPSING */
+    justify-content: center; 
+    align-items: flex-start;
+    
+    /* DYNAMIC GAP: 
+       On 1920px screens, gap is 80px. 
+       On 1200px screens, gap automatically shrinks to 15px. 
+    */
+    gap: clamp(15px, 4vw, 100px); 
+    
+    width: 100%;
+    transition: gap 0.2s ease;
+}
+
+/* 1. LEFT IMAGE */
+.person-image {
+    flex: 0 0 300px; /* Lock width */
+    margin-top: -10px;
+}
+
+.person-image img {
+    width: 300px; 
+    max-width: 100%;
+}
+
+/* 2. MIDDLE VIDEO (CROP WINDOW) */
+.crop-window {
+    flex: 0 0 550px; /* Lock width - Your text boxes are safe now! */
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+}
+/* Wrapper holds Video + Text so they move together */
+.video-wrapper {
+    position: absolute;
+    width: 1100px;      
+    height: auto;        
+    top: 0px;         
+    left: -241px;
+}
+
+.video-wrapper video {
+    display: block;
+    width: 100%;       
+    height: auto;        
+}
+
+/* TEXT OVERLAYS */
+.video-text {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Style for the 9 Regular Boxes */
+.text-standard {
+    font-size: 0.8rem; 
+    color: #333; 
+    padding: 4px 8px; 
+    font-weight: 600; 
+}
+
+/* Style for the 2 Special Boxes */
+.text-special {
+    font-size: 1.1rem;
+    color: #ffffff; 
+    padding: 8px 15px;
+    font-weight: 800;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+}
+
+/* 3. RIGHT PERIODIC STATS */
+.periodic-section {
+    flex: 0 0 320px;
+    margin-top: 30px;
+    
+    /* ADD THESE THREE LINES */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* TILES (Elements) */
+.element-box {
+    background: #fff;
+    border: 3px solid #ccc;
+    padding: 15px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: default;
+}
+
+.element-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Specific Element Colors */
+.main-box {
+    border-color: #00bcd4; /* Cyan */
+    width: 120px;
+    height: 120px;
+}
+.scientist { border-color: #ff9800; /* Orange */ }
+.admin { border-color: #9c27b0; /* Purple */ }
+
+/* TEXT INSIDE TILES */
+.atomic-label { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+.symbol { font-size: 2.2rem; line-height: 1.1; font-weight: 700; color: #333; display: block; }
+.element-name { font-size: 0.75rem; color: #555; margin-top: 4px; }
+
+/* BOND CONNECTIONS (Lines) */
+.bond-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    position: relative;
+}
+
+.bond-vertical {
+    width: 2px;
+    height: 15px;
+    background: #ccc;
+}
+.bond-horizontal {
+    width: 140px; /* Spans across the two lower elements */
+    height: 2px;
+    background: #ccc;
+}
+
+.split-elements {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+.element-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bond-vertical-small {
+    width: 2px;
+    height: 15px;
+    background: #ccc;
+}
+
+/* BOTTOM LIST */
+.structure-list {
+    margin-top: 40px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.icon-box {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    margin-right: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.orange-bg { background-color: #ff9800; }
+.purple-bg { background-color: #9c27b0; }
+
+
+ 
+
+/* Container for the bottom 3 boxes */
+.infrastructure-row {
+    display: flex;
+    gap: 15px; /* Space between the 3 boxes */
+    justify-content: center;
+    margin-top: 0;
+}
+
+/* Adjust the bond width for the bottom row */
+.bond-wide {
+    width: 220px !important; /* Wider to cover 3 boxes */
+}
+
+/* Specific Styles for the new boxes */
+.sub-box {
+    width: 90px;  /* Slightly smaller than top boxes */
+    height: 90px;
+    padding: 10px;
+}
+
+/* Colors matching your theme */
+.lab-box {
+    border-color: #ff9800; /* Orange (matches Scientist) */
+    background: #fffbf0;   /* Very light orange tint */
+}
+
+.dept-box {
+    border-color: #ff5722; /* Darker Orange/Red */
+}
+
+.lib-box {
+    border-color: #9c27b0; /* Purple (matches Admin) */
+    background: #fdf5ff;   /* Very light purple tint */
+}
+
+/* Make the icon look like an element symbol */
+.icon-symbol {
+    font-size: 1.8rem;
+    color: #9c27b0;
+    margin-top: 5px;
+}
+
+/* Adjust font sizes for the smaller boxes */
+.sub-box .symbol {
+    font-size: 1.8rem;
+}
+.sub-box .element-name {
+    font-size: 0.65rem;
+    line-height: 1.1;
+}
+
+ 
+
+/* Adjustments for labels inside the smaller sub-boxes */
+.sub-box .atomic-label {
+    font-size: 0.6rem; /* Slightly smaller to fit 3 lines of text */
+    margin-bottom: -2px;
+}
+
+.sub-box .symbol {
+    font-size: 1.8rem; /* Keeps the number prominent */
+    line-height: 1;
+}
+
+.sub-box .element-name {
+    font-size: 0.65rem;
+    margin-top: 2px;
+}
+
+
+/* --- FOOTER UNIFICATION --- */
+
+/* Reset and Standardize Columns */
+.footer-col h3 {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+/* Base style for lists in Col 1 and Col 2 */
+.footer-custom-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Spacing for every item in all columns (Lists and Paragraphs) */
+.footer-custom-list li, 
+.footer-col p {
+    margin-bottom: 15px; /* Exact same vertical distance */
+    line-height: 1.5;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Creating the custom dots for Col 1 and Col 2 */
+.footer-links li::before {
+    content: "\2022"; /* Bullet point symbol */
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    display: inline-block;
+    width: 25px;      /* Matches the width/alignment of the icons in Col 3 */
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Ensure icons in Col 3 align exactly like the dots */
+.footer-col p i {
+    width: 25px;      /* Same width as the dots */
+     color: rgba(255, 255, 255, 0.4);
+    margin-top: 3px;  /* Micro-adjustment for vertical centering */
+}
+
+/* Hover effects for links specifically */
+.footer-links li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links li a:hover {
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+/* Remove the hover padding-left from previous code to keep dots aligned */
+.footer-links li a:hover {
+    padding-left: 0; 
+}
+
+
+
+
+
+
+/* PDF CONTAINER */
+.pdf-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    /* ADJUST THIS: Spacing below the video/stats on Full HD */
+    margin-top: 40px; 
+    margin-bottom: 20px;
+    z-index: 200;
+}
+
+/* THE BUTTON STYLE */
+.pdf-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 30px;
+    background-color: #f8f9fa; /* Clean light gray */
+    border: 2px solid #00bcd4; /* Cyan to match your main-box */
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.pdf-button i {
+    font-size: 1.4rem;
+    color: #e74c3c; /* PDF Red icon */
+}
+
+.pdf-button:hover {
+    background-color: #00bcd4;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.pdf-button:hover i {
+    color: white;
+}
+
+ 
+
+
+/* 2. 4K SCREENS (>1920px) 
+   Result: Content stays 1920px wide and centered.
+*/
+@media (min-width: 1921px) {
+    .structure-content {
+        box-shadow: 0 0 50px rgba(0,0,0,0.05);
+    }
+}
+
+/* 3. VERTICAL HEIGHT FIXES 
+   For short laptops or landscape tablets 
+*/
+@media (max-height: 800px) {
+    .structure-content { padding-top: 20px; }
+    .structure-title { margin-bottom: 5px; }
+    .periodic-section { margin-top: 30px; }
+    .person-image { margin-top: -20px; }
+    .pdf-container { margin-top: 10px; }
+}
+
+/* 4. FULL HD TWEAK */
+@media (min-width: 1920px) {
+    .structure-items-row {
+        gap: 100px; 
+    }
+}
+
+ @media (max-width: 1400px) {
+    .structure-items-row {
+        gap: 15px; /* Minimum gap to ensure everything fits inside 1200px */
+    }
+    
+    /* Optional: slightly scale down the person image to give more breathing room at the 1200px floor */
+    .person-image {
+        flex: 0 0 280px;
+    }
+    .person-image img {
+        width: 280px;
+    }
+}
+ 
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 1200px) {
+    /* If screen gets tight, wrap naturally */
+    .structure-content {
+        justify-content: center;
+    }
+}

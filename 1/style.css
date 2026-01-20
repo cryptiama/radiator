@@ -1,0 +1,305 @@
+/* =========================================
+   1. HERO SECTION
+   ========================================= */
+.hero-section {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 15vh;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden; 
+    caret-color: transparent !important;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0, 47, 108, 0.7), rgba(0, 47, 108, 0.4));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 1080px;
+    padding: 0 20px;
+    pointer-events: none;
+    caret-color: transparent !important;
+}
+
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    caret-color: transparent !important;
+}
+
+.hero-subtitle::after, .hero-subtitle::before {
+    content: none !important; display: none !important; animation: none !important;
+}
+
+/* Matches your <h1 class="Nulshock"> HTML */
+.Nulshock {
+    font-family: 'Nulshock', sans-serif !important;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    letter-spacing: 6px;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.btn {
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-block;
+    margin: 10px;
+    pointer-events: auto;
+}
+
+.btn-secondary { 
+    background-color: var(--primary-blue); 
+    color: white; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.btn-secondary:hover {
+    background-color: var(--accent-cyan);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   2. SPLINE 3D
+   ========================================= */
+#spline-container {
+    position: absolute;
+    z-index: 2;
+    top: 65%;           
+    left: 50%;          
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    filter: sepia(100%) hue-rotate(190deg) saturate(500%); 
+    transition: filter 2s ease;
+    outline: none !important;
+}
+#spline-container:hover { filter: none; z-index: 4; }
+
+#canvas3d {
+    width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    outline: none !important;
+}
+
+/* =========================================
+   3. STATS STRIP
+   ========================================= */
+.stats-section {
+    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+    color: var(--white);
+    padding: 60px 0;
+    margin-top: -50px;
+    position: relative;
+    z-index: 3;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item i { font-size: 3.2rem; margin-bottom: 15px; color: var(--accent-cyan); }
+.stat-item h3 { font-size: 2.8rem; font-weight: 700; margin-bottom: 5px; }
+.stat-item p { font-size: 1rem; opacity: 0.8; }
+
+/* =========================================
+   4. CONTENT (ABOUT & LABS)
+   ========================================= */
+.about-section, .labs-section { padding: 80px 0; }
+
+.text-center { text-align: center; margin-bottom: 50px; }
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.split-layout {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+.about-text { flex: 1 1 300px; }
+.about-image { flex: 1 1 300px; }
+
+.about-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 20px 20px 0px var(--bg-light); 
+}
+
+.check-list li { margin-bottom: 15px; font-size: 1.05rem; }
+.check-list i { color: var(--accent-cyan); margin-right: 12px; }
+
+/* Labs Grid */
+.labs-section { background-color: var(--bg-light); }
+.labs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.lab-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+}
+.lab-card:hover { transform: translateY(-10px); }
+
+.card-image { height: 220px; overflow: hidden; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.lab-card:hover .card-image img { transform: scale(1.1); }
+
+.card-content { padding: 30px; }
+.card-content h3 { color: var(--primary-blue); margin-bottom: 12px; font-size: 1.3rem;}
+.card-content p { color: var(--light-text); margin-bottom: 25px; font-size: 0.95rem; }
+.card-link { color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;}
+.card-link:hover { margin-left: 8px; }
+
+/* =========================================
+   5. PARTNERS SECTION
+   ========================================= */
+.partners-section {
+    background-color: #dcdde0;
+    padding: 80px 0;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+.partners-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.partner-box {
+    flex: 1 1 340px; 
+    display: flex;
+    align-items: center; 
+    gap: 20px;
+    padding: 15px;
+    max-width: 450px; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    position: relative; 
+    overflow: hidden;   
+}
+.partner-box:hover { transform: translateY(-3px); background-color: rgba(255, 255, 255, 0.6); }
+
+/* Shimmer */
+.partner-box::before {
+    content: '';
+    position: absolute; top: 0; left: 125%; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    z-index: 10; 
+    pointer-events: none; 
+}
+.partner-box:hover::before { animation: shimmer-right-to-left 1.15s; }
+@keyframes shimmer-right-to-left { 0% { left: 125%; } 100% { left: -125%; } }
+
+.logo-wrap {
+    flex: 0 0 110px; height: 90px;       
+    display: flex; justify-content: center; align-items: center;
+    position: relative; z-index: 5; 
+}
+.logo-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.text-wrap { flex: 1; position: relative; z-index: 5; }
+.partner-text {
+    display: block; font-size: 0.85rem; color: #444444;      
+    font-weight: 700; font-family: 'Inter', sans-serif; line-height: 1.3; text-align: left;
+}
+
+/* =========================================
+   6. EQUIPMENT PAGE (STRIPS)
+   ========================================= */
+.equipment-wrapper {
+    position: relative;
+    padding: 120px 0 80px 0;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.animated-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+    background: linear-gradient(-45deg, #021b3d, #002f6c, #0d3b66, #00152e);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+@keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.relative-z { position: relative; z-index: 5; }
+.white-text { color: var(--white); }
+.page-header { margin-bottom: 50px; }
+
+.equipment-list-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+.equip-row {
+    background-color: rgba(255, 255, 255, 0.88); 
+    border-radius: 12px; 
+    padding: 15px 30px;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.equip-row:hover { background-color: rgba(255, 255, 255, 1); transform: scale(1.01); }
+.equip-name { font-weight: 600; color: var(--dark-text); font-size: 1rem; }
+.equip-year { font-weight: 700; color: var(--primary-blue); font-size: 0.95rem; opacity: 0.8; }
+
+@media (max-width: 600px) {
+    .equip-row { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .equip-year { align-self: flex-end; font-size: 0.8rem; }
+}
+
+/* =========================================
+   7. RESPONSIVE (CONTENT)
+   ========================================= */
+@media (max-width: 992px) {
+    .Nulshock { font-size: 2.8rem; }
+    .container { padding: 0 30px; }
+}
+
+@media (max-width: 768px) {
+    /* Hero */
+    .hero-section { padding-top: 10vh; align-items: center; }
+    .hero-content { padding-top: 0; }
+    .Nulshock { font-size: 2.9rem; letter-spacing: 7px; }
+    
+    /* Layouts */
+    .split-layout { flex-direction: column; }
+    .stats-grid { flex-direction: column; gap: 40px; }
+    
+    /* Spline */
+    #spline-container { width: 300px; height: 300px; top: 70%; opacity: 0.5; }
+}

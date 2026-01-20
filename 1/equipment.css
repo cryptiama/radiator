@@ -1,0 +1,402 @@
+/* ==========================================================================
+   DEVELOPMENT MODE: EQUIPMENT PAGE (VARIANT 2)
+   ==========================================================================
+   CLEANED VERSION: Header & Footer styles removed (located in headfooter.css).
+   ========================================================================== */
+
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --primary-blue: #002f6c;
+    --accent-cyan: #00b4d8;
+    --dark-text: #333333;
+    --light-text: #666666;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --container-width: 1200px;
+    --header-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark-text);
+    line-height: 1.6;
+    background-color: var(--white);
+    overflow-x: visible;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@font-face {
+    font-family: 'Nulshock';
+    src: url('fonts/nulshock-light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* =========================================
+   2. EQUIPMENT PAGE SPECIFIC STYLES
+   ========================================= */
+
+/* --- UTILITIES --- */
+.relative-z {
+    position: relative;
+    z-index: 5;
+}
+
+.white-text {
+    color: var(--white);
+}
+
+.Nulshock {
+    font-family: 'Nulshock', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 4px;
+}
+ 
+/* --- PAGE WRAPPER & BACKGROUND --- */
+.equipment-wrapper {
+    position: relative;
+    z-index: 0;                 /* explicit stacking level */
+    isolation: isolate;         /* contain child stacking so footer can overlay */
+    background-color: #002f6c;  /* eliminates any body-white seam */
+    padding: 0px 0 10px 0;
+    min-height: 100vh;
+    overflow: visible !important;
+}
+
+.animated-bg {
+    position: absolute;
+    inset: 0;                   /* avoids % height rounding issues */
+    z-index: -1;                /* ensures this can’t sit above the footer */
+    background-color: #002f6c;  /* Solid Blue Background */
+}
+
+
+/* --- PAGE HEADER (Floating Title) --- */
+.page-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px; /* gap with header */
+    z-index: 20;
+    pointer-events: none; /* Allows clicks to pass through to sidebar */
+}
+
+/* --- LAYOUT GRID --- */
+.equipment-wrapper .container {
+    width: 100%;
+    max-width: 1920px; /* Fluid Cap */
+    margin: 0 auto;
+    padding: 0 0 0 20px; /* Left padding only, Sidebar hits right edge */
+}
+
+.content-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    position: relative;
+}
+
+/* --- LEFT COLUMN: THE LIST --- */
+.equipment-list-container {
+    /* Fluid width: Grows/Shrinks, Basis 600px */
+    flex: 1 1 600px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    z-index: 2;
+
+    /* Push list down because Title is floating above it */
+    padding-top: 220px;  
+    padding-bottom: 50px;   /* Add space below all rows */
+}
+
+/* --- LIST ITEM: WHITE STRIP --- */
+.equip-row {
+    background-color: rgba(255, 255, 255, 0.88);
+    border-radius: 12px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.equip-row:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+.equip-name {
+    font-weight: 600;
+    color: var(--dark-text);
+    font-size: 1rem;
+}
+
+.equip-year {
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 0.95rem;
+}
+
+/* --- HEADER ROW SPECIAL STYLE --- */ 
+.equipment-list-container .equip-row.header-row {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 75px; 
+    z-index: 100;
+    
+    /* Make parent transparent so we can layer pseudos */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 0px;
+    
+    /* Lock interactions */
+    transition: none !important;
+    transform: none !important;
+    cursor: default;
+    
+    /* Ensure text sits on top of the pseudo layers */
+    isolation: isolate;
+}
+
+/* 1. THE BLUE BLOCKER (Back Layer) */
+.equipment-list-container .equip-row.header-row::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: -15px;
+    bottom: -15px;
+    left: -50px;
+    right: -50px;
+    background: linear-gradient(
+        to bottom, 
+        var(--primary-blue) calc(100% - 15px), 
+        rgba(0, 47, 108, 0) 100%
+    );
+    border-radius: 0; 
+}
+
+/* 2. THE VISUAL HEADER (Middle Layer) */
+.equipment-list-container .equip-row.header-row::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #5A6B85 0%, #2A3649 100%);
+    border-radius: 12px; 
+}
+
+/* BOTTOM MIST: Sticky fade-in effect */
+.equipment-list-container::after {
+    content: '';
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    z-index: 10; 
+    height: 30px;
+    width: 100%;
+    flex-shrink: 0; 
+    background: linear-gradient(to top, var(--primary-blue), transparent);
+    pointer-events: none; 
+}
+
+/* Hover: Ensure no shifting happens */
+.equipment-list-container .equip-row.header-row:hover {
+    transform: none !important;
+    background: transparent;
+}
+
+/* Text Styling */
+.equipment-list-container .equip-row.header-row .equip-name,
+.equipment-list-container .equip-row.header-row .equip-year {
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    z-index: 5; 
+}
+
+/* --- RIGHT COLUMN: STICKY SIDEBAR --- */
+.sticky-sidebar {
+    /* Dimensions */
+    flex: 0 0 40%;
+    min-width: 400px;
+    
+    /* Sticky Logic */
+    position: -webkit-sticky;
+    position: sticky;
+    
+    /* This makes it stick right under the header */
+    top: var(--header-height); 
+    
+    /* This makes the sidebar the full height of the viewport 
+       so the image can be centered inside it */
+    height: calc(100vh - var(--header-height));
+
+    /* Centering the image inside the sidebar */
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    
+    /* CRITICAL: Allows the sidebar to stay at the top while 
+       the equipment list (the sibling) grows in height */
+    align-self: flex-start; 
+    
+    z-index: 5;
+}
+
+.image-preview-container {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- ELASTIC POP ANIMATION (Mac OS Style) --- */
+@keyframes elasticPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.05); 
+        filter: blur(10px);    
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05); 
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);   
+    }
+}
+
+.preview-img.warp-entrance {
+    transform-origin: center center;
+    animation: elasticPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.preview-img {
+    max-width: 450px;   
+    max-height: 450px; 
+    width: auto;       
+    height: auto;      
+    object-fit: contain; 
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    position: relative;
+    z-index: 2;
+}
+
+/* --- STAGE LIGHT EFFECT --- */
+.stage-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    opacity: 0.3; 
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 30%, rgba(0, 47, 108, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: screen; 
+}
+
+.stage-light.active-flash {
+    animation: flashAndSettle 1.2s forwards ease-out;
+}
+
+@keyframes flashAndSettle {
+    0% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    40% {
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+    100% {
+        opacity: 0.3; 
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    /* Hide sidebar on tablets/mobile */
+    .sticky-sidebar {
+        display: none;
+    }
+
+    /* List takes full width */
+    .equipment-list-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-right: auto;
+        padding-top: 140px; 
+    }
+    
+    .equipment-wrapper .container {
+        padding: 0 20px; 
+    }
+}
+
+@media (max-width: 600px) {
+    .Nulshock {
+        font-size: 2rem;
+    }
+
+    .equip-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .equip-year {
+        align-self: flex-end;
+        font-size: 0.8rem;
+    }
+}

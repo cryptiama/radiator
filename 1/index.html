@@ -1,0 +1,341 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melikishvili Institute</title>
+    
+ <!-- 1. HEADER & FOOTER CSS (Variables, Fonts, Nav, Footer) -->
+<link rel="stylesheet" href="headfooter.css">
+
+<!-- 2. MAIN CONTENT CSS (Hero, Sections, Partners, Equipment) -->
+<link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+
+
+    <!-- Inline styles for the Custom Font and Canvas fix -->
+    <link rel="icon" href="images/favicon.png" sizes="64x64">
+</head>
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <!-- Inside <div class="container nav-container"> -->
+
+<!-- REPLACE THE OLD LOGO DIV WITH THIS LINK BLOCK -->
+<a href="index.html" class="logo-area">
+    <!-- Image Logo -->
+    <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
+    
+    <!-- Text -->
+    <div class="logo-text"> 
+        <span>Melikishvili Institute</span>
+    </div>
+</a>
+            <nav class="main-nav">
+               <!-- Inside <nav class="main-nav"> -->
+<ul>
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="about-us.html">About Us</a></li>
+    
+    <!-- DROPDOWN MENU START -->
+    <li class="nav-item-dropdown">
+        <a href="#">Laboratories <i class="fa-solid fa-chevron-down" style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Physical-Chemical Processes</a></li>
+            <li><a href="#">Organic Compound Chemistry</a></li>
+            <li><a href="#">High Molecular Compounds</a></li>
+            <li><a href="#">Agrarian Chemistry</a></li>
+            <li><a href="#">Chemical Ecology</a></li>
+            <li><a href="#">Petrochemistry</a></li>
+        </ul>
+    </li>
+    <!-- DROPDOWN MENU END -->
+
+    <li><a href="equipment.html" class="active">Equipment</a></li>
+    <li><a href="structure.html">Structure</a></li>
+    <li><a href="contact.html">Contact</a></li>
+</ul>
+                <div class="slide-line"></div> 
+            </nav>
+    
+          <!-- SEARCH FOR THIS BLOCK IN index.html AND REPLACE IT -->
+          <!-- SEARCH FOR "header-actions" in your HTML and paste this -->
+<div class="header-actions">
+    
+    <!-- GEORGIAN BUTTON (Added ID) -->
+    <a href="#" class="lang-btn" id="lang-geo">
+        <!-- The Map Container -->
+        <div class="geo-icon"></div> 
+        GEO
+    </a>
+    
+    <span class="divider">|</span>
+    
+    <!-- ENGLISH BUTTON (Added ID) -->
+    <a href="#" class="lang-btn active-lang" id="lang-eng">
+        ENG
+    </a>
+
+</div>
+            
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <!-- This keeps the default font -->
+            <span class="hero-subtitle">Founded in 1929</span>
+            
+            <!-- Added class "hero-title" for the custom font -->
+            <h1 class="Nulshock">Advancing Chemistry <br> for a Better Future</h1> 
+        </div>
+
+
+        <!-- SPLINE 3D CONTAINER -->
+        <div id="spline-container">
+            <canvas id="canvas3d"></canvas>
+        </div>
+
+    </section> 
+    <!-- STATS STRIP -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <i class="fa-solid fa-users"></i>
+                <h3>109</h3>
+                <p>Staff Members</p>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-flask"></i>
+                <h3>6</h3>
+                <p>Advanced Laboratories</p>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-book-journal-whills"></i>
+                <h3>95+</h3>
+                <p>Annual Publications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT TEASER SECTION -->
+    <section class="about-section">
+        <div class="container split-layout">
+            <div class="about-text">
+                <h2 class="section-title">A Legacy of Science</h2>
+                <p>Named after the first Rector of Tbilisi State University, our institute combines historical tradition with modern innovation. From physical chemistry processes to organic synthesis, our team drives scientific progress in the region.</p>
+                <ul class="check-list">
+                    <li><i class="fa-solid fa-check"></i> Fundamental Research</li>
+                    <li><i class="fa-solid fa-check"></i> Educational Programs</li>
+                    <li><i class="fa-solid fa-check"></i> Industrial Application</li>
+                </ul>
+                <a href="#" class="btn btn-secondary">Read Director's Message</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lab Equipment">
+            </div>
+        </div>
+    </section>
+
+    <!-- LABORATORIES PREVIEW -->
+    <section class="labs-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Laboratories</h2>
+                <p>State-of-the-art facilities for specialized chemical analysis.</p>
+            </div>
+
+            <div class="labs-grid">
+                <div class="lab-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Physical Chemistry">
+                    </div>
+                    <div class="card-content">
+                        <h3>Physical-Chemical Processes</h3>
+                        <p>Studying the kinetics and thermodynamics of chemical reactions.</p>
+                        <a href="#" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Organic Synthesis">
+                    </div>
+                    <div class="card-content">
+                        <h3>Organic Compound Chemistry</h3>
+                        <p>Synthesis and analysis of new organic compounds and materials.</p>
+                        <a href="#" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <div class="card-image">
+                        <img src="images/images/petro.jpg" alt="Petro">
+                    </div>
+                    <div class="card-content">
+                        <h3>Petrochemistry</h3>
+                        <p>Advanced research into petroleum products and refining processes.</p>
+                        <a href="#" class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- 1. FULL WIDTH SCROLLING LOGOS -->
+<div class="partners-section">
+    <div class="container">
+        <div class="partners-grid">
+            
+            <!-- Item 1 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/1.png" alt="Ministry Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">MINISTRY OF EDUCATION, <br>SCIENCE AND YOUTH OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 2 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/2.png" alt="TSU Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">IVANE JAVAKHISHVILI <br>TBILISI STATE UNIVERSITY</span>
+                </div>
+            </a>
+
+            <!-- Item 3 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/3.png" alt="Academy Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">NATIONAL ACADEMY <br> OF SCINCES OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 4 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/4.png" alt="Foundation Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">SHOTA RUSTAVELI NATIONAL <br>SCIENCE FOUNDATION OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 5 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/5.png" alt="Sakpatenti Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">SAKPATENTI <br> NATIONAL INTELLECTUAL <br>PROPERTY CENTER OF GEORGIA</span>
+                </div>
+            </a>
+
+            <!-- Item 6 -->
+            <a href="#" class="partner-box">
+                <div class="logo-wrap">
+                    <img src="images/footer/6.png" alt="Institute Logo">
+                </div>
+                <div class="text-wrap">
+                    <span class="partner-text">PETRE MELIKISHVILI <br> INSTITUTE OF PHYSICAL <br> AND ORGANIC CHEMISTRY</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- END OF .partners-section content -->
+    </div>
+
+    <!-- NEW TRANSITION DIV -->
+    <div class="mist-transition"></div>
+
+ <div class="overfooter"></div>
+
+<!-- FOOTER -->
+
+
+
+
+ <div class="overfooterglobal"></div>
+  <footer class="main-footer main-footer--with-ocean">
+      <div class="container footer-centered-wrapper">
+        <!-- REPLACE YOUR EXISTING FOOTER-GRID WITH THIS -->
+        <div class="footer-grid">
+          <!-- COLUMN 1: INSTITUTION INFO -->
+          <div class="footer-col">
+            <h3>Since 1929</h3>
+            <ul class="footer-custom-list">
+              <li>Petre Melikishvili Institute</li>
+              <li>Of Physical and</li>
+              <li>Organic Chemistry</li>
+            </ul>
+          </div>
+
+          <!-- COLUMN 2: QUICK LINKS -->
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-custom-list footer-links">
+              <li><a href="about-us.html">About Institute</a></li>
+              <li><a href="equipment.html">Equipment List</a></li>
+              <li><a href="structure.html">Organizational Structure</a></li>
+            </ul>
+          </div>
+
+          <!-- COLUMN 3: CONTACT US -->
+          <div class="footer-col">
+            <h3>Contact Us</h3>
+            <div class="contact-info">
+              <p>
+                <i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St,
+                Tbilisi
+              </p>
+              <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
+              <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; Developed by I.Chachava</p>
+        </div>
+      </div>
+      <div class="overocean"></div>
+      <div class="footer-ocean" aria-hidden="true">
+        <div id="footer_wave"></div>
+      </div>
+    </footer>
+ <!-- ... End of Footer ... -->
+
+    <!-- 1. Load Three.js Library (ONLY ONCE) -->
+    <script src="assets/vendor/three/r128/three.min.js"></script>
+
+    <!-- 2. Load the Ocean Script (Now External) -->
+    <!-- This will create the canvas inside #footer_wave, giving the footer height -->
+    <script src="footer-ocean.js"></script>
+
+    <!-- 3. Main Script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+</body>
+</html>

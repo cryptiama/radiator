@@ -18,43 +18,44 @@
     <link rel="icon" href="images/favicon.png" sizes="64x64">
 <style>
    html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        /* 1. Fixes the "ugly" sides when zoomed out by extending color infinitely */
+        background-color: #c7c7c7; 
+        
+    }
 
-body {
-    margin: 0;
-    padding: 0;
-    /* This ensures the body is at least as tall as the screen */
-    min-height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    
-    width: 100%;
-    min-width: 1200px; /* The "1200px Floor" */
-    background-color: #c7c7c7;
-    position: relative;
-    overflow-x: auto;
-}
-.page-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
+     body {
+        /* 1. UNCHAIN THE BODY: Allow it to span 100% of viewport always.
+           This ensures Header/Footer backgrounds touch the screen edges. */
+        margin: 0;     
+        padding: 0;
+        min-height: 100%;
+        height: 100%;
+        width: 100%;        
+        min-width: 1200px; /* Triggers Horizontal Scroll below this */
+        
+        background-color: #c7c7c7; 
+        position: relative;
+        /* Moved box-shadow to the container so it doesn't float in void */
+    }
 
 /* 3. FLUID CONTAINER (The Elastic Zone) */
-.animation-container {
-    width: 100%;
-    max-width: 1920px; /* The "1920px Ceiling" */
+ .animation-container {
+    width: 100%; 
+    max-width: 1920px;
     margin: 0 auto;
+    
     background-color: #c7c7c7;
     overflow: hidden;
     position: relative;
-    
-    /* Set a fixed height that fits your hands/map content comfortably */
-    height: 800px; 
-    flex-shrink: 0; /* Prevents the container from squishing */
+
+    /* DESKTOP BEHAVIOR: 
+       Make the section at least as tall as the viewport minus the header (approx 80px).
+       This pushes the footer below the fold. */
+    min-height: calc(110vh - 80px);
 }
     /* 2. THE HANDS (Stay in one place) */
     .photo-stage {
@@ -159,11 +160,11 @@ body {
 /* 4. CENTERED CONTACT INFO */
 .contact-card {
     position: absolute;
-    top: 311px; 
-    left: 1100px; /* Positions it to the right of the map/hands */
-    transform: translateY(-50%); /* Perfectly centers it vertically on the map's center line */
+    left: 70%;
+    top: 40%;
+    transform: translate(-50%, -50%); 
     
-    width: 350px; /* Increased width slightly for Nulshock font */
+    width: 450px; /* Increased width slightly for Nulshock font */
     background: rgba(255, 255, 255, 0.9); 
     backdrop-filter: blur(10px);
     padding: 40px;
@@ -240,10 +241,10 @@ body {
         top: 30px;    
     }
 
+    /* The Text Box */
     .contact-card {
-        left: 920px;     
-          
-    
+        left: 80%;    /* Adjusted from 125% to keep it visible inside fluid layout */
+        top: 40%;     
     }
     .animation-container {
         /* MOBILE BEHAVIOR:
@@ -265,9 +266,9 @@ body {
     }
 
     /* The Text Box */
-   .contact-card {
-        left: 920px;     
-          
+    .contact-card {
+        left: 75%;    /* Adjusted from 158% to stay visible */
+        top: 40%;     
     }
      
     .animation-container {
@@ -307,7 +308,7 @@ body {
     .animation-container {
         /* On phones, we don't want to force 110% height */
         min-height: auto; 
-        height: 700px; /* Or whatever height fits your hands/map */
+        height: 650px; /* Or whatever height fits your hands/map */
     }
 
     /* Adjust the contact card so it doesn't fly off screen */
@@ -342,7 +343,7 @@ body {
             <a href="index.html" class="logo-area">
                 <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
                 <div class="logo-text">
-                    <span>Melikishvili Institute 4</span>
+                    <span>Melikishvili Institute 3</span>
                 </div>
             </a>
             <nav class="main-nav">
@@ -392,9 +393,11 @@ body {
                 <source src="contact/earth.mp4" type="video/mp4">
             </video>
         </div>
-          <!-- NEW CONTACT TEXT SECTION START -->
+    </div>
+
+    <!-- NEW CONTACT TEXT SECTION START -->
     <div class="contact-card">
-        <h2>Petre Melikishvili <br> Institute  of <br>Physical and <br>Organic Chemistry</h2>
+        <h2>Petre Melikishvili Institute <br> of Physical and <br>Organic Chemistry</h2>
   <div class="info-wrapper">
         <!-- Address -->
         <div class="info-row">
@@ -426,9 +429,6 @@ body {
     </div>
     <!-- NEW CONTACT TEXT SECTION END -->
 
-    </div>
-
-  
 </section>
     </main>
   

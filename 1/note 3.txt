@@ -1,0 +1,23 @@
+
+Don't fix anything that I don't tell you to fix. Fix only what I'm requesting. Don't add any feature which directly is not connected to what I'm asking you to do.
+give me only code snippet whatever you are changing 
+
+this is my general idea what to do but some thing might not work dont take this as an exact instruction we need to experiment what works and what does not
+
+
+"Fixed-Elastic" layout philosophy.
+1. The "1200px Floor" (Mobile Strategy)
+This website does not use responsive stacking (hamburger menus, stacked columns) for mobile.
+The Rule: The layout must never shrink below 1200px.
+Mobile Behavior: Phones must render the full desktop view zoomed out.
+Implementation:
+HTML: Use <meta name="viewport" content="width=1200">.
+CSS: Apply min-width: 1200px to the body and main container.
+2. The "1920px Ceiling" (4K Strategy)
+The Rule: Content must stop expanding at 1920px.
+4K Behavior: On screens larger than 1920px, the content container must center itself (margin: 0 auto) with a background color filling the empty space on the sides.
+3. The "Elastic Zone" (Laptop/Desktop)
+Range: Between 1200px and 1920px.
+Behavior: The layout is fluid (width: 100%). Elements inside should adjust their spacing (using gap: clamp(...) or percentages) to fit the screen width, but they must maintain their row alignment. Do not break rows or wrap items unless specified.
+4. Transition Logic
+I may manually add minor adjustments at 1400px later, but the primary mechanism for scaling should be fluid CSS (clamps/percentages) rather than hard breakpoints.

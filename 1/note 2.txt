@@ -1,0 +1,13 @@
+dont tuch header and footer
+The "Guardrail" Constraints:
+The Floor (1200px): The website must never collapse, stack, or shrink smaller than 1200px. On screens smaller than this (like mobile phones), the browser is forced to "zoom out" to show the full desktop layout.
+The Ceiling (1920px): The website is optimized for Full HD. On screens larger than 1920px (like 4K), the layout stays locked at 1920px and centers itself on the screen to prevent "ugly stretching."
+Viewport Control (Mobile Logic):
+Disable standard mobile responsiveness. Use <meta name="viewport" content="width=1200"> to trick mobile browsers into rendering the page at a fixed 1200px width.
+No Stacking (Anti-Responsive):
+Disable all flex-wrap and media queries that cause elements to jump to new lines. Elements (Image, Video, Stats) must stay side-by-side regardless of window size.
+Keep in mind on 4K screens, the layout should be as on Full HD. I don't want anything else. Full HD should be displayed to any higher resolution screen.
+give me code snippets
+
+
+ 
