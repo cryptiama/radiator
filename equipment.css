@@ -458,12 +458,56 @@ html, body {
 
 
 
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
+ 
  
 .stage-light {
     pointer-events: none;
     /* Ensure the glow doesn't create extra page width */
     max-width: 100%; 
+}
+
+
+
+
+/* 1400px Transition: Adjust spacing for medium screens */
+@media (max-width: 1400px) {
+    .equipment-wrapper .container {
+        padding: 0 40px; /* Slightly smaller side margins */
+    }
+    .equipment-list-container {
+        flex: 0 0 50%; /* Shrink list width slightly */
+    }
+    .content-grid {
+        gap: 30px; /* Tighten the gap */
+    }
+}
+
+/* 1200px Floor: Fixed settings for Mobile/Small Laptops */
+@media (max-width: 1201px) {
+    .equipment-wrapper .container {
+        padding: 0 30px; /* Minimum side gap */
+    }
+    .equipment-list-container {
+        flex: 0 0 580px; /* Forced width at the 1200px floor */
+    }
+    .sticky-sidebar {
+        flex: 0 0 450px; /* Forced sidebar width */
+        min-width: 450px;
+    }
+    .content-grid {
+        gap: 20px;
+    }
+    .Nulshock {
+        font-size: 2.5rem; /* Shrink title slightly for 1200px */
+    }
+}
+
+/* Ensure centering on 4K */
+.equipment-wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    background-color: #002f6c;
+    overflow: visible;
 }
