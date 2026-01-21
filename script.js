@@ -165,6 +165,33 @@ if (canvas) {
 } // <--- END OF "IF CANVAS" CHECK
 
 /* =========================================
+   ACTIVE LINK LOGIC (FIXED)
+   ========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll('.main-nav a');
+    
+    // 1. Get current filename (e.g., 'about-us.html')
+    // If we are at the root domain, default to 'index.html'
+    let currentPage = window.location.pathname.split("/").pop().toLowerCase();
+    if (currentPage === "" || currentPage === "/") currentPage = "index.html";
+
+    navLinks.forEach(link => {
+        // 2. Get the href attribute from the link
+        const linkHref = link.getAttribute('href');
+        if (!linkHref || linkHref === "#") return;
+
+        // 3. Get the filename from the href (e.g., 'about-us.html')
+        const linkPage = linkHref.split("/").pop().toLowerCase();
+
+        // 4. Compare and add class
+        if (currentPage === linkPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+});
+/* =========================================
    FOOTER SOFT MAGNET (TRIGGER ON EMAIL)
    ========================================= */
 let lastScrollY = window.scrollY;
@@ -197,7 +224,7 @@ function smoothScrollToBottom(duration) {
 }
 
 window.addEventListener('scroll', () => {
-    //  return; // <--- ADD THIS LINE
+     return; // <--- ADD THIS LINE/
     //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

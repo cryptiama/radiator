@@ -249,27 +249,29 @@ body {
             <img src="images/logo.png" alt="Logo" class="logo-img">
             <div class="logo-text"><span>Melikishvili Institute</span></div>
         </a>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li class="nav-item-dropdown">
-                    <a href="#">Laboratories <i class="fa-solid fa-chevron-down" style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Physical-Chemical Processes</a></li>
-                        <li><a href="#">Organic Compound Chemistry</a></li>
-                        <li><a href="#">High Molecular Compounds</a></li>
-                        <li><a href="#">Agrarian Chemistry</a></li>
-                        <li><a href="#">Chemical Ecology</a></li>
-                        <li><a href="#">Petrochemistry</a></li>
-                    </ul>
-                </li>
-                <li><a href="equipment.html">Equipment</a></li>
-                <li><a href="structure.html" class="active">Structure</a></li>
-                <li><a href="contact.html">Contact</a></li>
+       <nav class="main-nav">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <!-- FIX 1: Change # to about-us.html and add class="active" -->
+        <li><a href="about-us.html" class="active">About Us</a></li>
+        <li class="nav-item-dropdown">
+            <a href="#">Laboratories <i class="fa-solid fa-chevron-down" style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Physical-Chemical Processes</a></li>
+                <li><a href="#">Organic Compound Chemistry</a></li>
+                <li><a href="#">High Molecular Compounds</a></li>
+                <li><a href="#">Agrarian Chemistry</a></li>
+                <li><a href="#">Chemical Ecology</a></li>
+                <li><a href="#">Petrochemistry</a></li>
             </ul>
-            <div class="slide-line"></div> 
-        </nav>
+        </li>
+        <li><a href="equipment.html">Equipment</a></li>
+        <!-- FIX 2: Remove class="active" from structure.html -->
+        <li><a href="structure.html">Structure</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="slide-line"></div> 
+</nav>
         <div class="header-actions">
             <a href="#" class="lang-btn" id="lang-geo"><div class="geo-icon"></div> GEO</a>
             <span class="divider">|</span>

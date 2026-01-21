@@ -30,6 +30,7 @@ body {
     line-height: 1.6;
     background-color: var(--white);
     overflow-x: visible;
+    min-width: 1200px;
 }
 
 a {
@@ -84,6 +85,10 @@ ul {
     padding: 0px 0 10px 0;
     min-height: 100vh;
     overflow: visible !important;
+     /* THE 1920px CEILING: Prevents layout stretching too far on 4K */
+    max-width: 1920px;
+    margin: 0 auto; /* Centers the content when screen > 1920px */
+    width: 100%;
 }
 
 .animated-bg {
@@ -109,7 +114,7 @@ ul {
 /* --- LAYOUT GRID --- */
 .equipment-wrapper .container {
     width: 100%;
-    max-width: 1920px; /* Fluid Cap */
+    max-width: 100%; /* Fluid Cap */
     margin: 0 auto;
     padding: 0 0 0 20px; /* Left padding only, Sidebar hits right edge */
 }
@@ -118,7 +123,7 @@ ul {
     display: flex;
     flex-wrap: nowrap;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
     width: 100%;
     position: relative;
@@ -364,39 +369,28 @@ ul {
     }
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-    /* Hide sidebar on tablets/mobile */
-    .sticky-sidebar {
-        display: none;
-    }
+ 
 
-    /* List takes full width */
-    .equipment-list-container {
-        flex: 1 1 100%;
-        max-width: 100%;
-        margin-right: auto;
-        padding-top: 140px; 
-    }
-    
-    .equipment-wrapper .container {
-        padding: 0 20px; 
-    }
+/* FORCE STICKY TO WORK */
+html, body {
+    overflow-x: visible !important; /* This is the main culprit */
+    overflow-y: visible !important;
+    height: auto !important;        /* Ensures the body grows with content */
 }
 
-@media (max-width: 600px) {
-    .Nulshock {
-        font-size: 2rem;
-    }
+#site-wrapper {
+    overflow: visible !important;   /* Overrides the headfooter setting */
+    display: block !important;      /* Sometimes flex interferes with sticky */
+}
 
-    .equip-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
+.content-grid {
+    display: flex !important;
+    align-items: flex-start !important; /* CRITICAL: Allows sidebar to stick */
+}
 
-    .equip-year {
-        align-self: flex-end;
-        font-size: 0.8rem;
-    }
+.sticky-sidebar {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 150px !important; /* Adjust this value so it sits under your header */
+    align-self: flex-start; /* Keeps it from stretching to the bottom */
 }

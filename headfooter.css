@@ -8,6 +8,11 @@ html, body {
     caret-color: transparent;
 }
 
+body.lang-ge .logo-text span {
+    font-size: 0.9rem; /* Shrinks the long Georgian name slightly */
+    white-space: nowrap;
+}
+
 /* Optional: If you find that clicking buttons or links still shows a 
    blinking line in some browsers, add this: */
 input, textarea {

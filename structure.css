@@ -4,7 +4,7 @@ img { max-width: 100%; height: auto; }
 
 html {
     height: 100%;
-    background-color: #051025;
+    background-color: #1c2026;
 }
 
 body.structure-page {
@@ -12,7 +12,7 @@ body.structure-page {
     padding: 0;
     background: #f4f4f4;
     width: 100%;
-    
+    background-color: #1c2026;
     /* THE FLOOR */
     min-width: 1200px;
     
@@ -20,7 +20,7 @@ body.structure-page {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Forces body to be at least as tall as the screen */
-    
+    min-height: 100dvh;
     overflow-x: hidden; 
 }
  
