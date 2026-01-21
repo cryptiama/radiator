@@ -394,3 +394,61 @@ html, body {
     top: 150px !important; /* Adjust this value so it sits under your header */
     align-self: flex-start; /* Keeps it from stretching to the bottom */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- UPDATED STICKY SIDEBAR LOGIC --- */
+.sticky-sidebar {
+    flex: 0 0 40%;
+    min-width: 400px;
+    
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    
+    /* Lock to the very top of the viewport to calculate true center */
+    top: 0 !important; 
+    
+    /* Force height to match the viewport height exactly */
+    height: 100vh !important; 
+
+    display: flex !important;
+    justify-content: center;
+    align-items: center; 
+    
+    align-self: flex-start; 
+    z-index: 5;
+    pointer-events: none; /* Prevents sidebar from blocking scrolls on mobile */
+}
+
+/* --- UPDATED IMAGE PREVIEW CONTAINER --- */
+.image-preview-container {
+    width: 100%;
+    /* Removed max-height constraints that cause off-center shifting */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- UPDATED FORCE STICKY SECTION --- */
+.content-grid {
+    display: flex !important;
+    align-items: flex-start !important; /* Required for sticky to function */
+}
+
+/* Ensure no parent containers overflow-hidden properties break the sticky position */
+html, body {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
