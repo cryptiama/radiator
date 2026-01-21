@@ -491,8 +491,8 @@ html, body {
         flex: 0 0 580px; /* Forced width at the 1200px floor */
     }
     .sticky-sidebar {
-        flex: 0 0 450px; /* Forced sidebar width */
-        min-width: 450px;
+        flex: 0 0 550px; /* Forced sidebar width */
+        min-width: 550px;
     }
     .content-grid {
         gap: 20px;
