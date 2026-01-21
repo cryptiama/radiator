@@ -370,44 +370,32 @@ ul {
 }
 
  
+/* =========================================
+   CONSOLIDATED STICKY SIDEBAR LOGIC
+   (Fixes Mobile Vertical Centering)
+   ========================================= */
 
-/* FORCE STICKY TO WORK */
+/* 1. Ensure the layout allows sticky positioning to function */
 html, body {
-    overflow-x: visible !important; /* This is the main culprit */
+    overflow-x: visible !important;
     overflow-y: visible !important;
-    height: auto !important;        /* Ensures the body grows with content */
+    height: auto !important;
 }
 
 #site-wrapper {
-    overflow: visible !important;   /* Overrides the headfooter setting */
-    display: block !important;      /* Sometimes flex interferes with sticky */
+    overflow: visible !important;
+    display: block !important;
 }
 
+/* 2. Setup the Grid for Sticky */
 .content-grid {
     display: flex !important;
-    align-items: flex-start !important; /* CRITICAL: Allows sidebar to stick */
+    align-items: flex-start !important; /* Required: prevents sidebar from stretching to list height */
+    position: relative;
+    width: 100%;
 }
 
-.sticky-sidebar {
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    top: 150px !important; /* Adjust this value so it sits under your header */
-    align-self: flex-start; /* Keeps it from stretching to the bottom */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --- UPDATED STICKY SIDEBAR LOGIC --- */
+/* 3. The Sidebar: Spans full viewport height for centering */
 .sticky-sidebar {
     flex: 0 0 40%;
     min-width: 400px;
@@ -415,40 +403,52 @@ html, body {
     position: -webkit-sticky !important;
     position: sticky !important;
     
-    /* Lock to the very top of the viewport to calculate true center */
+    /* Stick to top of viewport */
     top: 0 !important; 
     
-    /* Force height to match the viewport height exactly */
+    /* Use vh to ensure it's always the size of the mobile/desktop screen */
     height: 100vh !important; 
 
+    /* Flex centering ensures image is always in the middle of the 'height' */
     display: flex !important;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: center; 
     align-items: center; 
     
-    align-self: flex-start; 
     z-index: 5;
-    pointer-events: none; /* Prevents sidebar from blocking scrolls on mobile */
+    pointer-events: none; /* Allows scrolling if user touches the image area */
 }
 
-/* --- UPDATED IMAGE PREVIEW CONTAINER --- */
+/* 4. The Image Container: Reset constraints */
 .image-preview-container {
     width: 100%;
-    /* Removed max-height constraints that cause off-center shifting */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 1;
+    /* Remove any fixed heights that might fight with the sidebar flex */
+    height: auto; 
 }
 
-/* --- UPDATED FORCE STICKY SECTION --- */
-.content-grid {
-    display: flex !important;
-    align-items: flex-start !important; /* Required for sticky to function */
+/* 5. Image Scaling */
+.preview-img {
+    max-width: 90%;   /* Slightly smaller to ensure it fits mobile screens */
+    max-height: 80vh; /* Prevents image from being taller than the screen */
+    width: auto;       
+    height: auto;      
+    object-fit: contain; 
 }
 
-/* Ensure no parent containers overflow-hidden properties break the sticky position */
-html, body {
-    overflow-x: visible !important;
-    overflow-y: visible !important;
+/* 6. Stage Light: Stay centered behind image */
+.stage-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Ensure it doesn't expand the container */
+    width: 600px;
+    height: 600px;
+    max-width: 100vw;
+    max-height: 100vh;
 }
