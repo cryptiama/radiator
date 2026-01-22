@@ -511,3 +511,13 @@ html, body {
     background-color: #002f6c;
     overflow: visible;
 }
+
+
+
+@media (max-width: 8201px) {
+.equipment-list-container {
+  
+    margin-left: 200px;
+  
+}
+}
