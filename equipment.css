@@ -326,8 +326,8 @@ ul {
 .preview-img {
     max-width: 450px;   
     max-height: 450px; 
-    width: auto;       
-    height: auto;      
+    width: 450px;       
+    height: 450px;      
     object-fit: contain; 
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
     position: relative;
@@ -435,8 +435,8 @@ html, body {
 .preview-img {
     max-width: 90%;   /* Slightly smaller to ensure it fits mobile screens */
     max-height: 80vh; /* Prevents image from being taller than the screen */
-    width: auto;       
-    height: auto;      
+    width: 450px;       
+    height: 450px;      
     object-fit: contain; 
 }
 
