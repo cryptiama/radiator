@@ -348,6 +348,8 @@ ul {
     z-index: 0;
     pointer-events: none;
     mix-blend-mode: screen; 
+    max-width: 80%;  
+    max-height: 80vh;
 }
 
 .stage-light.active-flash {
