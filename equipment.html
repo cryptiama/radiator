@@ -33,7 +33,7 @@
                 <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
                 <!-- Text -->
                 <div class="logo-text">
-                    <span>Melikishvili Institute22</span>
+                    <span>Melikishvili Institute j</span>
                 </div>
             </a>
             <nav class="main-nav">
@@ -236,10 +236,11 @@
         processDownloadQueue(); // Start automatically
 
 
-   // 5. HOVER LOGIC (Linked Text and Image)
+// 5. HOVER LOGIC (Linked Text and Image)
         let hasFlashed = false;
         let globalRequestId = 0; 
         let currentDisplayedItem = null; 
+        let firstRowElement = null; // Variable to store the first equipment row
 
         // Get the label element in the sidebar to update its text
         const sidebarLabelText = document.querySelector('.label-row .equip-name');
@@ -254,6 +255,11 @@
             row.innerHTML = `<div class="equip-name">${item.name}</div><div class="equip-year">${item.year}</div>`;
 
             if (!item.isHeader) {
+                // CAPTURE THE VERY FIRST ROW (The one after the header)
+                if (!firstRowElement) {
+                    firstRowElement = row;
+                }
+
                 row.addEventListener('mouseenter', () => {
                     
                     // 1. INSTANT UI FEEDBACK
@@ -329,7 +335,13 @@
             }
             listContainer.appendChild(row);
         });
-    
+
+        // TRIGGER THE FIRST ITEM AUTOMATICALLY AFTER 3 SECONDS
+        setTimeout(() => {
+            if (firstRowElement) {
+                firstRowElement.dispatchEvent(new Event('mouseenter'));
+            }
+        }, 1200);
     
     </script>
 
