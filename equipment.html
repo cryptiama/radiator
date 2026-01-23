@@ -33,7 +33,7 @@
                 <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
                 <!-- Text -->
                 <div class="logo-text">
-                    <span>Melikishvili Institute M</span>
+                    <span>Melikishvili Institute</span>
                 </div>
             </a>
             <nav class="main-nav">
@@ -95,7 +95,7 @@
     <!-- 1. LABEL SECTION (Now outside the preview container) -->
     <div class="sidebar-label-container">
         <div class="equip-row label-row">
-            <span class="equip-name" style="letter-spacing: 2px; opacity: 0.7;">CHOOSE DEVICE</span> 
+            <span class="equip-name" style="letter-spacing: 2px; ">Select Device</span> 
         </div>
     </div>
 
@@ -170,8 +170,8 @@
         // 2. DATA ARRAY
         const equipmentData = [
        { name: "Device Name", year: "Since", isHeader: true },
-{ name: "Vacuum Pump", year: "2022", image: "pump.png" },
 { name: "Ultrathermostat", year: "2022", image: "ultrathermostat.png" },
+{ name: "Vacuum Pump", year: "2022", image: "pump.png" },
 { name: "Melting Point Apparatus", year: "2022", image: "ლღობის.png" },
 { name: "Hydraulic Press", year: "2019", image: "პრესი.png" },
 { name: "Tensile, Compression, and Bending Machine", year: "2019", image: "გაჭიმვა.png" },
@@ -185,7 +185,7 @@
 { name: "Drying Oven", year: "1986", image: "საშრობი.png" },
 { name: "Vacuum Oven", year: "1984", image: "ვაკუმ.png" },
 { name: "Chromatograph АМ-8МД", year: "1977", image: "" },
-{ name: "Viscometer მოც-108", year: "1977", image: "" },
+{ name: "Viscometer vol-108", year: "1977", image: "" },
 { name: "Water Distillation Cube", year: "1977", image: "" },
 { name: "Ball Mill", year: "1976", image: "" },
 { name: "Membrane Compressor", year: "1971", image: "" }
@@ -236,10 +236,13 @@
         processDownloadQueue(); // Start automatically
 
 
-        // 5. HOVER LOGIC (Strict ID + State Check)
+   // 5. HOVER LOGIC (Linked Text and Image)
         let hasFlashed = false;
         let globalRequestId = 0; 
-        let currentDisplayedItem = null; // Keeps track of what is VISIBLE right now
+        let currentDisplayedItem = null; 
+
+        // Get the label element in the sidebar to update its text
+        const sidebarLabelText = document.querySelector('.label-row .equip-name');
 
         // Init
         previewImg.style.opacity = '0';
@@ -253,33 +256,34 @@
             if (!item.isHeader) {
                 row.addEventListener('mouseenter', () => {
                     
-                    // === CHECK 1: STATE CHECK ===
-                    // If this item is ALREADY the one on screen, stop immediately.
-                    // This prevents re-animating when moving mouse away and back.
+                    // 1. INSTANT UI FEEDBACK
                     if (currentDisplayedItem === item) return;
 
-                    // === START NEW REQUEST ===
+                    // Remove "active-row" class from all rows
+                    document.querySelectorAll('.equip-row').forEach(r => r.classList.remove('active-row'));
+                    // Add "active-row" to the currently hovered row
+                    row.classList.add('active-row');
+
+                    // Update the Sidebar Label text to match the device name
+                    if (sidebarLabelText) {
+                        sidebarLabelText.textContent = item.name;
+                    }
+
+                    // 2. IMAGE TRANSITION LOGIC
                     globalRequestId++;
                     const myRequestId = globalRequestId; 
 
-                    // First flash logic
                     if (!hasFlashed) {
                         stageLight.classList.add('active-flash');
                         hasFlashed = true;
                     }
 
-                    // Debounce (Wait 50ms to see if user stays)
                     setTimeout(async () => {
-                        
-                        // === CHECK 2: RACE CONDITION CHECK ===
-                        // Did user move to another item while we were waiting?
                         if (myRequestId !== globalRequestId) return; 
 
                         if (item.image && item.image !== "") {
-                            
-                            // LOAD LOGIC
                             if (!item.loaded) {
-                                backgroundController.abort(); // Stop background
+                                backgroundController.abort(); 
                                 backgroundController = new AbortController();
 
                                 try {
@@ -287,28 +291,19 @@
                                     const blob = await response.blob();
                                     item.blobUrl = URL.createObjectURL(blob);
                                     item.loaded = true;
-                                    processDownloadQueue(); // Resume background
-                                } catch (e) {
-                                    console.error(e);
-                                }
+                                    processDownloadQueue(); 
+                                } catch (e) {}
                             }
 
-                            // === CHECK 3: POST-LOAD CHECK ===
-                            // Did user move while downloading?
                             if (myRequestId !== globalRequestId) return;
 
-                            // VISUAL TRANSITION
+                            // Small fade transition for the image
                             if (hasFlashed) previewImg.style.opacity = '0';
 
                             setTimeout(() => {
-                                // === CHECK 4: FADE CHECK ===
-                                // Did user move while fading out?
                                 if (myRequestId !== globalRequestId) return;
 
-                                // Update the global state tracker!
                                 currentDisplayedItem = item;
-
-                                // DOM Updates
                                 previewImg.classList.remove('warp-entrance', 'focus-active');
                                 void previewImg.offsetWidth; 
 
@@ -324,11 +319,9 @@
                             }, 50); 
 
                         } else {
-                            // Item has no image
                             previewImg.style.opacity = '0';
-                            currentDisplayedItem = item; // Still update state so we know "No Image" is active
+                            currentDisplayedItem = item;
                         }
-
                     }, 50); 
                 });
                 
@@ -336,6 +329,8 @@
             }
             listContainer.appendChild(row);
         });
+    
+    
     </script>
 
 
