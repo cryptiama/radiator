@@ -30,6 +30,7 @@ body {
     line-height: 1.6;
     background-color: var(--white);
     overflow-x: visible;
+    min-width: 1200px;
 }
 
 a {
@@ -84,6 +85,10 @@ ul {
     padding: 0px 0 10px 0;
     min-height: 100vh;
     overflow: visible !important;
+     /* THE 1920px CEILING: Prevents layout stretching too far on 4K */
+    max-width: 1920px;
+    margin: 0 auto; /* Centers the content when screen > 1920px */
+    width: 100%;
 }
 
 .animated-bg {
@@ -109,7 +114,7 @@ ul {
 /* --- LAYOUT GRID --- */
 .equipment-wrapper .container {
     width: 100%;
-    max-width: 1920px; /* Fluid Cap */
+    max-width: 100%; /* Fluid Cap */
     margin: 0 auto;
     padding: 0 0 0 20px; /* Left padding only, Sidebar hits right edge */
 }
@@ -118,7 +123,7 @@ ul {
     display: flex;
     flex-wrap: nowrap;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
     width: 100%;
     position: relative;
@@ -257,42 +262,40 @@ ul {
 
 /* --- RIGHT COLUMN: STICKY SIDEBAR --- */
 .sticky-sidebar {
-    /* Dimensions */
     flex: 0 0 40%;
     min-width: 400px;
-    
-    /* Sticky Logic */
-    position: -webkit-sticky;
-    position: sticky;
-    
-    /* This makes it stick right under the header */
-    top: var(--header-height); 
-    
-    /* This makes the sidebar the full height of the viewport 
-       so the image can be centered inside it */
-    height: calc(100vh - var(--header-height));
-
-    /* Centering the image inside the sidebar */
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    
-    /* CRITICAL: Allows the sidebar to stay at the top while 
-       the equipment list (the sibling) grows in height */
-    align-self: flex-start; 
-    
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0 !important; 
+    /* This ensures the sticky area is exactly the size of the screen */
+    height: 100vh !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    /* This forces the content (Label + Image) to the vertical center of the screen */
+    justify-content: center !important; 
+    align-items: center !important;      
+    padding-top: 0 !important; /* Removed fixed padding to allow true centering */
     z-index: 5;
+    pointer-events: none;
+    opacity: 1;
+    transform: none;
+    overflow: hidden; /* Prevents scrollbar flickering in some browsers */
 }
 
+ 
+
+/* Ensure the label and image move together perfectly */
 .image-preview-container {
     width: 100%;
-    height: auto;
-    max-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    z-index: 1;
+    
+    /* FIX: Force this to 450px height immediately so the light 
+       centers itself here even before the image exists */
+    height: 450px !important; 
+    margin-top: 20px; /* Adds a bit of breathing room below the label */
 }
 
 /* --- ELASTIC POP ANIMATION (Mac OS Style) --- */
@@ -321,8 +324,8 @@ ul {
 .preview-img {
     max-width: 450px;   
     max-height: 450px; 
-    width: auto;       
-    height: auto;      
+    width: 450px;       
+    height: 450px;      
     object-fit: contain; 
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
     position: relative;
@@ -343,6 +346,8 @@ ul {
     z-index: 0;
     pointer-events: none;
     mix-blend-mode: screen; 
+    max-width: 80%;  
+    max-height: 80vh;
 }
 
 .stage-light.active-flash {
@@ -364,39 +369,168 @@ ul {
     }
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
-    /* Hide sidebar on tablets/mobile */
-    .sticky-sidebar {
-        display: none;
-    }
+ 
+/* =========================================
+   CONSOLIDATED STICKY SIDEBAR LOGIC
+   (Fixes Mobile Vertical Centering)
+   ========================================= */
 
-    /* List takes full width */
-    .equipment-list-container {
-        flex: 1 1 100%;
-        max-width: 100%;
-        margin-right: auto;
-        padding-top: 140px; 
-    }
-    
+
+/* --- SIDEBAR LABEL (POSITIONED ABOVE IMAGE) --- */
+.sidebar-label-container {
+    position: relative;
+    width: 280px; 
+    /* Balanced margin to keep label and image grouped in the center */
+    margin-bottom: 20px; 
+    z-index: 10;
+    pointer-events: none;
+}
+
+.equip-row.label-row {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    /* Match the vertical padding of your header-row for symmetry */
+    padding: 15px 25px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Optional: Add a subtle glow to the label to match the laboratory feel */
+.equip-row.label-row::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 1px solid rgba(0, 180, 216, 0.3); /* Thin accent cyan border */
+    border-radius: 13px;
+    pointer-events: none;
+}
+
+
+
+
+/* 1. Ensure the layout allows sticky positioning to function */
+html, body {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    height: auto !important;
+}
+
+#site-wrapper {
+    overflow: visible !important;
+    display: block !important;
+}
+
+/* 2. Setup the Grid for Sticky */
+.content-grid {
+    display: flex !important;
+    align-items: flex-start !important; /* Required: prevents sidebar from stretching to list height */
+    position: relative;
+    width: 100%;
+}
+ 
+.image-preview-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Remove forced height to allow the flex-center logic of the parent to work */
+    height: auto !important; 
+    min-height: 450px; 
+}
+
+.preview-img {
+    max-width: 95%;
+    max-height: 450px; /* Match the container height */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+}
+
+/* Keep the stage light centered behind the image */
+.stage-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    z-index: -1;
+}
+
+
+
+
+
+ 
+ 
+.stage-light {
+    pointer-events: none;
+    /* Ensure the glow doesn't create extra page width */
+    max-width: 100%; 
+}
+
+
+
+
+/* 1400px Transition: Adjust spacing for medium screens */
+@media (max-width: 1400px) {
     .equipment-wrapper .container {
-        padding: 0 20px; 
+        padding: 0 40px; /* Slightly smaller side margins */
+    }
+    .equipment-list-container {
+        flex: 0 0 50%; /* Shrink list width slightly */
+    }
+    .content-grid {
+        gap: 30px; /* Tighten the gap */
     }
 }
 
-@media (max-width: 600px) {
+/* 1200px Floor: Fixed settings for Mobile/Small Laptops */
+@media (max-width: 1201px) {
+    .equipment-wrapper .container {
+        padding: 0 30px; /* Minimum side gap */
+    }
+    .equipment-list-container {
+        flex: 0 0 580px; /* Forced width at the 1200px floor */
+    }
+    .sticky-sidebar {
+        flex: 0 0 550px; /* Forced sidebar width */
+        min-width: 550px;
+    }
+    .content-grid {
+        gap: 20px;
+    }
     .Nulshock {
-        font-size: 2rem;
+        font-size: 2.5rem; /* Shrink title slightly for 1200px */
     }
 
-    .equip-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
+}
 
-    .equip-year {
-        align-self: flex-end;
-        font-size: 0.8rem;
+@media (max-width: 1201px) {
+    .sticky-sidebar {
+        flex: 0 0 550px;
+        min-width: 550px;
+        /* Keep height at 100vh even on mobile to maintain center logic */
+        height: 100vh !important; 
     }
 }
+/* Ensure centering on 4K */
+.equipment-wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    background-color: #002f6c;
+    overflow: visible;
+}
+
+
+
+
