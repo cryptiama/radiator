@@ -267,19 +267,16 @@ ul {
     position: -webkit-sticky !important;
     position: sticky !important;
     top: 0 !important; 
-    /* This ensures the sticky area is exactly the size of the screen */
-    height: 100vh !important; 
+    padding-top: 220px; 
     display: flex !important;
-    flex-direction: column !important;
-    /* This forces the content (Label + Image) to the vertical center of the screen */
-    justify-content: center !important; 
-    align-items: center !important;      
-    padding-top: 0 !important; /* Removed fixed padding to allow true centering */
+    flex-direction: column;   
+    justify-content: flex-start; /* Ensures label stays at top and image/light follows below */
+    align-items: center;      
+    height: 100vh !important; 
     z-index: 5;
     pointer-events: none;
     opacity: 1;
     transform: none;
-    overflow: hidden; /* Prevents scrollbar flickering in some browsers */
 }
 
  
@@ -503,6 +500,7 @@ html, body {
     .sticky-sidebar {
         flex: 0 0 550px; /* Forced sidebar width */
         min-width: 550px;
+        height: 100vh !important; 
     }
     .content-grid {
         gap: 20px;
@@ -512,15 +510,7 @@ html, body {
     }
 
 }
-
-@media (max-width: 1201px) {
-    .sticky-sidebar {
-        flex: 0 0 550px;
-        min-width: 550px;
-        /* Keep height at 100vh even on mobile to maintain center logic */
-        height: 100vh !important; 
-    }
-}
+ 
 /* Ensure centering on 4K */
 .equipment-wrapper {
     max-width: 1920px;
