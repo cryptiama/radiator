@@ -169,8 +169,8 @@ body {
         width: var(--panel-width);
         max-width: 85vw;
         height: 100vh;
-        background-color: #111111;
-        color: #e0e0e0;
+           background-color: #F9F7F2 !important; 
+    color: #000000 !important;
         padding: 60px 40px;
         box-shadow: -10px 0 30px rgba(0,0,0,0.5);
         transform: translateX(100%); 
@@ -179,6 +179,12 @@ body {
         flex-direction: column;
         border-left: 2px solid #094EA9;
     }
+    .panel-content-scroll, 
+.panel-content-scroll p, 
+.panel-content-scroll li,
+.panel-content-scroll div {
+    color: #000000 !important;
+}
 
     #side-panel-overlay.active #side-panel-box {
         transform: translateX(0);
@@ -191,6 +197,7 @@ body {
         flex-grow: 1;
         line-height: 1.8;
         font-size: 1.1rem;
+         color: #e0e0e0;
     }
 
     #panel-title {
@@ -207,17 +214,13 @@ body {
         right: 20px;
         background: none;
         border: 1px solid #555;
-        color: white;
+        color: rgb(0, 0, 0);
         padding: 5px 12px;
         cursor: pointer;
         border-radius: 4px;
         transition: 0.3s;
     }
-    .close-btn:hover {
-        background: var(--hex-border-color);
-        border-color: var(--hex-border-color);
-    }
-
+    
     .panel-content-scroll::-webkit-scrollbar {
         width: 6px;
     }
@@ -225,6 +228,14 @@ body {
         background: #1a1a1a;
     }
     .panel-content-scroll::-webkit-scrollbar-thumb {
-        background: var(--hex-border-color);
+       background: #094EA9;
         border-radius: 10px;
     } 
+
+
+  .close-btn:hover {
+    background-color: #094EA9;
+    color: #ffffff;
+    border-color: #094EA9;
+}
+
