@@ -14,8 +14,15 @@
         --panel-width: 500px;      
     }
 
+
+html {
+    /* This ensures the background color fills the space on 4K screens 
+       outside the centered 1920px body */
+    background-color: #1c2026; 
+}
+
 body {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: block;
     background-color: #050a10;
@@ -24,7 +31,12 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    min-width: 1200px;
+    max-width: 1920px;
 }
+
+
+
 
 .container#main-container {
     display: flex;
