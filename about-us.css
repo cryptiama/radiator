@@ -208,18 +208,7 @@ body {
         padding-bottom: 15px;
     }
 
-    .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: none;
-        border: 1px solid #555;
-        color: rgb(0, 0, 0);
-        padding: 5px 12px;
-        cursor: pointer;
-        border-radius: 4px;
-        transition: 0.3s;
-    }
+  
     
     .panel-content-scroll::-webkit-scrollbar {
         width: 6px;
@@ -239,3 +228,106 @@ body {
     border-color: #094EA9;
 }
 
+
+
+
+
+/* Container for the top buttons */
+.panel-header-actions {
+    display: flex;
+    justify-content: space-between; /* Pushes PDF to left, Close to right */
+    align-items: center;
+    position: absolute; /* Position relative to the side-panel-box */
+    top: 20px;          /* Distance from top */
+    left: 20px;         /* Distance from left edge */
+    right: 20px;        /* Distance from right edge */
+    margin-bottom: 0;
+    z-index: 10;
+}
+
+/* PDF Button Styling */
+.pdf-btn {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #d50e0e; 
+    border: 1px solid #d50e0e;
+    padding: 6px 12px; /* Adjusted padding to match Close button height */
+    border-radius: 4px;
+    transition: 0.3s;
+    display: none; /* JS reveals it as flex or block */
+    align-items: center;
+    gap: 6px;
+    margin: 0;     /* Remove any default margins */
+}
+
+  .close-btn {
+    position: static; /* REMOVE absolute positioning */
+    background: none;
+    border: 1px solid #555;
+    color: rgb(0, 0, 0);
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+    margin: 0; /* Remove any default margins */
+}
+
+.pdf-btn:hover {
+    background-color: #d50e0e;
+    color: white;
+}
+
+/* FIX READABILITY: Ensure panel text is DARK */
+#side-panel-box {
+    background-color: #F9F7F2 !important; /* Cream background */
+}
+
+#panel-title {
+    color: #094EA9;
+    margin-top:10px; /* Give room for the buttons above */
+    font-size: 1.8rem;
+    border-bottom: 2px solid #094EA9;
+    padding-bottom: 15px;
+    font-weight: 800;
+}
+
+/* Force all text inside the scroll area to be dark grey/black */
+.panel-content-scroll, 
+.panel-content-scroll p, 
+.panel-content-scroll li,
+.panel-content-scroll strong,
+.panel-content-scroll div {
+    color: #1a1a1a !important; 
+}
+
+.panel-content-scroll h4 {
+    color: #094EA9 !important;
+    margin-top: 20px;
+}
+
+
+
+
+/* Shared sizing for both buttons to ensure they match perfectly */
+.pdf-btn, 
+.close-btn {
+    height: 30px;            /* Fixed height for perfect matching */
+    font-size: 0.7rem;       /* Smaller font size */
+    font-weight: 700;
+    padding: 0 10px;         /* Uniform horizontal padding */
+    border-radius: 4px;
+    transition: 0.3s;
+    display: flex;           /* Using flex for centering */
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-sizing: border-box;  /* Ensures border is included in height */
+}
+
+.close-btn {
+    margin-left: auto; /* Forces button to the right side always */
+}
