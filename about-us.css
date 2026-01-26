@@ -3,16 +3,23 @@
         box-sizing: border-box;
     }
 
-    :root {
-        --hex-background: rgba(48, 10, 43, 0.9); 
-        --hex-border-color: #d50e0e;
-        --border-thickness: 2px;
-        --hex-width: 200px;
-        --glow-color: rgba(10, 99, 232, 0.9); 
-        --gap-x: 30px;        
-        --gap-y: -30px; 
-        --panel-width: 500px;      
-    }
+ /* Update these in about-us.css */
+:root {
+    --hex-background: rgba(48, 10, 43, 0.9); 
+    --hex-border-color: #d50e0e;
+    --border-thickness: 2px;
+    
+    /* Scaling logic: 200px at 1200px wide -> ~250px at 1920px wide */
+    --hex-width: clamp(200px, 13vw, 250px); 
+    
+    --glow-color: rgba(10, 99, 232, 0.9); 
+    
+    /* Scaling gaps to keep layout proportional */
+    --gap-x: clamp(25px, 2vw, 45px);        
+    --gap-y: clamp(-40px, -3vw, -30px); 
+    
+    --panel-width: 500px;      
+}
 
 
 html {
@@ -21,6 +28,7 @@ html {
     background-color: #1c2026; 
 }
 
+/* Update/Replace these sections in about-us.css */
 body {
     margin: 0 auto;
     padding: 0;
@@ -31,8 +39,22 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    min-width: 1200px;
+    
+    /* Floor and Ceiling */
+    min-width: 1200px; 
     max-width: 1920px;
+    overflow-x: auto; /* Allow horizontal scroll if window < 1200px */
+}
+
+.container#main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 100px 0;
+    margin: 0 auto;
+    width: 100%;
+    /* Ensures the container width accommodates the dynamic hex sizes */
+    max-width: calc((var(--hex-width) * 3) + (var(--gap-x) * 6));
 }
 
 /* headfooter.css */
@@ -45,32 +67,23 @@ body {
   overflow-x: clip; 
 }
 
+ 
 
-.container#main-container {
+.hexagon-container {
+    position: relative;
+    width: var(--hex-width);
+    height: calc(var(--hex-width) * 1.154); 
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    padding: 120px 0;
-    margin: 0 auto;
-    /* Increased the multiplier to ensure the container is wide enough for the margins */
-    max-width: calc((var(--hex-width) * 3) + (var(--gap-x) * 8)); 
-}
-
-    .hexagon-container {
-        position: relative;
-        width: var(--hex-width);
-        height: calc(var(--hex-width) * 1.154); 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0.85;
-        transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
-        cursor: pointer;
-        z-index: 1;
-        margin-top: var(--gap-y);
-           margin-left: calc(var(--gap-x) / 2);
+    align-items: center;
+    opacity: 0.85;
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: var(--gap-y);
+    margin-left: calc(var(--gap-x) / 2);
     margin-right: calc(var(--gap-x) / 2);
-    }
+}
 
     .hexagon-container:nth-child(1) .hex-inner {
         background-color: #30102B; 
@@ -106,9 +119,13 @@ body {
     margin-right: var(--hex-width) !important;
     margin-top: 20px !important; 
 }
-    .hexagon-container:nth-child(5n+2) { margin-left: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); }
-    .hexagon-container:nth-child(5n+3) { margin-right: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); }
-    
+.hexagon-container:nth-child(5n+2) { 
+    margin-left: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); 
+}
+
+.hexagon-container:nth-child(5n+3) { 
+    margin-right: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); 
+}
     .hexagon-container:hover {
         opacity: 1;
         transform: scale(1.1); 
