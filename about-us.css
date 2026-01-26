@@ -1,0 +1,230 @@
+ 
+    * {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --hex-background: rgba(48, 10, 43, 0.9); 
+        --hex-border-color: #d50e0e;
+        --border-thickness: 2px;
+        --hex-width: 200px;
+        --glow-color: rgba(10, 99, 232, 0.9); 
+        --gap-x: 30px;        
+        --gap-y: -30px; 
+        --panel-width: 500px;      
+    }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: block;
+    background-color: #050a10;
+    background-image: url('images/about-us/vials.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.container#main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 120px 0;
+    margin: 0 auto;
+    /* Increased the multiplier to ensure the container is wide enough for the margins */
+    max-width: calc((var(--hex-width) * 3) + (var(--gap-x) * 8)); 
+}
+
+    .hexagon-container {
+        position: relative;
+        width: var(--hex-width);
+        height: calc(var(--hex-width) * 1.154); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.85;
+        transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+        z-index: 1;
+        margin-top: var(--gap-y);
+           margin-left: calc(var(--gap-x) / 2);
+    margin-right: calc(var(--gap-x) / 2);
+    }
+
+    .hexagon-container:nth-child(1) .hex-inner {
+        background-color: #30102B; 
+    }
+
+    .hex-inner {
+        position: relative;
+        overflow: hidden; 
+    }
+
+    .hex-video {
+        position: absolute;
+        transform: translate(-50%, -45%) scale(0.35); 
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    /* Hexagon layout math */
+    .hexagon-container:nth-child(1) { 
+        margin-left: var(--hex-width); 
+        margin-right: var(--hex-width); 
+        margin-top: 0; 
+    }
+/* Only centers the last hex if the container has the 'center-last' class */
+#main-container.center-last .hexagon-container:last-child {
+    margin-left: var(--hex-width) !important;
+    margin-right: var(--hex-width) !important;
+    margin-top: 20px !important; 
+}
+    .hexagon-container:nth-child(5n+2) { margin-left: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); }
+    .hexagon-container:nth-child(5n+3) { margin-right: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); }
+    
+    .hexagon-container:hover {
+        opacity: 1;
+        transform: scale(1.1); 
+        filter: drop-shadow(0 0 10px var(--glow-color)) drop-shadow(0 0 20px var(--glow-color));
+        z-index: 10; 
+    }
+
+    .hex-border {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--hex-border-color);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: 1;
+    }
+
+    .hex-inner {
+        position: absolute;
+        width: calc(100% - (var(--border-thickness) * 2));
+        height: calc(100% - (var(--border-thickness) * 2));
+        background-color: var(--hex-background);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+
+    /* --- UPDATED CONTENT STYLES TO INCLUDE ICONS --- */
+    .content {
+        z-index: 3;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: 15px;
+        font-size: 0.75rem; /* Slightly smaller to fit icon + text */
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; /* Space between icon and text */
+        text-transform: uppercase;
+    }
+
+    .content i {
+        font-size: 2rem; /* Size of the icon */
+        margin-bottom: 5px;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* --- SIDE PANEL STYLES --- */
+    #side-panel-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0); 
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        visibility: hidden;
+        transition: background-color 0.4s, backdrop-filter 0.4s, visibility 0.4s;
+        z-index: 9999;
+        display: flex;
+        justify-content: flex-end; 
+    }
+
+    #side-panel-overlay.active {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    #side-panel-box {
+        width: var(--panel-width);
+        max-width: 85vw;
+        height: 100vh;
+        background-color: #111111;
+        color: #e0e0e0;
+        padding: 60px 40px;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        transform: translateX(100%); 
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        display: flex;
+        flex-direction: column;
+        border-left: 2px solid #094EA9;
+    }
+
+    #side-panel-overlay.active #side-panel-box {
+        transform: translateX(0);
+    }
+
+    .panel-content-scroll {
+        overflow-y: auto;
+        padding-right: 15px;
+        margin-top: 20px;
+        flex-grow: 1;
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+
+    #panel-title {
+        color: #094EA9;
+        margin: 0;
+        font-size: 1.8rem;
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: 1px solid #555;
+        color: white;
+        padding: 5px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: 0.3s;
+    }
+    .close-btn:hover {
+        background: var(--hex-border-color);
+        border-color: var(--hex-border-color);
+    }
+
+    .panel-content-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    .panel-content-scroll::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+    .panel-content-scroll::-webkit-scrollbar-thumb {
+        background: var(--hex-border-color);
+        border-radius: 10px;
+    } 
