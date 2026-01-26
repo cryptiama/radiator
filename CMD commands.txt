@@ -1,0 +1,19 @@
+
+(see all the pushes and commits)
+git log --oneline --graph --decorate --all
+
+(reset to specific one)
+git reset --hard c84a31c 
+
+(push the reseted one online)
+git push origin main --force
+
+(Update your local repo with remote changes)
+git fetch origin
+git pull origin main
+
+* d09c314 5
+* 7188648 new radiator
+* 6d71619 Update about-us.html
+* c84a31c PDF
+* 4a5cc08 123
