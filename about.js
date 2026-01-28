@@ -5,7 +5,7 @@
    4. ABOUT US - HEXAGON SIDE PANEL LOGIC
    ========================================= */
 const instituteData = {
- "Petre Melikishvili": { 
+ "Petre Melikishvili": {
         content: `
            <div style="line-height: 1.6;">
                 <p><strong style="font-size: 1.2rem;">Petre Melikishvili (1850-1927)</strong></p>
@@ -441,7 +441,8 @@ const instituteData = {
             </div>
         </div>`
 },
-   "Decree": { 
+   "Decree": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="background-color: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 6px solid #2c3e50;">
@@ -457,7 +458,8 @@ const instituteData = {
             </div>
         </div>`
 },
-"Preamble": { 
+"Preamble": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.8; font-family: 'Helvetica Neue', Arial, sans-serif;">
             <h2 style="color: #1a2a6c; border-bottom: 2px solid #1a2a6c; display: inline-block; padding-bottom: 5px;">Preamble</h2>
@@ -468,7 +470,8 @@ const instituteData = {
             </div>
         </div>`
 },
-"1 General Provisions": { 
+"1 General Provisions": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase; letter-spacing: 1px;">Article 1. General Provisions</h3>
@@ -480,7 +483,8 @@ const instituteData = {
             </ol>
         </div>`
 },
-"2 Goals and Activity": { 
+"2 Goals and Activity": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 2. Goals, Functions, and Subject of Activity</h3>
@@ -496,7 +500,8 @@ const instituteData = {
             </ul>
         </div>`
 },
-"3 Structure": { 
+"Structure": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 3. Structure of the Institute</h3>
@@ -522,7 +527,8 @@ const instituteData = {
             </div>
         </div>`
 },
-"4 Scientific Council": { 
+"Scientific Council": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 4. Scientific Council of the Institute</h3>
@@ -541,7 +547,8 @@ const instituteData = {
             <p style="margin-top: 15px;"><em>Decision Making:</em> Meetings occur at least <strong>once every 2 months</strong>. Decisions require a majority vote with more than half of the members present.</p>
         </div>`
 },
-"5 Chairman": { 
+"Chairman": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 5. Chairman of the Scientific Council</h3>
@@ -557,7 +564,8 @@ const instituteData = {
             </div>
         </div>`
 },
-"6 Director": { 
+"Director": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 6. Director of the Institute</h3>
@@ -575,7 +583,8 @@ const instituteData = {
             </div>
         </div>`
 },
-"7 Head of Unit": { 
+"Head of Unit": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 7. Head of Structural Units</h3>
@@ -586,7 +595,8 @@ const instituteData = {
             </div>
         </div>`
 },
-"8 Personnel": { 
+"Personnel": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 8. Personnel of the Institute</h3>
@@ -611,7 +621,8 @@ const instituteData = {
             </table>
         </div>`
 },
-"9 Rights and Duties": { 
+"Rights and Duties": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 9. Rights and Duties of Scientific Personnel</h3>
@@ -637,7 +648,8 @@ const instituteData = {
             </div>
         </div>`
 },
-"10 Occupational Rules": { 
+"Occupational Rules": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 10. Rules for Occupying a Scientific Position</h3>
@@ -650,7 +662,8 @@ const instituteData = {
             <p style="background: #eee; padding: 10px; font-size: 0.9rem;"><em>Attestation:</em> Chief researchers with terms > 5 years are subject to evaluation every 5 years.</p>
         </div>`
 },
-"11 Property": { 
+"Property": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 11. Property and Finance</h3>
@@ -665,7 +678,8 @@ const instituteData = {
             <p style="margin-top: 15px;"><em>Note:</em> Funds are reinvested into research potential and personnel remuneration.</p>
         </div>`
 },
-"12 Liquidation": { 
+"Liquidation": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 12. Liquidation of the Institute</h3>
@@ -676,7 +690,8 @@ const instituteData = {
             </ul>
         </div>`
 },
-"13 Final Provisions": { 
+"Final Provisions": {
+    pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 13. Final Provisions</h3>
