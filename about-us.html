@@ -277,6 +277,17 @@
     <script src="footer-ocean.js"></script>
     <script type="module" src="script.js"></script>
     <script type="module" src="about.js"></script>
+    <script>
+        function fixMobileBG() {
+            const vh = window.innerHeight;
+            document.documentElement.style.setProperty('--fixed-height', `${vh}px`);
+        }
+
+        window.addEventListener('load', fixMobileBG);
+        window.addEventListener('orientationchange', () => {
+            setTimeout(fixMobileBG, 200);
+        });
+    </script>
 
 </body>
 </html>

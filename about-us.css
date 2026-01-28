@@ -22,30 +22,49 @@
 }
 
 
-
-
+/* 1. Set the base background color on the HTML tag so it's behind everything */
 html {
-    /* This ensures the background color fills the space on 4K screens 
-       outside the centered 1920px body */
-    background-color: #1c2026; 
+    background-color: #050a10; 
 }
 
-/* Update/Replace these sections in about-us.css */
+/* 2. Remove background from body so it doesn't block the image */
 body {
     margin: 0 auto;
     padding: 0;
-    background-color: #050a10;
+    background: transparent; /* Changed from #050a10 to transparent */
+    
+    min-width: 1200px; 
+    max-width: 1920px;
+    overflow-x: auto; 
+    position: relative;
+}
+
+/* 3. The pseudo-element for the fixed background */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Use the variable from JS, fallback to 100% of the viewport */
+    height: var(--fixed-height, 100vh); 
+    
+    /* IMPORTANT: Check your image path. 
+       If your CSS is in a folder, you might need '../images/about-us/vials.png' */
     background-image: url('images/about-us/vials.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
     
-    /* The Floor: prevents shrinking below 1200px (Mobile Zoom Trigger) */
-    min-width: 1200px; 
-    /* The Ceiling: prevents expanding beyond 1920px */
-    max-width: 1920px;
-    
-    overflow-x: auto; 
+    /* -2 puts it behind the body but on top of the html color */
+    z-index: -1; 
+    pointer-events: none;
+}
+
+body::before {
+    /* ... other properties ... */
+    height: 100vh; /* Fallback */
+    height: var(--fixed-height, 100vh); /* Uses the locked pixel height from JS */
 }
 
 .container#main-container {
@@ -394,8 +413,7 @@ body {
 
 /* Minor adjustments when the screen is between small desktop and large monitor */
 @media (max-width: 1400px) {
-    .content { 
-    }
+    
     .content i {
         font-size: 2.2rem; /* Slightly larger icons */
     }
@@ -406,3 +424,5 @@ body {
         font-size: 1rem;
     }
 }
+
+ 
