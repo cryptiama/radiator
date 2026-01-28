@@ -111,7 +111,7 @@
 
     </section>
 
-
+<div class="paper-theme-wrapper">
 
     <!-- LATEST UPDATES & ANNOUNCEMENTS -->
     <section class="updates-section">
@@ -189,6 +189,7 @@
             </div>
         </div>
     </section>
+    </div>
 <div class="chemistry-animation-wrapper">
         <canvas id="moleculeCanvas"></canvas>
     <!-- STATS STRIP -->
@@ -451,140 +452,144 @@
     <script type="module" src="script.js"></script>
 
 
-    <script>
-        const initMoleculeEffect = () => {
-            const canvas = document.getElementById('moleculeCanvas');
-            if (!canvas) return;
+   <script>
+    const initMoleculeEffect = () => {
+        const canvas = document.getElementById('moleculeCanvas');
+        if (!canvas) return;
 
-            const ctx = canvas.getContext('2d');
-            const container = canvas.parentElement;
+        const ctx = canvas.getContext('2d');
+        const container = canvas.parentElement;
 
-            let width, height;
-            let particlesArray;
+        let width, height;
+        let particlesArray;
+        let numberOfParticles; // Defined dynamically now
 
-            // --- CONFIGURATION (Original Bright Colors) ---
-            const numberOfParticles = 170;
-            const connectionDistance = 150;
-            const mouseRadius = 200; // Distance of attraction
-            const moveSpeed = 0.6;
-            const particleColor = '#002b5c';    // Dark Professional Blue
-            const lineColor = 'rgba(0, 168, 204,'; // Bright Cyan
+        // --- CONFIGURATION ---
+        const connectionDistance = 150;
+        const mouseRadius = 200;
+        const moveSpeed = 0.6;
+        const particleColor = '#002b5c';
+        const lineColor = 'rgba(0, 168, 204,';
+        const densityFactor = 3500; // Adjust this to change density (higher = thinner)
 
-            let mouse = {
-                x: null,
-                y: null
-            };
+        let mouse = { x: null, y: null };
 
-            // Track mouse move RELATIVE to the canvas container
-            window.addEventListener('mousemove', (event) => {
-                const rect = container.getBoundingClientRect();
-                mouse.x = event.clientX - rect.left;
-                mouse.y = event.clientY - rect.top;
-            });
+        window.addEventListener('mousemove', (event) => {
+            const rect = container.getBoundingClientRect();
+            mouse.x = event.clientX - rect.left;
+            mouse.y = event.clientY - rect.top;
+        });
 
-            // Reset mouse when it leaves the area
-            window.addEventListener('mouseout', () => {
-                mouse.x = null;
-                mouse.y = null;
-            });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
-            function setCanvasSize() {
-                width = container.offsetWidth;
-                height = container.offsetHeight;
-                canvas.width = width;
-                canvas.height = height;
+        function setCanvasSize() {
+            width = container.offsetWidth;
+            height = container.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            // Calculate particles based on area
+            const area = width * height;
+            const calculatedCount = Math.floor(area / densityFactor);
+            // Ensure performance stays good on massive screens and visible on tiny ones
+            numberOfParticles = Math.min(Math.max(calculatedCount, 40), 200);
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.directionX = (Math.random() * moveSpeed) - (moveSpeed / 2);
+                this.directionY = (Math.random() * moveSpeed) - (moveSpeed / 2);
+                this.size = Math.random() * 3 + 1;
             }
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    this.directionX = (Math.random() * moveSpeed) - (moveSpeed / 2);
-                    this.directionY = (Math.random() * moveSpeed) - (moveSpeed / 2);
-                    this.size = Math.random() * 3 + 1;
-                }
-
-                update() {
-                    if (this.x > width || this.x < 0) this.directionX = -this.directionX;
-                    if (this.y > height || this.y < 0) this.directionY = -this.directionY;
-                    this.x += this.directionX;
-                    this.y += this.directionY;
-                    this.draw();
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = particleColor;
-                    ctx.fill();
-                }
+            update() {
+                if (this.x > width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > height || this.y < 0) this.directionY = -this.directionY;
+                this.x += this.directionX;
+                this.y += this.directionY;
+                this.draw();
             }
-
-            function createParticles() {
-                particlesArray = [];
-                for (let i = 0; i < numberOfParticles; i++) {
-                    particlesArray.push(new Particle());
-                }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = particleColor;
+                ctx.fill();
             }
+        }
 
-            function connect() {
-                for (let a = 0; a < particlesArray.length; a++) {
-                    for (let b = a; b < particlesArray.length; b++) {
-                        let dx = particlesArray[a].x - particlesArray[b].x;
-                        let dy = particlesArray[a].y - particlesArray[b].y;
-                        let distance = dx * dx + dy * dy;
+        function createParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
 
-                        if (distance < connectionDistance * connectionDistance) {
-                            let opacity = 1 - (distance / (connectionDistance * connectionDistance));
-                            // Making lines brighter
-                            ctx.strokeStyle = lineColor + opacity * 0.8 + ')';
-                            ctx.lineWidth = 1;
-                            ctx.beginPath();
-                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                            ctx.stroke();
-                        }
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = dx * dx + dy * dy;
+
+                    if (distance < connectionDistance * connectionDistance) {
+                        let opacity = 1 - (distance / (connectionDistance * connectionDistance));
+                        ctx.strokeStyle = lineColor + opacity * 0.8 + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
                     }
-
-                    // --- MOUSE ATTRACTION LOGIC ---
-                    if (mouse.x !== null && mouse.y !== null) {
-                        let mdx = particlesArray[a].x - mouse.x;
-                        let mdy = particlesArray[a].y - mouse.y;
-                        let mDistance = mdx * mdx + mdy * mdy;
-
-                        if (mDistance < mouseRadius * mouseRadius) {
-                            let mOpacity = 1 - (mDistance / (mouseRadius * mouseRadius));
-                            ctx.strokeStyle = lineColor + mOpacity * 0.9 + ')';
-                            ctx.lineWidth = 1.5; // Slightly thicker for mouse lines
-                            ctx.beginPath();
-                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                            ctx.lineTo(mouse.x, mouse.y);
-                            ctx.stroke();
-                        }
+                }
+                if (mouse.x !== null && mouse.y !== null) {
+                    let mdx = particlesArray[a].x - mouse.x;
+                    let mdy = particlesArray[a].y - mouse.y;
+                    let mDistance = mdx * mdx + mdy * mdy;
+                    if (mDistance < mouseRadius * mouseRadius) {
+                        let mOpacity = 1 - (mDistance / (mouseRadius * mouseRadius));
+                        ctx.strokeStyle = lineColor + mOpacity * 0.9 + ')';
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
                     }
                 }
             }
+        }
 
-            function animate() {
-                ctx.clearRect(0, 0, width, height);
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                }
-                connect();
-                requestAnimationFrame(animate);
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
             }
+            connect();
+            requestAnimationFrame(animate);
+        }
 
-            window.addEventListener('resize', () => {
-                setCanvasSize();
-                createParticles();
-            });
-
+        window.addEventListener('resize', () => {
             setCanvasSize();
             createParticles();
-            animate();
-        };
+        });
 
-        document.addEventListener('DOMContentLoaded', initMoleculeEffect);</script>
+        setCanvasSize();
+        createParticles();
+        animate();
+    };
+    document.addEventListener('DOMContentLoaded', initMoleculeEffect);
+</script>
+
+
+
+
+
+
+
+
 </body>
 
 </html>

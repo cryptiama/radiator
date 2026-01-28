@@ -114,7 +114,7 @@
    ========================================= */
 .updates-section {
     padding: 100px 0;
-    background-color: #ffffff;
+    background-color: transparent;
     position: relative;
     z-index: 4; /* Ensures it's above hero but doesn't clash with stats */
 }
@@ -249,6 +249,38 @@
 /* Fix for the stats section overlap */
 .stats-section {
     margin-top: 0 !important; /* Remove the negative margin if using the News section */
+}
+
+
+/* =========================================
+   PAPER BACKGROUND WRAPPER
+   ========================================= */
+.paper-theme-wrapper {
+    background-image: url('images/home/paper.png');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: repeat-y;
+     background-attachment: scroll; 
+    position: relative;
+    width: 100%;
+    z-index: 3;
+}
+
+.paper-theme-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+    pointer-events: none;
+}
+
+
+/* IMPORTANT: Ensure the contents don't have solid backgrounds */
+.paper-theme-wrapper .updates-section {
+    background-color: transparent !important;
 }
 
 /* =========================================
@@ -511,3 +543,7 @@ color: #bababa;
     padding: 60px 0;
     margin-top: 0;
 }
+
+
+ 
+

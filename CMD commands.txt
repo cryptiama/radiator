@@ -3,7 +3,7 @@
 git log --oneline --graph --decorate --all
 
 (reset to specific one)
-git reset --hard 5da4b4a
+git reset --hard 0f9c22f
 
 (push the reseted one online)
 git push origin main --force

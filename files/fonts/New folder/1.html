@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Check - eka.ttf</title>
+    <style>
+        /* This links your font file to the CSS */
+        @font-face {
+            font-family: 'MyCustomFont';
+            src: url('eka.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'MyCustomFont', sans-serif;
+            padding: 50px;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .large { font-size: 48px; }
+        .medium { font-size: 24px; }
+        .alphabet { color: #666; word-break: break-all; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Font Preview: eka.ttf</h1>
+        
+        <p class="large">The quick brown fox jumps over the lazy dog.</p>
+        
+        <p class="medium">1234567890 !@#$%^&*()_+</p>
+        
+        <hr>
+        
+        <p class="alphabet">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            abcdefghijklmnopqrstuvwxyz
+        </p>
+
+        <p>
+            Standard paragraph text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            If this text looks like a generic font, make sure the file <strong>eka.ttf</strong> 
+            is exactly in the same folder as this HTML file.
+        </p>
+    </div>
+
+</body>
+</html>
