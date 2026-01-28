@@ -106,6 +106,151 @@
     outline: none !important;
 }
 
+
+
+
+/* =========================================
+   UPDATES SECTION
+   ========================================= */
+.updates-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 4; /* Ensures it's above hero but doesn't clash with stats */
+}
+
+.updates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.update-card {
+    background: #fff;
+    border: 1px solid #eef0f2;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.update-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 47, 108, 0.1);
+    border-color: var(--accent-cyan);
+}
+
+/* Image & Badge logic */
+.update-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.update-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.update-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Color Coding for Categories */
+.category-career .update-badge { background: #f39c12; }       /* Orange for Jobs */
+.category-announcement .update-badge { background: #3498db; } /* Blue for Info */
+.category-news .update-badge { background: #27ae60; }         /* Green for News */
+
+.update-body {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.update-date {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.update-title {
+    font-size: 1.25rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.update-excerpt {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* File Download Styles */
+.update-files {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+.file-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.file-link i {
+    color: #e74c3c; /* PDF Red */
+    font-size: 1.1rem;
+}
+
+.file-link:hover {
+    color: var(--accent-cyan);
+}
+
+/* Archive Button */
+.btn-outline {
+    padding: 12px 30px;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--primary-blue);
+    color: #fff;
+}
+
+/* Fix for the stats section overlap */
+.stats-section {
+    margin-top: 0 !important; /* Remove the negative margin if using the News section */
+}
+
 /* =========================================
    3. STATS STRIP
    ========================================= */
@@ -113,9 +258,9 @@
     background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
     color: var(--white);
     padding: 60px 0;
-    margin-top: -50px;
     position: relative;
-    z-index: 3;
+    z-index: 5;  
+    margin-top: 0;  
 }
 
 .stats-grid {
@@ -126,9 +271,34 @@
     gap: 20px;
 }
 
-.stat-item i { font-size: 3.2rem; margin-bottom: 15px; color: var(--accent-cyan); }
-.stat-item h3 { font-size: 2.8rem; font-weight: 700; margin-bottom: 5px; }
-.stat-item p { font-size: 1rem; opacity: 0.8; }
+/* =========================================
+   3. STATS STRIP - UPDATED ICONS
+   ========================================= */
+.stat-item i { 
+    font-size: 3.2rem; 
+    margin-bottom: 15px; 
+    
+    /* Create the transitional gray gradient */
+    background: linear-gradient(to bottom, #e0e0e0 0%, #7a7a7a 100%);
+    
+    /* Clip the background to the shape of the icon */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* Make the actual icon color transparent so the gradient shows through */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    
+    display: inline-block; /* Ensures the gradient applies correctly */
+}
+
+.stat-item h3 { font-size: 2.8rem; font-weight: 700; margin-bottom: 5px; 
+    color: #7a7a7a;
+}
+.stat-item p { font-size: 1.3rem; opacity: 0.8; 
+color: #bababa;
+
+}
 
 /* =========================================
    4. CONTENT (ABOUT & LABS)
@@ -302,4 +472,42 @@
     
     /* Spline */
     #spline-container { width: 300px; height: 300px; top: 70%; opacity: 0.5; }
+}
+
+
+
+
+
+
+
+
+
+/* 1. Make the wrapper a reference point for absolute positioning */
+.chemistry-animation-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Move the gradient here so the canvas sits ON TOP of the blue, but BEHIND the text */
+    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+}
+
+/* 2. Fix the canvas positioning */
+#moleculeCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Sit above the background */
+    pointer-events: none; /* Let mouse clicks pass through to links if necessary */
+}
+
+/* 3. Make sure the content sits above the animation */
+.stats-section {
+    position: relative;
+    z-index: 2; /* Sit above the canvas */
+    background: transparent !important; /* IMPORTANT: Remove the solid background */
+    color: var(--white);
+    padding: 60px 0;
+    margin-top: 0;
 }

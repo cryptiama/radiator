@@ -256,6 +256,10 @@ body {
     animation: shimmer-swipe 1.2s forwards;
 }
 
+
+.abovefooter{
+    height: 130px;
+}
 /* 5. The Animation Logic */
 @keyframes shimmer-swipe { 
     0% { left: 150%; } 
