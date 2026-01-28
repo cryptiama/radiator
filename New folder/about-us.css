@@ -1,0 +1,389 @@
+ 
+    * {
+        box-sizing: border-box;
+    }
+
+ /* Update these in about-us.css */
+:root {
+    --hex-background: rgba(48, 10, 43, 0.9); 
+    --hex-border-color: #d50e0e;
+    --border-thickness: 2px;
+    
+    /* Scaling logic: 200px at 1200px wide -> ~250px at 1920px wide */
+    --hex-width: clamp(200px, 13vw, 250px); 
+    
+    --glow-color: rgba(10, 99, 232, 0.9); 
+    
+    /* Scaling gaps to keep layout proportional */
+    --gap-x: clamp(25px, 2vw, 45px);        
+    --gap-y: clamp(-40px, -3vw, -30px); 
+    
+    --panel-width: 700px;      
+}
+
+
+html {
+    /* This ensures the background color fills the space on 4K screens 
+       outside the centered 1920px body */
+    background-color: #1c2026; 
+}
+
+/* Update/Replace these sections in about-us.css */
+body {
+    margin: 0 auto;
+    padding: 0;
+    background-color: #050a10;
+    background-image: url('images/about-us/vials.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    /* The Floor: prevents shrinking below 1200px (Mobile Zoom Trigger) */
+    min-width: 1200px; 
+    /* The Ceiling: prevents expanding beyond 1920px */
+    max-width: 1920px;
+    
+    overflow-x: auto; 
+}
+
+.container#main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 80px 0;
+    margin: 0 auto;
+    width: 100%;
+    /* Ensures the container width accommodates the dynamic hex sizes */
+    max-width: calc((var(--hex-width) * 3) + (var(--gap-x) * 6));
+}
+
+/* headfooter.css */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* 'clip' hides horizontal overflow without breaking sticky */
+  overflow-x: clip; 
+}
+
+ 
+
+.hexagon-container {
+    position: relative;
+    width: var(--hex-width);
+    height: calc(var(--hex-width) * 1.154); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.85;
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: var(--gap-y);
+    margin-left: calc(var(--gap-x) / 2);
+    margin-right: calc(var(--gap-x) / 2);
+}
+
+    .hexagon-container:nth-child(1) .hex-inner {
+        background-color: #30102B; 
+    }
+
+    .hex-inner {
+        position: relative;
+        overflow: hidden; 
+    }
+
+    .hex-video {
+        position: absolute;
+        transform: translate(-50%, -45%) scale(0.35); 
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    /* Hexagon layout math */
+    .hexagon-container:nth-child(1) { 
+        margin-left: var(--hex-width); 
+        margin-right: var(--hex-width); 
+        margin-top: 0; 
+    }
+/* Only centers the last hex if the container has the 'center-last' class */
+#main-container.center-last .hexagon-container:last-child {
+    margin-left: var(--hex-width) !important;
+    margin-right: var(--hex-width) !important;
+    margin-top: 20px !important; 
+}
+.hexagon-container:nth-child(5n+2) { 
+    margin-left: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); 
+}
+
+.hexagon-container:nth-child(5n+3) { 
+    margin-right: calc((var(--hex-width) / 2) + (var(--gap-x) / 2)); 
+}
+    .hexagon-container:hover {
+        opacity: 1;
+        transform: scale(1.1); 
+        filter: drop-shadow(0 0 10px var(--glow-color)) drop-shadow(0 0 20px var(--glow-color));
+        z-index: 10; 
+    }
+
+    .hex-border {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--hex-border-color);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: 1;
+    }
+
+    .hex-inner {
+        position: absolute;
+        width: calc(100% - (var(--border-thickness) * 2));
+        height: calc(100% - (var(--border-thickness) * 2));
+        background-color: var(--hex-background);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+
+    /* --- UPDATED CONTENT STYLES TO INCLUDE ICONS --- */
+    .content {
+        z-index: 3;
+        font-weight: bold;
+        letter-spacing: 1px;
+        padding: 15px;
+        font-size: 0.75rem; /* Slightly smaller to fit icon + text */
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; /* Space between icon and text */
+        text-transform: uppercase;
+    }
+
+    .content i {
+        font-size: 2rem; /* Size of the icon */
+        margin-bottom: 5px;
+        color: #ffffff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* --- SIDE PANEL STYLES --- */
+    #side-panel-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0); 
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        visibility: hidden;
+        transition: background-color 0.4s, backdrop-filter 0.4s, visibility 0.4s;
+        z-index: 9999;
+        display: flex;
+        justify-content: flex-end; 
+    }
+
+    #side-panel-overlay.active {
+        visibility: visible;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+
+    #side-panel-box {
+        width: var(--panel-width);
+        max-width: 85vw;
+        height: 100vh;
+           background-color: #F9F7F2 !important; 
+    color: #000000 !important;
+        padding: 60px 40px;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        transform: translateX(100%); 
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        display: flex;
+        flex-direction: column;
+        border-left: 2px solid #094EA9;
+    }
+    .panel-content-scroll, 
+.panel-content-scroll p, 
+.panel-content-scroll li,
+.panel-content-scroll div {
+    color: #000000 !important;
+}
+
+    #side-panel-overlay.active #side-panel-box {
+        transform: translateX(0);
+    }
+
+    .panel-content-scroll {
+        overflow-y: auto;
+        padding-right: 15px;
+        margin-top: 20px;
+        flex-grow: 1;
+        line-height: 1.8;
+        font-size: 1.1rem;
+         color: #e0e0e0; 
+           font-size: clamp(1rem, 1.1vw, 1.2rem);
+    }
+
+    #panel-title {
+        color: #094EA9;
+        margin: 0;
+        font-size: 1.8rem;
+        border-bottom: 1px solid #333;
+        padding-bottom: 15px;
+    }
+
+  
+    
+    .panel-content-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    .panel-content-scroll::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+    .panel-content-scroll::-webkit-scrollbar-thumb {
+       background: #094EA9;
+        border-radius: 10px;
+    } 
+
+
+  .close-btn:hover {
+    background-color: #094EA9;
+    color: #ffffff;
+    border-color: #094EA9;
+}
+
+
+
+
+
+/* Container for the top buttons */
+.panel-header-actions {
+    display: flex;
+    justify-content: space-between; /* Pushes PDF to left, Close to right */
+    align-items: center;
+    position: absolute; /* Position relative to the side-panel-box */
+    top: 20px;          /* Distance from top */
+    left: 20px;         /* Distance from left edge */
+    right: 20px;        /* Distance from right edge */
+    margin-bottom: 0;
+    z-index: 10;
+}
+
+/* PDF Button Styling */
+.pdf-btn {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #d50e0e; 
+    border: 1px solid #d50e0e;
+    padding: 6px 12px; /* Adjusted padding to match Close button height */
+    border-radius: 4px;
+    transition: 0.3s;
+    display: none; /* JS reveals it as flex or block */
+    align-items: center;
+    gap: 6px;
+    margin: 0;     /* Remove any default margins */
+}
+
+  .close-btn {
+    position: static; /* REMOVE absolute positioning */
+    background: none;
+    border: 1px solid #555;
+    color: rgb(0, 0, 0);
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+    margin: 0; /* Remove any default margins */
+}
+
+.pdf-btn:hover {
+    background-color: #d50e0e;
+    color: white;
+}
+
+/* FIX READABILITY: Ensure panel text is DARK */
+#side-panel-box {
+    background-color: #F9F7F2 !important; /* Cream background */
+}
+
+#panel-title {
+    color: #094EA9;
+    margin-top:10px; /* Give room for the buttons above */
+    font-size: 1.8rem;
+    border-bottom: 2px solid #094EA9;
+    padding-bottom: 15px;
+    font-weight: 800;
+}
+
+/* Force all text inside the scroll area to be dark grey/black */
+.panel-content-scroll, 
+.panel-content-scroll p, 
+.panel-content-scroll li,
+.panel-content-scroll strong,
+.panel-content-scroll div {
+    color: #1a1a1a !important; 
+}
+
+.panel-content-scroll h4 {
+    color: #094EA9 !important;
+    margin-top: 20px;
+}
+
+
+
+
+/* Shared sizing for both buttons to ensure they match perfectly */
+.pdf-btn, 
+.close-btn {
+    height: 30px;            /* Fixed height for perfect matching */
+    font-size: 0.7rem;       /* Smaller font size */
+    font-weight: 700;
+    padding: 0 10px;         /* Uniform horizontal padding */
+    border-radius: 4px;
+    transition: 0.3s;
+    display: flex;           /* Using flex for centering */
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-sizing: border-box;  /* Ensures border is included in height */
+}
+
+.close-btn {
+    margin-left: auto; /* Forces button to the right side always */
+}
+
+
+
+/* Minor adjustments when the screen is between small desktop and large monitor */
+@media (max-width: 1400px) {
+    .content {
+        font-size: 0.8rem; /* Make text slightly more readable on smaller "zoomed" view */
+    }
+    .content i {
+        font-size: 2.2rem; /* Slightly larger icons */
+    }
+    #panel-title {
+        font-size: 1.5rem; /* Scale down title so it doesn't wrap awkwardly */
+    }
+    .panel-content-scroll {
+        font-size: 1rem;
+    }
+}

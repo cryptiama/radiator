@@ -7,6 +7,40 @@
 const instituteData = {
     "Petre Melikishvili": {
         content: `
+            <div style="line-height: 1.6;">
+                <p><strong style="font-size: 1.2rem;">პეტრე მელიქიშვილი (1850-1927)</strong></p>
+                <p>მსოფლიო დონის მეცნიერი-ქიმიკოსი, თბილისის სახელმწიფო უნივერსიტეტის ერთ-ერთი დამფუძნებელი და მისი პირველი რექტორი (1918 წ.). განათლება მიიღო ოდესის უნივერსიტეტში, სადაც წლების განმავლობაში მოღვაწეობდა პროფესორად. იყო სსრკ მეცნიერებათა აკადემიის წევრ-კორესპონდენტი და ლომონოსოვის პრემიის ლაურეატი.</p>
+                
+                <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
+                
+                <h4>ორგანული ქიმია: გლიციდმჟავების აღმოჩენა</h4>
+                <ul>
+                    <li>დაამტკიცა გლიციდმჟავების აღნაგობა და მათი კავშირი ეთილენის ჟანგთან.</li>
+                    <li>საფუძვლიანად შეისწავლა უჯერი მჟავები (აკრილის მჟავა) და იზომერული კროტონმჟავები.</li>
+                    <li>პირველმა შეიტანა კორექტირება უილიამ ჰენრის წესში, რომელიც აირების ხსნადობას ეხება.</li>
+                </ul>
+
+                <h4>არაორგანული ქიმია: ზეჟანგები და ზემჟავები</h4>
+                <ul>
+                    <li>მოახდინა მრავალი ელემენტის (ურანი, ნიობიუმი, ტანტალი, ვოლფრამი, ბორი, მოლიბდენი, ტიტანი, ვანადიუმი) <strong>ზემჟავების</strong> სინთეზი.</li>
+                    <li>პირველმა მიიღო <strong>ამონიუმის ზეჟანგი</strong> და <strong>ნატრიუმის პერბორატი</strong>.</li>
+                    <li>ამ ნაშრომთა ციკლისთვის („ზეჟანგები და ზემჟავები“) მიენიჭა ლომონოსოვის სახელობის პრემია.</li>
+                </ul>
+
+                <h4>აგროქიმია და ბუნებრივი ნაერთების ანალიზი</h4>
+                <ul>
+                    <li><strong>მეტეორიტების კვლევა:</strong> დაამტკიცა, რომ მეტეორიტები იმავე ქიმიურ ელემენტებს შეიცავენ, რასაც დედამიწა. მიგეის მეტეორიტში აღმოაჩინა ორგანული ნაერთები (ნახშირწყალბადები).</li>
+                    <li><strong>სასოფლო-სამეურნეო პროდუქტები:</strong> ჩაატარა ქართული ღვინის, ჩაის, ხორბლისა და ყველის დეტალური ქიმიური ანალიზი.</li>
+                    <li><strong>ნიადაგმცოდნეობა:</strong> შეისწავლა ბუნებრივი სოდის წარმოქმნის ქიმიზმი და ნიადაგის გავლენა ვაზის მდგრადობაზე ფილოქსერას მიმართ.</li>
+                </ul>
+
+                <h4>ქართული ქიმიური ტერმინოლოგია</h4>
+                <p>მეცნიერმა საფუძველი ჩაუყარა <strong>ქართულ ქიმიურ ტერმინოლოგიას</strong>. მისი თაოსნობით თსუ-ში შეიქმნა პირველი ქიმიური ლაბორატორიები და ჩამოყალიბდა არაორგანული, ორგანული და აგრონომიული ქიმიის კათედრები, რითაც საფუძველი ჩაეყარა ქართულ ქიმიურ სკოლას.</p>
+            </div>
+        `
+    },
+    "ჩვენ შესახებ": {
+         content: `
           <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; max-width: 900px; margin: auto; border: 1px solid #e1e4e8; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background-color: #fff;">
             
     <!-- HEADER SECTION: BIOGRAPHY -->
@@ -93,96 +127,6 @@ const instituteData = {
 </div>
         `
     },
-    "ჩვენ შესახებ": {
-        content: `<div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; max-width: 900px; margin: auto; border: 1px solid #e1e4e8; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            
-            <!-- HEADER SECTION -->
-            <div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
-                <h1 style="color: #1a2a6c; margin-bottom: 5px; font-size: 1.8rem; text-transform: uppercase;">პეტრე მელიქიშვილის სახელობის ფიზიკური და ორგანული ქიმიის ინსტიტუტი</h1>
-                <p style="font-size: 1.1rem; color: #7f8c8d; font-style: italic;">ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი</p>
-            </div>
-
-            <!-- HISTORICAL OVERVIEW & MISSION -->
-            <div style="background-color: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 6px solid #1a2a6c; margin-bottom: 35px;">
-                <h2 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;">დაარსება და მისია</h2>
-                <p style="text-align: justify; font-size: 1.05rem;">
-                    ინსტიტუტი დაარსდა <strong>1929 წლის 1 ოქტომბერს</strong> თბილისის სახელმწიფო უნივერსიტეტის პირველი რექტორის, <strong>პეტრე მელიქიშვილის</strong> ინიციატივით და მის სახელს ატარებს.
-                </p>
-                <p style="text-align: justify; font-size: 1.05rem;">
-                    ინსტიტუტის მისიას წარმოადგენს საქართველოს ეკონომიკის განვითარებისათვის ქიმიური მეცნიერების მობილიზაცია, ქვეყნის ბუნებრივი რესურსების რაციონალური გამოყენების შესაძლებლობების კვლევა-ძიება და ახალი მასალების მიღების ინოვაციური ტექნოლოგიების შემუშავება.
-                </p>
-            </div>
-
-            <!-- CORE RESEARCH FIELDS -->
-            <div style="margin-bottom: 35px;">
-                <h3 style="color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; font-size: 1.1rem;">კვლევის ძირითადი სფეროები</h3>
-                <p>თავისი მისიის შესასრულებლად, ინსტიტუტი ატარებს ფართომასშტაბიან კვლევებს შემდეგ დისციპლინებში:</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• ფიზიკური და ორგანული ქიმია</div>
-                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• მაკრომოლეკულური ნაერთები</div>
-                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• გარემოს დაცვის ქიმია</div>
-                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• ნავთობის ქიმია</div>
-                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• აგროქიმია</div>
-                </div>
-            </div>
-
-            <!-- SCIENTIFIC INVESTIGATIONS & TECHNOLOGIES -->
-            <div style="margin-bottom: 35px;">
-                <h3 style="color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; font-size: 1.1rem;">ფიზიკურ-ქიმიური პროცესები და მასალები</h3>
-                <p style="text-align: justify;">კვლევითი საქმიანობა მოიცავს ისეთი რთული პროცესების შესწავლას, როგორიცაა ნარევების ქრომატოგრაფიული დაყოფა, ადსორბცია მიკროფოროვან კრისტალურ სხეულებში, დიფუზია და კატალიზი.</p>
-                
-                <div style="background: #fdf6e3; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #f39c12;">
-                    <strong style="color: #d35400;">შემუშავებული ტექნოლოგიები და მასალები:</strong>
-                    <ul style="margin-top: 10px; columns: 2; font-size: 0.95rem;">
-                        <li>ადსორბენტები და კატალიზატორები</li>
-                        <li>იონმიმომცვლელები</li>
-                        <li>ულტრადისპერსული ფხვნილები</li>
-                        <li>საშენ მასალათა დანამატები</li>
-                        <li>სარესტავრაციო მასალები</li>
-                        <li>ორგანომინერალური სასუქები</li>
-                        <li>ეკოლოგიური სუბსტრატები</li>
-                        <li>პოლიმერული კომპოზიტები</li>
-                        <li>ნანოდანაფარებიანი მასალები</li>
-                    </ul>
-                </div>
-                <p style="font-size: 0.95rem; color: #555; font-style: italic;">აღნიშნული შედეგები ინერგება სოფლის მეურნეობაში, გარემოს დაცვაში, მშენებლობასა და ნანოტექნოლოგიებში.</p>
-            </div>
-
-            <!-- SECTOR-SPECIFIC APPLICATIONS -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 35px;">
-                
-                <!-- AGRICULTURE & VETERINARY -->
-                <div style="background: #eafaf1; padding: 20px; border-radius: 10px; border: 1px solid #2ecc71;">
-                    <h4 style="color: #27ae60; margin-top: 0;">აგროქიმია</h4>
-                    <ul style="font-size: 0.9rem; padding-left: 18px;">
-                        <li>ახალი ტიპის პროლონგირებული სასუქები.</li>
-                        <li>მიკროელემენტების შემცველი პრემიქსები.</li>
-                        <li>ბიოლოგიურად აქტიური დანამატები.</li>
-                        <li>სამკურნალო ვეტერინარული საშუალებები.</li>
-                        <li>ექსტრაქციის ულტრაბგერითი მეთოდები.</li>
-                    </ul>
-                </div>
-
-                <!-- PETROLEUM & ENERGY -->
-                <div style="background: #f4f6f7; padding: 20px; border-radius: 10px; border: 1px solid #bfc9ca;">
-                    <h4 style="color: #2c3e50; margin-top: 0;">ნავთობის ქიმია</h4>
-                    <ul style="font-size: 0.9rem; padding-left: 18px;">
-                        <li>საქართველოს ენერგეტიკული წიაღისეულის შესწავლა და პასპორტიზაცია.</li>
-                        <li>ნავთობისა და ბიტუმების რანჟირება.</li>
-                        <li>ნავთობ პროდუქტების მიღების ტექნოლოგიები.</li>
-                        <li>ბიოდიზელის წარმოების გაუმჯობესება.</li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <!-- FOOTER -->
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #95a5a6; font-size: 0.85rem;">
-                <p>ოფიციალური მიმოხილვა - პეტრე მელიქიშვილის სახელობის ფიზიკური და ორგანული ქიმიის ინსტიტუტი</p>
-            </div>
-        </div>`
-    },
-  
     "ინსტიტუტის დებულება ": {
         pdf: "pdfs/statute.pdf",
         content: `

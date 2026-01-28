@@ -5,92 +5,38 @@
    4. ABOUT US - HEXAGON SIDE PANEL LOGIC
    ========================================= */
 const instituteData = {
-"Petre Melikishvili": {
+ "Petre Melikishvili": {
         content: `
-          <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; max-width: 900px; margin: auto; border: 1px solid #e1e4e8; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background-color: #fff;">
-            
-    <!-- HEADER SECTION: BIOGRAPHY -->
-    <div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
-        <h1 style="color: #1a2a6c; margin-bottom: 5px; font-size: 2rem; text-transform: uppercase; letter-spacing: 2px;">Petre Melikishvili</h1>
-        <p style="font-size: 1.3rem; color: #7f8c8d; font-weight: 300;">1850 — 1927</p>
-    </div>
+           <div style="line-height: 1.6;">
+                <p><strong style="font-size: 1.2rem;">Petre Melikishvili (1850-1927)</strong></p>
+                <p>A world-class scientist-chemist, one of the founders of Tbilisi State University and its first rector (1918). He received his education at Odessa University, where he served as a professor for many years. He was a corresponding member of the USSR Academy of Sciences and a laureate of the Lomonosov Prize.</p>
+                
+                <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
+                
+                <h4>Organic Chemistry: Discovery of Glycidic Acids</h4>
+                <ul>
+                    <li>Proved the structure of glycidic acids and their connection to ethylene oxide.</li>
+                    <li>Thoroughly studied unsaturated acids (acrylic acid) and isomeric crotonic acids.</li>
+                    <li>Was the first to introduce corrections to William Henry's law regarding the solubility of gases.</li>
+                </ul>
 
-    <!-- MAIN PROFILE BOX -->
-    <div style="background-color: #f4f7f9; padding: 25px; border-radius: 8px; border-left: 6px solid #1a2a6c; margin-bottom: 35px;">
-        <p style="text-align: justify; font-size: 1.1rem; margin-top: 0;">
-            A world-class scientist-chemist, one of the founders of <strong>Tbilisi State University</strong> and its <strong>first rector</strong> (1918).
-        </p>
-        <p style="text-align: justify; font-size: 1.05rem; color: #444;">
-            He received his education at Odessa University, where he served as a professor for many years. He was a corresponding member of the USSR Academy of Sciences and a laureate of the Lomonosov Prize.
-        </p>
-    </div>
+                <h4>Inorganic Chemistry: Peroxides and Peracids</h4>
+                <ul>
+                    <li>Synthesized <strong>peracids</strong> of many elements (uranium, niobium, tantalum, tungsten, boron, molybdenum, titanium, vanadium).</li>
+                    <li>Was the first to obtain <strong>ammonium peroxide</strong> and <strong>sodium perborate</strong>.</li>
+                    <li>For this cycle of works ("Peroxides and Peracids"), he was awarded the Lomonosov Prize.</li>
+                </ul>
 
-    <!-- SCIENTIFIC ACHIEVEMENTS GRID -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 35px;">
-        
-        <!-- ORGANIC CHEMISTRY -->
-        <div style="background: #ebf5fb; padding: 20px; border-radius: 10px; border: 1px solid #aed6f1;">
-            <h3 style="color: #2e86c1; margin-top: 0; border-bottom: 2px solid #aed6f1; padding-bottom: 10px; font-size: 1.1rem; text-transform: uppercase;">Organic Chemistry</h3>
-            <strong style="display: block; margin-bottom: 10px; color: #21618c;">Discovery of Glycidic Acids</strong>
-            <ul style="font-size: 0.95rem; padding-left: 18px; color: #2c3e50;">
-                <li>Proved the structure of glycidic acids and their connection to ethylene oxide.</li>
-                <li>Thoroughly studied unsaturated acids (acrylic acid) and isomeric crotonic acids.</li>
-                <li>Was the first to introduce corrections to <strong>William Henry's law</strong> regarding the solubility of gases.</li>
-            </ul>
-        </div>
+                <h4>Agrochemistry and Analysis of Natural Compounds</h4>
+                <ul>
+                    <li><strong>Meteorite Research:</strong> Proved that meteorites contain the same chemical elements as the Earth. Discovered organic compounds (hydrocarbons) in the Mighei meteorite.</li>
+                    <li><strong>Agricultural Products:</strong> Conducted detailed chemical analysis of Georgian wine, tea, wheat, and cheese.</li>
+                    <li><strong>Soil Science:</strong> Studied the chemistry of natural soda formation and the influence of soil on the resistance of grapevines to phylloxera.</li>
+                </ul>
 
-        <!-- INORGANIC CHEMISTRY -->
-        <div style="background: #fef9e7; padding: 20px; border-radius: 10px; border: 1px solid #f9e79f;">
-            <h3 style="color: #d4ac0d; margin-top: 0; border-bottom: 2px solid #f9e79f; padding-bottom: 10px; font-size: 1.1rem; text-transform: uppercase;">Inorganic Chemistry</h3>
-            <strong style="display: block; margin-bottom: 10px; color: #9a7d0a;">Peroxides and Peracids</strong>
-            <ul style="font-size: 0.95rem; padding-left: 18px; color: #2c3e50;">
-                <li>Synthesized <strong>peracids</strong> of many elements (uranium, niobium, tantalum, tungsten, boron, molybdenum, titanium, vanadium).</li>
-                <li>Was the first to obtain ammonium peroxide and sodium perborate.</li>
-                <li style="margin-top: 10px; font-weight: bold; color: #c0392b;">Awarded the Lomonosov Prize.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- AGROCHEMISTRY & ANALYSIS SECTION -->
-     <div style="margin-bottom: 35px; border: 1px solid #d5dbdb; border-radius: 8px; overflow: hidden;">
-        <div style="background: #002f6c; padding: 15px 20px;">
-            <h3 style="color: #ffffff !important; margin: 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem;">
-                Agrochemistry and Analysis of Natural Compounds
-            </h3>
-        </div>
-        <div style="padding: 20px; background: #fafffa;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div>
-                    <h4 style="color: #1e8449; margin-top: 0;">🔬 Research</h4>
-                    <ul style="font-size: 0.95rem; padding-left: 18px;">
-                        <li><strong>Meteorite Research:</strong> Proved that meteorites contain the same chemical elements as the Earth. Discovered organic compounds (hydrocarbons) in the Mighei meteorite.</li>
-                        <li><strong>Agricultural Products:</strong> Conducted detailed chemical analysis of Georgian wine, tea, wheat, and cheese.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: #1e8449; margin-top: 0;">🌱 Soil Science</h4>
-                    <ul style="font-size: 0.95rem; padding-left: 18px;">
-                        <li>Studied the chemistry of natural soda formation.</li>
-                        <li>Influence of soil on the resistance of grapevines to phylloxera.</li>
-                    </ul>
-                </div>
+                <h4>Georgian Chemical Terminology</h4>
+                <p>The scientist laid the foundation for <strong>Georgian chemical terminology</strong>. Under his leadership, the first chemical laboratories were established at TSU, and the chairs of inorganic, organic, and agronomic chemistry were formed, thus laying the foundation for the Georgian school of chemistry.</p>
             </div>
-        </div>
-    </div>
-
-    <!-- LEGACY SECTION -->
-    <div style="background-color: #fdf2e9; padding: 25px; border-radius: 8px; border-top: 4px solid #e67e22;">
-        <h3 style="color: #a04000; margin-top: 0; font-size: 1.2rem; text-transform: uppercase;">Foundation of the Georgian Chemical School</h3>
-        <p style="text-align: justify; font-size: 1.05rem; margin-bottom: 0;">
-            The scientist laid the foundation for <strong>Georgian chemical terminology</strong>. Under his leadership, the first chemical laboratories were established at TSU, and the chairs of inorganic, organic, and agronomic chemistry were formed.
-        </p>
-    </div>
-
-    <!-- FOOTER -->
-    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #95a5a6; font-size: 0.85rem;">
-        <p>Academic Overview — Life and Work of Petre Melikishvili</p>
-    </div>
-</div>
         `
     },
     "About Us": { 

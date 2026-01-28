@@ -5,23 +5,23 @@
    4. ABOUT US - HEXAGON SIDE PANEL LOGIC
    ========================================= */
 const instituteData = {
-"Petre Melikishvili": {
+ "Petre Melikishvili": { 
         content: `
           <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; max-width: 900px; margin: auto; border: 1px solid #e1e4e8; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background-color: #fff;">
             
     <!-- HEADER SECTION: BIOGRAPHY -->
     <div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
-        <h1 style="color: #1a2a6c; margin-bottom: 5px; font-size: 2rem; text-transform: uppercase; letter-spacing: 2px;">Petre Melikishvili</h1>
+        <h1 style="color: #1a2a6c; margin-bottom: 5px; font-size: 2rem; text-transform: uppercase; letter-spacing: 2px;">პეტრე მელიქიშვილი</h1>
         <p style="font-size: 1.3rem; color: #7f8c8d; font-weight: 300;">1850 — 1927</p>
     </div>
 
     <!-- MAIN PROFILE BOX -->
     <div style="background-color: #f4f7f9; padding: 25px; border-radius: 8px; border-left: 6px solid #1a2a6c; margin-bottom: 35px;">
         <p style="text-align: justify; font-size: 1.1rem; margin-top: 0;">
-            A world-class scientist-chemist, one of the founders of <strong>Tbilisi State University</strong> and its <strong>first rector</strong> (1918).
+            მსოფლიო დონის მეცნიერი-ქიმიკოსი, <strong>თბილისის სახელმწიფო უნივერსიტეტის</strong> ერთ-ერთი დამფუძნებელი და მისი <strong>პირველი რექტორი</strong> (1918 წ.). 
         </p>
         <p style="text-align: justify; font-size: 1.05rem; color: #444;">
-            He received his education at Odessa University, where he served as a professor for many years. He was a corresponding member of the USSR Academy of Sciences and a laureate of the Lomonosov Prize.
+            განათლება მიიღო ოდესის უნივერსიტეტში, სადაც წლების განმავლობაში მოღვაწეობდა პროფესორად. იყო სსრკ მეცნიერებათა აკადემიის წევრ-კორესპონდენტი და ლომონოსოვის პრემიის ლაურეატი.
         </p>
     </div>
 
@@ -30,23 +30,23 @@ const instituteData = {
         
         <!-- ORGANIC CHEMISTRY -->
         <div style="background: #ebf5fb; padding: 20px; border-radius: 10px; border: 1px solid #aed6f1;">
-            <h3 style="color: #2e86c1; margin-top: 0; border-bottom: 2px solid #aed6f1; padding-bottom: 10px; font-size: 1.1rem; text-transform: uppercase;">Organic Chemistry</h3>
-            <strong style="display: block; margin-bottom: 10px; color: #21618c;">Discovery of Glycidic Acids</strong>
+            <h3 style="color: #2e86c1; margin-top: 0; border-bottom: 2px solid #aed6f1; padding-bottom: 10px; font-size: 1.1rem; text-transform: uppercase;">ორგანული ქიმია</h3>
+            <strong style="display: block; margin-bottom: 10px; color: #21618c;">გლიციდმჟავების აღმოჩენა</strong>
             <ul style="font-size: 0.95rem; padding-left: 18px; color: #2c3e50;">
-                <li>Proved the structure of glycidic acids and their connection to ethylene oxide.</li>
-                <li>Thoroughly studied unsaturated acids (acrylic acid) and isomeric crotonic acids.</li>
-                <li>Was the first to introduce corrections to <strong>William Henry's law</strong> regarding the solubility of gases.</li>
+                <li>დაამტკიცა გლიციდმჟავების აღნაგობა და კავშირი ეთილენის ჟანგთან.</li>
+                <li>შეისწავლა უჯერი მჟავები (აკრილის მჟავა) და იზომერული კროტონმჟავები.</li>
+                <li>შეიტანა კორექტირება <strong>უილიამ ჰენრის წესში</strong> აირების ხსნადობის შესახებ.</li>
             </ul>
         </div>
 
         <!-- INORGANIC CHEMISTRY -->
         <div style="background: #fef9e7; padding: 20px; border-radius: 10px; border: 1px solid #f9e79f;">
-            <h3 style="color: #d4ac0d; margin-top: 0; border-bottom: 2px solid #f9e79f; padding-bottom: 10px; font-size: 1.1rem; text-transform: uppercase;">Inorganic Chemistry</h3>
-            <strong style="display: block; margin-bottom: 10px; color: #9a7d0a;">Peroxides and Peracids</strong>
+            <h3 style="color: #d4ac0d; margin-top: 0; border-bottom: 2px solid #f9e79f; padding-bottom: 10px; font-size: 1.1rem; text-transform: uppercase;">არაორგანული ქიმია</h3>
+            <strong style="display: block; margin-bottom: 10px; color: #9a7d0a;">ზეჟანგები და ზემჟავები</strong>
             <ul style="font-size: 0.95rem; padding-left: 18px; color: #2c3e50;">
-                <li>Synthesized <strong>peracids</strong> of many elements (uranium, niobium, tantalum, tungsten, boron, molybdenum, titanium, vanadium).</li>
-                <li>Was the first to obtain ammonium peroxide and sodium perborate.</li>
-                <li style="margin-top: 10px; font-weight: bold; color: #c0392b;">Awarded the Lomonosov Prize.</li>
+                <li>მოახდინა მრავალი ელემენტის (U, Nb, Ta, W, B, Mo, Ti, V) <strong>ზემჟავების სინთეზი</strong>.</li>
+                <li>პირველმა მიიღო ამონიუმის ზეჟანგი და ნატრიუმის პერბორატი.</li>
+                <li style="margin-top: 10px; font-weight: bold; color: #c0392b;">მიენიჭა ლომონოსოვის სახელობის პრემია.</li>
             </ul>
         </div>
     </div>
@@ -55,23 +55,23 @@ const instituteData = {
      <div style="margin-bottom: 35px; border: 1px solid #d5dbdb; border-radius: 8px; overflow: hidden;">
         <div style="background: #002f6c; padding: 15px 20px;">
             <h3 style="color: #ffffff !important; margin: 0; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem;">
-                Agrochemistry and Analysis of Natural Compounds
+                აგროქიმია და ბუნებრივი ნაერთების ანალიზი
             </h3>
         </div>
         <div style="padding: 20px; background: #fafffa;">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                 <div>
-                    <h4 style="color: #1e8449; margin-top: 0;">🔬 Research</h4>
+                    <h4 style="color: #1e8449; margin-top: 0;">🔬 კვლევები</h4>
                     <ul style="font-size: 0.95rem; padding-left: 18px;">
-                        <li><strong>Meteorite Research:</strong> Proved that meteorites contain the same chemical elements as the Earth. Discovered organic compounds (hydrocarbons) in the Mighei meteorite.</li>
-                        <li><strong>Agricultural Products:</strong> Conducted detailed chemical analysis of Georgian wine, tea, wheat, and cheese.</li>
+                        <li><strong>მეტეორიტები:</strong> აღმოაჩინა ორგანული ნაერთები მიგეის მეტეორიტში.</li>
+                        <li><strong>სოფლის მეურნეობა:</strong> ღვინის, ჩაის, ხორბლისა და ყველის დეტალური ანალიზი.</li>
                     </ul>
                 </div>
                 <div>
-                    <h4 style="color: #1e8449; margin-top: 0;">🌱 Soil Science</h4>
+                    <h4 style="color: #1e8449; margin-top: 0;">🌱 ნიადაგმცოდნეობა</h4>
                     <ul style="font-size: 0.95rem; padding-left: 18px;">
-                        <li>Studied the chemistry of natural soda formation.</li>
-                        <li>Influence of soil on the resistance of grapevines to phylloxera.</li>
+                        <li>ბუნებრივი სოდის წარმოქმნის ქიმიზმი.</li>
+                        <li>ნიადაგის გავლენა ვაზის მდგრადობაზე ფილოქსერას მიმართ.</li>
                     </ul>
                 </div>
             </div>
@@ -80,106 +80,107 @@ const instituteData = {
 
     <!-- LEGACY SECTION -->
     <div style="background-color: #fdf2e9; padding: 25px; border-radius: 8px; border-top: 4px solid #e67e22;">
-        <h3 style="color: #a04000; margin-top: 0; font-size: 1.2rem; text-transform: uppercase;">Foundation of the Georgian Chemical School</h3>
+        <h3 style="color: #a04000; margin-top: 0; font-size: 1.2rem; text-transform: uppercase;">ქართული ქიმიური სკოლის ფუძემდებელი</h3>
         <p style="text-align: justify; font-size: 1.05rem; margin-bottom: 0;">
-            The scientist laid the foundation for <strong>Georgian chemical terminology</strong>. Under his leadership, the first chemical laboratories were established at TSU, and the chairs of inorganic, organic, and agronomic chemistry were formed.
+            მეცნიერმა საფუძველი ჩაუყარა <strong>ქართულ ქიმიურ ტერმინოლოგიას</strong>. მისი თაოსნობით თსუ-ში შეიქმნა პირველი ქიმიური ლაბორატორიები და ჩამოყალიბდა არაორგანული, ორგანული და აგრონომიული ქიმიის კათედრები.
         </p>
     </div>
 
     <!-- FOOTER -->
     <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #95a5a6; font-size: 0.85rem;">
-        <p>Academic Overview — Life and Work of Petre Melikishvili</p>
+        <p>აკადემიური მიმოხილვა — პეტრე მელიქიშვილის ცხოვრება და მოღვაწეობა</p>
     </div>
 </div>
         `
     },
-    "About Us": { 
+ "About Us": { 
         content: `<div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; max-width: 900px; margin: auto; border: 1px solid #e1e4e8; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-<!-- HEADER SECTION -->
-<div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
-    <h1 style="color: #1a2a6c; margin-bottom: 5px; font-size: 1.8rem; text-transform: uppercase;">Petre Melikishvili Institute of Physical and Organic Chemistry</h1>
-    <p style="font-size: 1.1rem; color: #7f8c8d; font-style: italic;">Ivane Javakhishvili Tbilisi State University</p>
-</div>
+            
+            <!-- HEADER SECTION -->
+            <div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
+                <h1 style="color: #1a2a6c; margin-bottom: 5px; font-size: 1.8rem; text-transform: uppercase;">პეტრე მელიქიშვილის სახელობის ფიზიკური და ორგანული ქიმიის ინსტიტუტი</h1>
+                <p style="font-size: 1.1rem; color: #7f8c8d; font-style: italic;">ივანე ჯავახიშვილის სახელობის თბილისის სახელმწიფო უნივერსიტეტი</p>
+            </div>
 
-<!-- HISTORICAL OVERVIEW & MISSION -->
-<div style="background-color: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 6px solid #1a2a6c; margin-bottom: 35px;">
-    <h2 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;">Founding and Mission</h2>
-    <p style="text-align: justify; font-size: 1.05rem;">
-        The Institute was founded on <strong>October 1, 1929</strong>, at the initiative of the first rector of Tbilisi State University, <strong>Petre Melikishvili</strong>, whose name it proudly bears. 
-    </p>
-    <p style="text-align: justify; font-size: 1.05rem;">
-        The mission of the Institute is the mobilization of chemical science for the development of the Georgian economy. This includes the exploration of rational uses for the country’s natural resources, the development of innovative technologies for new materials, and the determination of their application potential across various economic sectors and environmental protection initiatives.
-    </p>
-</div>
+            <!-- HISTORICAL OVERVIEW & MISSION -->
+            <div style="background-color: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 6px solid #1a2a6c; margin-bottom: 35px;">
+                <h2 style="color: #2c3e50; margin-top: 0; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;">დაარსება და მისია</h2>
+                <p style="text-align: justify; font-size: 1.05rem;">
+                    ინსტიტუტი დაარსდა <strong>1929 წლის 1 ოქტომბერს</strong> თბილისის სახელმწიფო უნივერსიტეტის პირველი რექტორის, <strong>პეტრე მელიქიშვილის</strong> ინიციატივით და მის სახელს ატარებს.
+                </p>
+                <p style="text-align: justify; font-size: 1.05rem;">
+                    ინსტიტუტის მისიას წარმოადგენს საქართველოს ეკონომიკის განვითარებისათვის ქიმიური მეცნიერების მობილიზაცია, ქვეყნის ბუნებრივი რესურსების რაციონალური გამოყენების შესაძლებლობების კვლევა-ძიება და ახალი მასალების მიღების ინოვაციური ტექნოლოგიების შემუშავება.
+                </p>
+            </div>
 
-<!-- CORE RESEARCH FIELDS -->
-<div style="margin-bottom: 35px;">
-    <h3 style="color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; font-size: 1.1rem;">Primary Areas of Research</h3>
-    <p>To achieve its mission, the Institute conducts extensive research in the following disciplines:</p>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-        <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• Physical and Organic Chemistry</div>
-        <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• Macromolecular Compounds</div>
-        <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• Environmental Chemistry</div>
-        <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• Petroleum Chemistry</div>
-        <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• Agricultural Chemistry</div>
-    </div>
-</div>
+            <!-- CORE RESEARCH FIELDS -->
+            <div style="margin-bottom: 35px;">
+                <h3 style="color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; font-size: 1.1rem;">კვლევის ძირითადი სფეროები</h3>
+                <p>თავისი მისიის შესასრულებლად, ინსტიტუტი ატარებს ფართომასშტაბიან კვლევებს შემდეგ დისციპლინებში:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• ფიზიკური და ორგანული ქიმია</div>
+                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• მაკრომოლეკულური ნაერთები</div>
+                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• გარემოს დაცვის ქიმია</div>
+                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• ნავთობის ქიმია</div>
+                    <div style="background: #fff; padding: 10px 15px; border: 1px solid #d1d8e0; border-radius: 4px;">• აგროქიმია</div>
+                </div>
+            </div>
 
-<!-- SCIENTIFIC INVESTIGATIONS & TECHNOLOGIES -->
-<div style="margin-bottom: 35px;">
-    <h3 style="color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; font-size: 1.1rem;">Physico-Chemical Processes & Materials</h3>
-    <p style="text-align: justify;">Research activities involve the study of complex processes such as chromatographic separation of mixtures, adsorption in microporous crystalline bodies, diffusion and catalysis, phase transformations in aluminosilicates and other gels, crystallization, and polymerization.</p>
-    
-    <div style="background: #fdf6e3; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #f39c12;">
-        <strong style="color: #d35400;">Developed Technologies & Materials:</strong>
-        <ul style="margin-top: 10px; columns: 2; font-size: 0.95rem;">
-            <li>Adsorbents & Catalysts</li>
-            <li>Ion Exchangers</li>
-            <li>Ultradispersed Powders</li>
-            <li>Construction Additives</li>
-            <li>Restoration Materials</li>
-            <li>Organomineral Fertilizers</li>
-            <li>Eco-friendly Substrates</li>
-            <li>Polymer Composites</li>
-            <li>Nano-coated Materials</li>
-        </ul>
-    </div>
-    <p style="font-size: 0.95rem; color: #555; font-style: italic;">These results are implemented in agriculture, environmental protection, construction, and nanotechnologies.</p>
-</div>
+            <!-- SCIENTIFIC INVESTIGATIONS & TECHNOLOGIES -->
+            <div style="margin-bottom: 35px;">
+                <h3 style="color: #1a2a6c; border-bottom: 1px solid #eee; padding-bottom: 10px; text-transform: uppercase; font-size: 1.1rem;">ფიზიკურ-ქიმიური პროცესები და მასალები</h3>
+                <p style="text-align: justify;">კვლევითი საქმიანობა მოიცავს ისეთი რთული პროცესების შესწავლას, როგორიცაა ნარევების ქრომატოგრაფიული დაყოფა, ადსორბცია მიკროფოროვან კრისტალურ სხეულებში, დიფუზია და კატალიზი.</p>
+                
+                <div style="background: #fdf6e3; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #f39c12;">
+                    <strong style="color: #d35400;">შემუშავებული ტექნოლოგიები და მასალები:</strong>
+                    <ul style="margin-top: 10px; columns: 2; font-size: 0.95rem;">
+                        <li>ადსორბენტები და კატალიზატორები</li>
+                        <li>იონმიმომცვლელები</li>
+                        <li>ულტრადისპერსული ფხვნილები</li>
+                        <li>საშენ მასალათა დანამატები</li>
+                        <li>სარესტავრაციო მასალები</li>
+                        <li>ორგანომინერალური სასუქები</li>
+                        <li>ეკოლოგიური სუბსტრატები</li>
+                        <li>პოლიმერული კომპოზიტები</li>
+                        <li>ნანოდანაფარებიანი მასალები</li>
+                    </ul>
+                </div>
+                <p style="font-size: 0.95rem; color: #555; font-style: italic;">აღნიშნული შედეგები ინერგება სოფლის მეურნეობაში, გარემოს დაცვაში, მშენებლობასა და ნანოტექნოლოგიებში.</p>
+            </div>
 
-<!-- SECTOR-SPECIFIC APPLICATIONS -->
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 35px;">
-    
-    <!-- AGRICULTURE & VETERINARY -->
-    <div style="background: #eafaf1; padding: 20px; border-radius: 10px; border: 1px solid #2ecc71;">
-        <h4 style="color: #27ae60; margin-top: 0;">Agricultural Science</h4>
-        <ul style="font-size: 0.9rem; padding-left: 18px;">
-            <li>New composite and polymeric long-acting fertilizers.</li>
-            <li>Micronutrient fertilizers and premixes.</li>
-            <li>Biologically active additives.</li>
-            <li>Iron and silicon-based therapeutic veterinary agents.</li>
-            <li>Supercritical fluid and ultrasonic extraction of oils/pigments from plant waste.</li>
-        </ul>
-    </div>
+            <!-- SECTOR-SPECIFIC APPLICATIONS -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 35px;">
+                
+                <!-- AGRICULTURE & VETERINARY -->
+                <div style="background: #eafaf1; padding: 20px; border-radius: 10px; border: 1px solid #2ecc71;">
+                    <h4 style="color: #27ae60; margin-top: 0;">აგროქიმია</h4>
+                    <ul style="font-size: 0.9rem; padding-left: 18px;">
+                        <li>ახალი ტიპის პროლონგირებული სასუქები.</li>
+                        <li>მიკროელემენტების შემცველი პრემიქსები.</li>
+                        <li>ბიოლოგიურად აქტიური დანამატები.</li>
+                        <li>სამკურნალო ვეტერინარული საშუალებები.</li>
+                        <li>ექსტრაქციის ულტრაბგერითი მეთოდები.</li>
+                    </ul>
+                </div>
 
-    <!-- PETROLEUM & ENERGY -->
-    <div style="background: #f4f6f7; padding: 20px; border-radius: 10px; border: 1px solid #bfc9ca;">
-        <h4 style="color: #2c3e50; margin-top: 0;">Petroleum Chemistry</h4>
-        <ul style="font-size: 0.9rem; padding-left: 18px;">
-            <li>Study, certification, and ranking of Georgian energy resources (oil and natural bitumens).</li>
-            <li>Assessment for utilization in local industry.</li>
-            <li>Development of technologies for commodity petroleum products.</li>
-            <li>Improvement of biodiesel production technologies.</li>
-        </ul>
-    </div>
+                <!-- PETROLEUM & ENERGY -->
+                <div style="background: #f4f6f7; padding: 20px; border-radius: 10px; border: 1px solid #bfc9ca;">
+                    <h4 style="color: #2c3e50; margin-top: 0;">ნავთობის ქიმია</h4>
+                    <ul style="font-size: 0.9rem; padding-left: 18px;">
+                        <li>საქართველოს ენერგეტიკული წიაღისეულის შესწავლა და პასპორტიზაცია.</li>
+                        <li>ნავთობისა და ბიტუმების რანჟირება.</li>
+                        <li>ნავთობ პროდუქტების მიღების ტექნოლოგიები.</li>
+                        <li>ბიოდიზელის წარმოების გაუმჯობესება.</li>
+                    </ul>
+                </div>
 
-</div>
+            </div>
 
-<!-- FOOTER -->
-<div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #95a5a6; font-size: 0.85rem;">
-    <p>Official Overview - Petre Melikishvili Institute of Physical and Organic Chemistry</p>
-</div>
-</div> `
+            <!-- FOOTER -->
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #95a5a6; font-size: 0.85rem;">
+                <p>ოფიციალური მიმოხილვა - პეტრე მელიქიშვილის სახელობის ფიზიკური და ორგანული ქიმიის ინსტიტუტი</p>
+            </div>
+        </div>`
     },
   "Institute Statute": {
     pdf: "pdfs/statute.pdf",
@@ -495,8 +496,7 @@ const instituteData = {
             </div>
         </div>`
 },
-   "Decree": {
-    pdf: "pdfs/statute.pdf", 
+   "Decree": { 
     content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="background-color: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 6px solid #2c3e50;">
@@ -512,8 +512,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"Preamble": {
-    pdf: "pdfs/statute.pdf", 
+"Preamble": { 
     content: `
         <div style="line-height: 1.8; font-family: 'Helvetica Neue', Arial, sans-serif;">
             <h2 style="color: #1a2a6c; border-bottom: 2px solid #1a2a6c; display: inline-block; padding-bottom: 5px;">Preamble</h2>
@@ -524,8 +523,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"General Provisions": {
-    pdf: "pdfs/statute.pdf", 
+"1 General Provisions": { 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase; letter-spacing: 1px;">Article 1. General Provisions</h3>
@@ -537,8 +535,7 @@ const instituteData = {
             </ol>
         </div>`
 },
-"Goals and Activity": {
-    pdf: "pdfs/statute.pdf", 
+"2 Goals and Activity": { 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 2. Goals, Functions, and Subject of Activity</h3>
@@ -554,8 +551,7 @@ const instituteData = {
             </ul>
         </div>`
 },
-"Structure": {
-    pdf: "pdfs/statute.pdf", 
+"3 Structure": { 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 3. Structure of the Institute</h3>
@@ -581,8 +577,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"Scientific Council": {
-    pdf: "pdfs/statute.pdf", 
+"4 Scientific Council": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 4. Scientific Council of the Institute</h3>
@@ -601,8 +596,7 @@ const instituteData = {
             <p style="margin-top: 15px;"><em>Decision Making:</em> Meetings occur at least <strong>once every 2 months</strong>. Decisions require a majority vote with more than half of the members present.</p>
         </div>`
 },
-"Chairman": {
-    pdf: "pdfs/statute.pdf", 
+"5 Chairman": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 5. Chairman of the Scientific Council</h3>
@@ -618,8 +612,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"Director": {
-    pdf: "pdfs/statute.pdf", 
+"6 Director": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 6. Director of the Institute</h3>
@@ -637,8 +630,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"Head of Unit": {
-    pdf: "pdfs/statute.pdf", 
+"7 Head of Unit": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 7. Head of Structural Units</h3>
@@ -649,8 +641,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"Personnel": {
-    pdf: "pdfs/statute.pdf", 
+"8 Personnel": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 8. Personnel of the Institute</h3>
@@ -675,8 +666,7 @@ const instituteData = {
             </table>
         </div>`
 },
-"Rights and Duties": {
-    pdf: "pdfs/statute.pdf", 
+"9 Rights and Duties": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 9. Rights and Duties of Scientific Personnel</h3>
@@ -702,8 +692,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"Occupational Rules": {
-    pdf: "pdfs/statute.pdf", 
+"10 Occupational Rules": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 10. Rules for Occupying a Scientific Position</h3>
@@ -716,8 +705,7 @@ const instituteData = {
             <p style="background: #eee; padding: 10px; font-size: 0.9rem;"><em>Attestation:</em> Chief researchers with terms > 5 years are subject to evaluation every 5 years.</p>
         </div>`
 },
-"Property": {
-    pdf: "pdfs/statute.pdf", 
+"11 Property": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 11. Property and Finance</h3>
@@ -732,8 +720,7 @@ const instituteData = {
             <p style="margin-top: 15px;"><em>Note:</em> Funds are reinvested into research potential and personnel remuneration.</p>
         </div>`
 },
-"Liquidation": {
-    pdf: "pdfs/statute.pdf", 
+"12 Liquidation": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 12. Liquidation of the Institute</h3>
@@ -744,8 +731,7 @@ const instituteData = {
             </ul>
         </div>`
 },
-"Final Provisions": {
-    pdf: "pdfs/statute.pdf", 
+"13 Final Provisions": { 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 13. Final Provisions</h3>
