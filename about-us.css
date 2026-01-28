@@ -290,8 +290,8 @@ body {
     text-decoration: none;
     font-size: 0.8rem;
     font-weight: 700;
-    color: #d50e0e; 
-    border: 1px solid #d50e0e;
+    color: #094EA9; 
+    border: 1px solid #094EA9;
     padding: 6px 12px; /* Adjusted padding to match Close button height */
     border-radius: 4px;
     transition: 0.3s;
@@ -326,12 +326,30 @@ body {
 }
 
 #panel-title {
-    color: #094EA9;
-    margin-top:10px; /* Give room for the buttons above */
-    font-size: 1.8rem;
-    border-bottom: 2px solid #094EA9;
-    padding-bottom: 15px;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(135deg, #094EA9 0%, #063a7e 100%);
+    margin: 20px -40px 15px -40px; /* Pulls title to the edges of the panel */
+    padding: 25px 20px;
+    font-size: 1.6rem;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: inset 0px -5px 15px rgba(0,0,0,0.2), 0px 4px 10px rgba(0,0,0,0.1);
+    border-top: 3px solid #555555; /* Red accent to match hex borders */
+    border-bottom: 3px solid #555555;
+    position: relative;
+}
+
+
+#panel-title::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.1;
+    background-image: radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 10px 10px;
+    pointer-events: none;
 }
 
 /* Force all text inside the scroll area to be dark grey/black */
@@ -376,9 +394,7 @@ body {
 
 /* Minor adjustments when the screen is between small desktop and large monitor */
 @media (max-width: 1400px) {
-    .content {
-        /* font-size: 0.8rem;  */
-        /* Make text slightly more readable on smaller "zoomed" view */
+    .content { 
     }
     .content i {
         font-size: 2.2rem; /* Slightly larger icons */

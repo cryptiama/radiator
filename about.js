@@ -470,7 +470,7 @@ const instituteData = {
             </div>
         </div>`
 },
-"1 General Provisions": {
+"General Provisions": {
     pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
@@ -483,7 +483,7 @@ const instituteData = {
             </ol>
         </div>`
 },
-"2 Goals and Activity": {
+"Goals and Activity": {
     pdf: "pdfs/statute.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
