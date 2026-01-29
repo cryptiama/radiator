@@ -10,7 +10,7 @@
 import { sceneData } from './xspline-data.js'; 
 
 // 2. We create a fake variable so the rest of the script doesn't crash.
-const sceneData = null; 
+// const sceneData = null; 
 //    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    /* =========================================
       1. UI LOGIC (Menus & Buttons)

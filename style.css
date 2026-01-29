@@ -107,154 +107,217 @@
 }
 
 
+/* --- CUSTOM HANDWRITTEN FONT --- */
+@font-face {
+    font-family: 'EkaHandwritten';
+    src: url('fonts/eka.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 /* =========================================
-   UPDATES SECTION
+   FORCED FULL-WIDTH TORN EDGE
    ========================================= */
-.updates-section {
-    padding: 100px 0;
-    background-color: transparent;
+
+.paper-theme-wrapper {
+    margin-top: -70px; /* Pull the whole paper section up */
     position: relative;
-    z-index: 4; /* Ensures it's above hero but doesn't clash with stats */
+    z-index: 10;
+    width: 100%; /* The wrapper stays 100% */
+    background-image: url('images/home/paper.png');
+    background-size: cover;
 }
 
-.updates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.update-card {
-    background: #fff;
-    border: 1px solid #eef0f2;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    display: flex;
-    flex-direction: column;
-}
-
-.update-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 47, 108, 0.1);
-    border-color: var(--accent-cyan);
-}
-
-/* Image & Badge logic */
-.update-image {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-}
-
-.update-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.update-badge {
+.paper-edge-top {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #fff;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    /* Adjust top to -100px if you increase height, 
+       to make sure the jagged edge hits the right spot */
+    top: -55px; 
+    left: 50%;
+    
+    /* Centering + Rotation */
+    transform: translateX(-50%) rotate(180deg);
+    
+    /* Stays full screen */
+    width: 100vw; 
+
+    /* --- ZOOM CONTROLLER (PART 1: HEIGHT) --- */
+    /* Increase this if you want the "tear" to be deeper/taller vertically */
+    height: 120px; 
+
+    background-image: url('images/home/paper.png');
+    background-size: cover;
+    background-position: center top;
+
+    -webkit-mask-image: url('images/home/tornpaper.svg');
+    mask-image: url('images/home/tornpaper.svg');
+
+    /* --- ZOOM CONTROLLER (PART 2: WIDTH) --- */
+    /* Change 1200px to 800px to zoom out, or 1800px to zoom in more.
+       The '100%' keeps the height of the SVG filling the 120px container. */
+    -webkit-mask-size: 1500px 100%;
+    mask-size: 1000px 100%;
+
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    
+    /* Keep the mask aligned to the bottom so rotation looks correct */
+    -webkit-mask-position: center bottom;
+    mask-position: center bottom;
+
+    /* Shadow for depth */
+    filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.25));
+    z-index: 100;
+    pointer-events: none;
 }
 
-/* Color Coding for Categories */
-.category-career .update-badge { background: #f39c12; }       /* Orange for Jobs */
-.category-announcement .update-badge { background: #3498db; } /* Blue for Info */
-.category-news .update-badge { background: #27ae60; }         /* Green for News */
+/* Ensure the Hero section doesn't hide the overlapping paper */
+.hero-section {
+    overflow: visible; 
+}
 
-.update-body {
-    padding: 25px;
-    flex-grow: 1;
+
+
+
+/* =========================================
+   MANUSCRIPT & PHOTO ATTACHMENT
+   ========================================= */
+
+.paper-theme-wrapper {
+    background-image: url('images/home/paper.png');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: repeat-y;
+    position: relative;
+    width: 100%;
+    z-index: 3;
+    padding: 60px 0; /* Reduced top padding since photo is now part of the flow */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack Photo then Text */
+    align-items: center;    /* Center everything horizontally */
+    overflow: visible; 
 }
 
-.update-date {
-    font-size: 0.85rem;
-    color: #888;
-    margin-bottom: 10px;
+/* THE PHOTO CONTAINER - Now Flowing Naturally */
+.photo-attachment {
+    position: relative;      /* Acts as the anchor for the clip */
+    margin-bottom: 50px;     /* Space between photo and text */
+    margin-top: 70px;
+    width: 90%;              /* Responsive width */
+    max-width: 500px;        /* Limits size on desktop */
+    z-index: 10;         
+    transform: rotate(-2deg); 
+    margin-left: 50px;
+}
+
+/* THE PHOTO FRAME */
+.photo-frame {
+    background: #ffffff;
+    padding: 10px;           /* White border */
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 
+        2px 10px 25px rgba(0,0,0,0.1), 
+        0 4px 8px rgba(0,0,0,0.05);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: auto;
     display: block;
 }
 
-.update-title {
-    font-size: 1.25rem;
-    color: var(--primary-blue);
-    margin-bottom: 15px;
+/* THE PAPER CLIP - Bolted to the Top-Right */
+.paper-clip {
+    position: absolute;
+    width: 70px;         
+    height: auto;
+    
+    /* POSITIONING RELATIVE TO TOP-RIGHT OF PHOTO */
+    top: -55px;          /* Moves it up to overlap the edge */
+    right: 30px;         /* Distance from the right edge */
+    
+    z-index: 11;         /* Above the photo */
+    mix-blend-mode: multiply; 
+    filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.15));
+    pointer-events: none; /* User can't accidentally drag just the clip */
+}
+
+/* MANUSCRIPT TEXT STYLING */
+.manuscript-section {
+    width: 100%;
+}
+/* reade more style */
+.readmore {
+  text-align: right;   /* aligns text to the right */
+  color: #af0000;
+}
+
+
+ @font-face {
+    font-family: 'Zaza';
+    src: url('fonts/zaza.ttf') format('truetype');
+  }
+
+  .readmore {
+    font-family: 'Zaza', sans-serif;
+    font-size: 2.5rem;
+    
+  }
+
+ .readmore a:hover {
+  color: #d70000; /* Change color */ 
+ 
+}
+
+.manuscript-body {
+    font-family: 'EkaHandwritten', cursive, sans-serif;
+    font-size: 2.1rem; 
+    color: #1a2533;
     line-height: 1.4;
-    font-weight: 700;
+    max-width: 850px;
+    margin: 0 auto;      /* Center the text block */
+    text-align: left;    /* Keep the writing aligned left like a letter */
+    padding: 0 20px;
 }
 
-.update-excerpt {
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
+.manuscript-body p {
+    margin-bottom: 30px;
+    text-indent: 30px;
 }
 
-/* File Download Styles */
-.update-files {
-    margin-top: auto;
-    padding-top: 15px;
-    border-top: 1px dashed #eee;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .manuscript-body {
+        font-size: 1.6rem;
+        line-height: 1.3;
+    }
+    .paper-clip {
+        width: 50px;
+        top: -15px;
+        right: 20px;
+    }
 }
-
-.file-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--primary-blue);
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.file-link i {
-    color: #e74c3c; /* PDF Red */
-    font-size: 1.1rem;
-}
-
-.file-link:hover {
-    color: var(--accent-cyan);
-}
-
-/* Archive Button */
-.btn-outline {
-    padding: 12px 30px;
-    border: 2px solid var(--primary-blue);
-    color: var(--primary-blue);
-    border-radius: 30px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.btn-outline:hover {
-    background: var(--primary-blue);
-    color: #fff;
-}
-
 /* Fix for the stats section overlap */
 .stats-section {
     margin-top: 0 !important; /* Remove the negative margin if using the News section */
 }
 
 
+
+/* paper text */
+
+.headline {
+  text-align: center;    
+  font-size: 2.5rem;      
+}
+
+
 /* =========================================
    PAPER BACKGROUND WRAPPER
    ========================================= */
+
+
 .paper-theme-wrapper {
     background-image: url('images/home/paper.png');
     background-size: cover;
@@ -266,22 +329,9 @@
     z-index: 3;
 }
 
-.paper-theme-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
-    pointer-events: none;
-}
 
 
-/* IMPORTANT: Ensure the contents don't have solid backgrounds */
-.paper-theme-wrapper .updates-section {
-    background-color: transparent !important;
-}
+ 
 
 /* =========================================
    3. STATS STRIP
