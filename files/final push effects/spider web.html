@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecule Background Test</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffffff; /* Pure White Background */
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* Just a label to show you where content would go */
+        .content-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: sans-serif;
+            color: #002b5c;
+            text-align: center;
+            pointer-events: none; /* Lets mouse interact with canvas behind text */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-placeholder">
+        <h1>Chemistry Background</h1>
+        <p>Move your mouse around</p>
+    </div>
+
+    <canvas id="moleculeCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('moleculeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particlesArray;
+
+        // Configuration
+        const numberOfParticles = 90; // How many 'atoms'
+        const connectionDistance = 140; // How close they need to be to connect
+        const moveSpeed = 0.4; // How fast they float (Lower is slower)
+        const particleColor = 'rgba(0, 43, 92, 0.8)'; // Dark Blue
+        const lineColor = 'rgba(0, 168, 204,'; // Cyan lines (opacity added dynamically)
+
+        // Resize handling
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            createParticles();
+        }
+
+        // Particle Class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                // Random direction and speed
+                this.directionX = (Math.random() * moveSpeed) - (moveSpeed / 2);
+                this.directionY = (Math.random() * moveSpeed) - (moveSpeed / 2);
+                this.size = (Math.random() * 3) + 1; // Random size dots
+            }
+
+            // Update position
+            update() {
+                // Check if particle hits the edge of the screen
+                if (this.x > width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+
+                // Move particle
+                this.x += this.directionX;
+                this.y += this.directionY;
+
+                // Draw particle
+                this.draw();
+            }
+
+            // Draw single dot
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = particleColor;
+                ctx.fill();
+            }
+        }
+
+        // Create particle array
+        function createParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        // Connect particles with lines
+        function connect() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                                 + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                    
+                    // If particles are close enough, draw a line
+                    if (distance < (connectionDistance * connectionDistance)) {
+                        let opacityValue = 1 - (distance / (connectionDistance * connectionDistance));
+                        ctx.strokeStyle = lineColor + opacityValue + ')';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Mouse Interaction (Optional - adds 'cool' factor)
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connect();
+            connectMouse();
+        }
+
+        // Connect particles to mouse
+        function connectMouse() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                let distance = ((particlesArray[a].x - mouse.x) * (particlesArray[a].x - mouse.x))
+                             + ((particlesArray[a].y - mouse.y) * (particlesArray[a].y - mouse.y));
+                
+                if (distance < (mouse.radius * mouse.radius)) {
+                    let opacityValue = 1 - (distance / (mouse.radius * mouse.radius));
+                    ctx.strokeStyle = lineColor + opacityValue + ')';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            init();
+        });
+
+        // Start
+        init();
+        animate();
+
+    </script>
+</body>
+</html>

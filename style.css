@@ -2,598 +2,772 @@
    1. HERO SECTION
    ========================================= */
 .hero-section {
-    height: 100vh;
-    background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    padding-top: 15vh;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-    overflow: hidden; 
-    caret-color: transparent !important;
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 15vh;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  overflow: hidden;
+  caret-color: transparent !important;
 }
 
 .hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(0, 47, 108, 0.7), rgba(0, 47, 108, 0.4));
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 47, 108, 0.7), rgba(0, 47, 108, 0.4));
+  z-index: 1;
 }
 
 .hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 1080px;
-    padding: 0 20px;
-    pointer-events: none;
-    caret-color: transparent !important;
+  position: relative;
+  z-index: 3;
+  max-width: 1080px;
+  padding: 0 20px;
+  pointer-events: none;
+  caret-color: transparent !important;
 }
 
 .hero-subtitle {
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    background: rgba(255,255,255,0.1);
-    padding: 5px 15px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 20px;
-    border: none !important;
-    animation: none !important;
-    box-shadow: none !important;
-    caret-color: transparent !important;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+  border: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+  caret-color: transparent !important;
 }
 
-.hero-subtitle::after, .hero-subtitle::before {
-    content: none !important; display: none !important; animation: none !important;
+.hero-subtitle::after,
+.hero-subtitle::before {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
 }
 
 /* Matches your <h1 class="Nulshock"> HTML */
 .Nulshock {
-    font-family: 'Nulshock', sans-serif !important;
-    font-size: 3.5rem;
-    line-height: 1.2;
-    letter-spacing: 6px;
-    margin-bottom: 30px;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  font-family: "Nulshock", sans-serif !important;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  margin-bottom: 30px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .btn {
-    padding: 12px 35px;
-    border-radius: 30px;
-    font-weight: 600;
-    display: inline-block;
-    margin: 10px;
-    pointer-events: auto;
+  padding: 12px 35px;
+  border-radius: 30px;
+  font-weight: 600;
+  display: inline-block;
+  margin: 10px;
+  pointer-events: auto;
 }
 
-.btn-secondary { 
-    background-color: var(--primary-blue); 
-    color: white; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+.btn-secondary {
+  background-color: var(--primary-blue);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .btn-secondary:hover {
-    background-color: var(--accent-cyan);
-    transform: translateY(-3px);
+  background-color: var(--accent-cyan);
+  transform: translateY(-3px);
 }
 
 /* =========================================
    2. SPLINE 3D
    ========================================= */
 #spline-container {
-    position: absolute;
-    z-index: 2;
-    top: 65%;           
-    left: 50%;          
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    filter: sepia(100%) hue-rotate(190deg) saturate(500%); 
-    transition: filter 2s ease;
-    outline: none !important;
+  position: absolute;
+  z-index: 2;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  filter: sepia(100%) hue-rotate(190deg) saturate(500%);
+  transition: filter 2s ease;
+  outline: none !important;
 }
-#spline-container:hover { filter: none; z-index: 4; }
+#spline-container:hover {
+  filter: none;
+  z-index: 4;
+}
 
 #canvas3d {
-    width: 100%; height: 100%;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    outline: none !important;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  outline: none !important;
 }
-
 
 /* --- CUSTOM HANDWRITTEN FONT --- */
 @font-face {
-    font-family: 'EkaHandwritten';
-    src: url('fonts/eka.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "EkaHandwritten";
+  src: url("fonts/eka.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-
 
 /* =========================================
    FORCED FULL-WIDTH TORN EDGE
    ========================================= */
-
-.paper-theme-wrapper {
-    margin-top: -70px; /* Pull the whole paper section up */
-    position: relative;
-    z-index: 10;
-    width: 100%; /* The wrapper stays 100% */
-    background-image: url('images/home/paper.png');
-    background-size: cover;
-}
-
+ 
 .paper-edge-top {
-    position: absolute;
-    /* Adjust top to -100px if you increase height, 
+  position: absolute;
+  /* Adjust top to -100px if you increase height, 
        to make sure the jagged edge hits the right spot */
-    top: -55px; 
-    left: 50%;
-    
-    /* Centering + Rotation */
-    transform: translateX(-50%) rotate(180deg);
-    
-    /* Stays full screen */
-    width: 100vw; 
+  top: -55px;
+  left: 50%;
 
-    /* --- ZOOM CONTROLLER (PART 1: HEIGHT) --- */
-    /* Increase this if you want the "tear" to be deeper/taller vertically */
-    height: 120px; 
+  /* Centering + Rotation */
+  transform: translateX(-50%) rotate(180deg);
 
-    background-image: url('images/home/paper.png');
-    background-size: cover;
-    background-position: center top;
+  /* Stays full screen */
+  width: 100vw;
 
-    -webkit-mask-image: url('images/home/tornpaper.svg');
-    mask-image: url('images/home/tornpaper.svg');
+  /* --- ZOOM CONTROLLER (PART 1: HEIGHT) --- */
+  /* Increase this if you want the "tear" to be deeper/taller vertically */
+  height: 120px;
 
-    /* --- ZOOM CONTROLLER (PART 2: WIDTH) --- */
-    /* Change 1200px to 800px to zoom out, or 1800px to zoom in more.
+  background-image: url("images/home/paper.png");
+  background-size: cover;
+  background-position: center top;
+
+  -webkit-mask-image: url("images/home/tornpaper.svg");
+  mask-image: url("images/home/tornpaper.svg");
+
+  /* --- ZOOM CONTROLLER (PART 2: WIDTH) --- */
+  /* Change 1200px to 800px to zoom out, or 1800px to zoom in more.
        The '100%' keeps the height of the SVG filling the 120px container. */
-    -webkit-mask-size: 1500px 100%;
-    mask-size: 1000px 100%;
+  -webkit-mask-size: 1500px 100%;
+  mask-size: 1000px 100%;
 
-    -webkit-mask-repeat: repeat-x;
-    mask-repeat: repeat-x;
-    
-    /* Keep the mask aligned to the bottom so rotation looks correct */
-    -webkit-mask-position: center bottom;
-    mask-position: center bottom;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
 
-    /* Shadow for depth */
-    filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.25));
-    z-index: 100;
-    pointer-events: none;
+  /* Keep the mask aligned to the bottom so rotation looks correct */
+  -webkit-mask-position: center bottom;
+  mask-position: center bottom;
+
+  /* Shadow for depth */
+  filter: drop-shadow(0px 8px 6px rgba(0, 0, 0, 0.25));
+  z-index: 100;
+  pointer-events: none;
 }
+.paper-edge-bottom {
+  position: absolute !important;
+  left: 50% !important;
 
-/* Ensure the Hero section doesn't hide the overlapping paper */
-.hero-section {
-    overflow: visible; 
+  /* 1. FORCE THE OVERLAP */
+  top: 100% !important; /* Start exactly at the end of the paper */
+  margin-top: -55px !important; /* Pull it UP 30px into the paper to seal the gap */
+  bottom: auto !important; /* Kill the old -99px rule */
+
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  height: 120px !important;
+
+  background-image: url("images/home/paper.png") !important;
+  background-size: cover;
+  background-position: center bottom;
+
+  /* 2. FIX THE MASK ALIGNMENT */
+  -webkit-mask-image: url("images/home/tornpaper.svg") !important;
+  mask-image: url("images/home/tornpaper.svg") !important;
+  -webkit-mask-size: 1000px 100% !important;
+  mask-size: 1000px 100% !important;
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x !important;
+
+  /* Ensure the "solid" part of the mask is at the top to blend with paper above */
+  -webkit-mask-position: center top !important;
+  mask-position: center top !important;
+
+  filter: drop-shadow(0px 8px 10px rgba(0, 0, 0, 0.3));
+  z-index: 101 !important;
+  pointer-events: none;
 }
-
-
-
-
+ 
 /* =========================================
    MANUSCRIPT & PHOTO ATTACHMENT
    ========================================= */
 
 .paper-theme-wrapper {
-    background-image: url('images/home/paper.png');
-    background-size: cover;
-    background-position: center; 
-    background-repeat: repeat-y;
-    position: relative;
-    width: 100%;
-    z-index: 3;
-    padding: 60px 0; /* Reduced top padding since photo is now part of the flow */
-    display: flex;
-    flex-direction: column; /* Stack Photo then Text */
-    align-items: center;    /* Center everything horizontally */
-    overflow: visible; 
+  background-image: url("images/home/paper.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  position: relative;
+  width: 100%;
+  z-index: 20;
+  padding: 60px 0; /* Reduced top padding since photo is now part of the flow */
+  display: flex;
+  flex-direction: column; /* Stack Photo then Text */
+  align-items: center; /* Center everything horizontally */
+  overflow: visible;
+  padding-bottom: 90px !important;
+  margin-bottom: 0px !important;
 }
 
 /* THE PHOTO CONTAINER - Now Flowing Naturally */
 .photo-attachment {
-    position: relative;      /* Acts as the anchor for the clip */
-    margin-bottom: 50px;     /* Space between photo and text */
-    margin-top: 70px;
-    width: 90%;              /* Responsive width */
-    max-width: 500px;        /* Limits size on desktop */
-    z-index: 10;         
-    transform: rotate(-2deg); 
-    margin-left: 50px;
+  position: relative; /* Acts as the anchor for the clip */
+  margin-bottom: 50px; /* Space between photo and text */
+  margin-top: 70px;
+  width: 90%; /* Responsive width */
+  max-width: 500px; /* Limits size on desktop */
+  z-index: 10;
+  transform: rotate(-2deg);
+  margin-left: 50px;
 }
 
 /* THE PHOTO FRAME */
 .photo-frame {
-    background: #ffffff;
-    padding: 10px;           /* White border */
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 
-        2px 10px 25px rgba(0,0,0,0.1), 
-        0 4px 8px rgba(0,0,0,0.05);
+  background: #ffffff;
+  padding: 10px; /* White border */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow:
+    2px 10px 25px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .photo-frame img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* THE PAPER CLIP - Bolted to the Top-Right */
 .paper-clip {
-    position: absolute;
-    width: 70px;         
-    height: auto;
-    
-    /* POSITIONING RELATIVE TO TOP-RIGHT OF PHOTO */
-    top: -55px;          /* Moves it up to overlap the edge */
-    right: 30px;         /* Distance from the right edge */
-    
-    z-index: 11;         /* Above the photo */
-    mix-blend-mode: multiply; 
-    filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.15));
-    pointer-events: none; /* User can't accidentally drag just the clip */
+  position: absolute;
+  width: 70px;
+  height: auto;
+
+  /* POSITIONING RELATIVE TO TOP-RIGHT OF PHOTO */
+  top: -55px; /* Moves it up to overlap the edge */
+  right: 30px; /* Distance from the right edge */
+
+  z-index: 11; /* Above the photo */
+  mix-blend-mode: multiply;
+  filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.15));
+  pointer-events: none; /* User can't accidentally drag just the clip */
 }
 
 /* MANUSCRIPT TEXT STYLING */
 .manuscript-section {
-    width: 100%;
+  width: 100%;
 }
-/* reade more style */
-.readmore {
-  text-align: right;   /* aligns text to the right */
-  color: #af0000;
-}
-
-
- @font-face {
-    font-family: 'Zaza';
-    src: url('fonts/zaza.ttf') format('truetype');
-  }
-
-  .readmore {
-    font-family: 'Zaza', sans-serif;
-    font-size: 2.5rem;
-    
-  }
-
- .readmore a:hover {
-  color: #d70000; /* Change color */ 
  
+
+@font-face {
+  font-family: "Zaza";
+  src: url("fonts/zaza.ttf") format("truetype");
+}
+
+.readmore {
+  font-family: "Zaza", sans-serif;
+  font-size: 2.5rem;
+  text-align: right; /* aligns text to the right */
+  color: #af0000;
+  margin-bottom: 260px; 
+}
+
+.readmore a:hover {
+  color: #d70000; /* Change color */
 }
 
 .manuscript-body {
-    font-family: 'EkaHandwritten', cursive, sans-serif;
-    font-size: 2.1rem; 
-    color: #1a2533;
-    line-height: 1.4;
-    max-width: 850px;
-    margin: 0 auto;      /* Center the text block */
-    text-align: left;    /* Keep the writing aligned left like a letter */
-    padding: 0 20px;
+  font-family: "EkaHandwritten", cursive, sans-serif;
+  font-size: 2.1rem;
+  color: #1a2533;
+  line-height: 1.4;
+  max-width: 850px;
+  margin: 0 auto; /* Center the text block */
+  text-align: left; /* Keep the writing aligned left like a letter */
+  padding: 0 20px;
 }
 
 .manuscript-body p {
-    margin-bottom: 30px;
-    text-indent: 30px;
+  margin-bottom: 30px;
+  text-indent: 30px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .manuscript-body {
-        font-size: 1.6rem;
-        line-height: 1.3;
-    }
-    .paper-clip {
-        width: 50px;
-        top: -15px;
-        right: 20px;
-    }
+
+/* Container for the floating elements */
+.manuscript-section {
+    position: relative; /* Ensure images stay inside this section */
+    overflow: hidden;   /* Prevent images from creating scrollbars */
 }
+
+/* Base style for the floating images */
+.ambient-formula {
+    position: absolute;
+    pointer-events: none; /* User can click through them to select text */
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+    z-index: 5; 
+    max-width: 100px;
+    max-height: 100px; 
+    filter: brightness(0) opacity(1.75);
+}
+
+.ambient-formula.fade-in {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
 /* Fix for the stats section overlap */
 .stats-section {
-    margin-top: 0 !important; /* Remove the negative margin if using the News section */
+  margin-top: 0 !important; /* Remove the negative margin if using the News section */
 }
-
-
 
 /* paper text */
 
 .headline {
-  text-align: center;    
-  font-size: 2.5rem;      
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 150px;
 }
 
-
-/* =========================================
-   PAPER BACKGROUND WRAPPER
-   ========================================= */
-
-
-.paper-theme-wrapper {
-    background-image: url('images/home/paper.png');
-    background-size: cover;
-    background-position: center; 
-    background-repeat: repeat-y;
-     background-attachment: scroll; 
-    position: relative;
-    width: 100%;
-    z-index: 3;
-}
-
-
-
+ 
  
 
 /* =========================================
    3. STATS STRIP
    ========================================= */
 .stats-section {
-    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
-    color: var(--white);
-    padding: 60px 0;
-    position: relative;
-    z-index: 5;  
-    margin-top: 0;  
+  background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+  color: var(--white);
+  padding: 60px 0;
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
 }
 
 .stats-grid {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 /* =========================================
    3. STATS STRIP - UPDATED ICONS
    ========================================= */
-.stat-item i { 
-    font-size: 3.2rem; 
-    margin-bottom: 15px; 
-    
-    /* Create the transitional gray gradient */
-    background: linear-gradient(to bottom, #e0e0e0 0%, #7a7a7a 100%);
-    
-    /* Clip the background to the shape of the icon */
-    -webkit-background-clip: text;
-    background-clip: text;
-    
-    /* Make the actual icon color transparent so the gradient shows through */
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    
-    display: inline-block; /* Ensures the gradient applies correctly */
+.stat-item i {
+  font-size: 3.2rem;
+  margin-bottom: 15px;
+
+  /* Create the transitional gray gradient */
+  background: linear-gradient(to bottom, #e0e0e0 0%, #7a7a7a 100%);
+
+  /* Clip the background to the shape of the icon */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Make the actual icon color transparent so the gradient shows through */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  display: inline-block; /* Ensures the gradient applies correctly */
 }
 
-.stat-item h3 { font-size: 2.8rem; font-weight: 700; margin-bottom: 5px; 
-    color: #7a7a7a;
+.stat-item h3 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #7a7a7a;
 }
-.stat-item p { font-size: 1.3rem; opacity: 0.8; 
-color: #bababa;
-
+.stat-item p {
+  font-size: 1.3rem;
+  opacity: 0.8;
+  color: #bababa;
 }
 
 /* =========================================
    4. CONTENT (ABOUT & LABS)
    ========================================= */
-.about-section, .labs-section { padding: 80px 0; }
+.about-section,
+.labs-section {
+  padding: 80px 0;
+}
 
-.text-center { text-align: center; margin-bottom: 50px; }
+.text-center {
+  text-align: center;
+  margin-bottom: 50px;
+}
 .section-title {
-    font-size: 2.5rem;
-    color: var(--primary-blue);
-    margin-bottom: 15px;
-    font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--primary-blue);
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .split-layout {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
 }
-.about-text { flex: 1 1 300px; }
-.about-image { flex: 1 1 300px; }
+.about-text {
+  flex: 1 1 300px;
+}
+.about-image {
+  flex: 1 1 300px;
+}
 
 .about-image img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 20px 20px 0px var(--bg-light); 
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 20px 20px 0px var(--bg-light);
 }
 
-.check-list li { margin-bottom: 15px; font-size: 1.05rem; }
-.check-list i { color: var(--accent-cyan); margin-right: 12px; }
+.check-list li {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+}
+.check-list i {
+  color: var(--accent-cyan);
+  margin-right: 12px;
+}
 
 /* Labs Grid */
-.labs-section { background-color: var(--bg-light); }
+.labs-section {
+  background-color: var(--bg-light);
+}
 .labs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
 }
 
 .lab-card {
-    background: var(--white);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-    transition: transform 0.3s ease;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
 }
-.lab-card:hover { transform: translateY(-10px); }
+.lab-card:hover {
+  transform: translateY(-10px);
+}
 
-.card-image { height: 220px; overflow: hidden; }
-.card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.lab-card:hover .card-image img { transform: scale(1.1); }
+.card-image {
+  height: 220px;
+  overflow: hidden;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+.lab-card:hover .card-image img {
+  transform: scale(1.1);
+}
 
-.card-content { padding: 30px; }
-.card-content h3 { color: var(--primary-blue); margin-bottom: 12px; font-size: 1.3rem;}
-.card-content p { color: var(--light-text); margin-bottom: 25px; font-size: 0.95rem; }
-.card-link { color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;}
-.card-link:hover { margin-left: 8px; }
+.card-content {
+  padding: 30px;
+}
+.card-content h3 {
+  color: var(--primary-blue);
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+.card-content p {
+  color: var(--light-text);
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+.card-link {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+.card-link:hover {
+  margin-left: 8px;
+}
 
 /* =========================================
    5. PARTNERS SECTION
    ========================================= */
 .partners-section {
-    background-color: #dcdde0;
-    padding: 80px 0;
-    width: 100%;
-    border-top: 1px solid rgba(0,0,0,0.05);
+  background-color: #dcdde0;
+  padding: 80px 0;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 .partners-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
 }
 .partner-box {
-    flex: 1 1 340px; 
-    display: flex;
-    align-items: center; 
-    gap: 20px;
-    padding: 15px;
-    max-width: 450px; 
-    text-decoration: none; 
-    border-radius: 8px; 
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    position: relative; 
-    overflow: hidden;   
+  flex: 1 1 340px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  max-width: 450px;
+  text-decoration: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
-.partner-box:hover { transform: translateY(-3px); background-color: rgba(255, 255, 255, 0.6); }
+.partner-box:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.6);
+}
 
 /* Shimmer */
 .partner-box::before {
-    content: '';
-    position: absolute; top: 0; left: 125%; width: 100%; height: 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
-    transform: skewX(-25deg);
-    z-index: 10; 
-    pointer-events: none; 
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 125%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 10;
+  pointer-events: none;
 }
-.partner-box:hover::before { animation: shimmer-right-to-left 1.15s; }
-@keyframes shimmer-right-to-left { 0% { left: 125%; } 100% { left: -125%; } }
+.partner-box:hover::before {
+  animation: shimmer-right-to-left 1.15s;
+}
+@keyframes shimmer-right-to-left {
+  0% {
+    left: 125%;
+  }
+  100% {
+    left: -125%;
+  }
+}
 
 .logo-wrap {
-    flex: 0 0 110px; height: 90px;       
-    display: flex; justify-content: center; align-items: center;
-    position: relative; z-index: 5; 
+  flex: 0 0 110px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
 }
-.logo-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.text-wrap { flex: 1; position: relative; z-index: 5; }
+.logo-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.text-wrap {
+  flex: 1;
+  position: relative;
+  z-index: 5;
+}
 .partner-text {
-    display: block; font-size: 0.85rem; color: #444444;      
-    font-weight: 700; font-family: 'Inter', sans-serif; line-height: 1.3; text-align: left;
+  display: block;
+  font-size: 0.85rem;
+  color: #444444;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  line-height: 1.3;
+  text-align: left;
 }
 
 /* =========================================
    6. EQUIPMENT PAGE (STRIPS)
    ========================================= */
 .equipment-wrapper {
-    position: relative;
-    padding: 120px 0 80px 0;
-    min-height: 100vh;
-    overflow: hidden;
+  position: relative;
+  padding: 120px 0 80px 0;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .animated-bg {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
-    background: linear-gradient(-45deg, #021b3d, #002f6c, #0d3b66, #00152e);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(-45deg, #021b3d, #002f6c, #0d3b66, #00152e);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
 }
-@keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
-.relative-z { position: relative; z-index: 5; }
-.white-text { color: var(--white); }
-.page-header { margin-bottom: 50px; }
+.relative-z {
+  position: relative;
+  z-index: 5;
+}
+.white-text {
+  color: var(--white);
+}
+.page-header {
+  margin-bottom: 50px;
+}
 
-.equipment-list-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+.equipment-list-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 .equip-row {
-    background-color: rgba(255, 255, 255, 0.88); 
-    border-radius: 12px; 
-    padding: 15px 30px;
-    display: flex; justify-content: space-between; align-items: center;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.88);
+  border-radius: 12px;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
-.equip-row:hover { background-color: rgba(255, 255, 255, 1); transform: scale(1.01); }
-.equip-name { font-weight: 600; color: var(--dark-text); font-size: 1rem; }
-.equip-year { font-weight: 700; color: var(--primary-blue); font-size: 0.95rem; opacity: 0.8; }
+.equip-row:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.01);
+}
+.equip-name {
+  font-weight: 600;
+  color: var(--dark-text);
+  font-size: 1rem;
+}
+.equip-year {
+  font-weight: 700;
+  color: var(--primary-blue);
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
 
 @media (max-width: 600px) {
-    .equip-row { flex-direction: column; align-items: flex-start; gap: 5px; }
-    .equip-year { align-self: flex-end; font-size: 0.8rem; }
+  .equip-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .equip-year {
+    align-self: flex-end;
+    font-size: 0.8rem;
+  }
 }
 
 /* =========================================
    7. RESPONSIVE (CONTENT)
    ========================================= */
 @media (max-width: 992px) {
-    .Nulshock { font-size: 2.8rem; }
-    .container { padding: 0 30px; }
+  .Nulshock {
+    font-size: 2.8rem;
+  }
+  .container {
+    padding: 0 30px;
+  }
 }
 
 @media (max-width: 768px) {
-    /* Hero */
-    .hero-section { padding-top: 10vh; align-items: center; }
-    .hero-content { padding-top: 0; }
-    .Nulshock { font-size: 2.9rem; letter-spacing: 7px; }
-    
-    /* Layouts */
-    .split-layout { flex-direction: column; }
-    .stats-grid { flex-direction: column; gap: 40px; }
-    
-    /* Spline */
-    #spline-container { width: 300px; height: 300px; top: 70%; opacity: 0.5; }
+  /* Hero */
+  .hero-section {
+    padding-top: 10vh;
+    align-items: center;
+  }
+  .hero-content {
+    padding-top: 0;
+  }
+  .Nulshock {
+    font-size: 2.9rem;
+    letter-spacing: 7px;
+  }
+
+  /* Layouts */
+  .split-layout {
+    flex-direction: column;
+  }
+  .stats-grid {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* Spline */
+  #spline-container {
+    width: 300px;
+    height: 300px;
+    top: 70%;
+    opacity: 0.5;
+  }
 }
-
-
-
-
-
-
-
-
 
 /* 1. Make the wrapper a reference point for absolute positioning */
 .chemistry-animation-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    /* Move the gradient here so the canvas sits ON TOP of the blue, but BEHIND the text */
-    background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #144d80 0, #0a2740 100%);
+  z-index: 1;
+  margin-top: -2px; /* Pulls it up slightly to hide any gap */
 }
 
 /* 2. Fix the canvas positioning */
 #moleculeCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Sit above the background */
-    pointer-events: none; /* Let mouse clicks pass through to links if necessary */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Sit above the background */
+  pointer-events: none; /* Let mouse clicks pass through to links if necessary */
 }
 
 /* 3. Make sure the content sits above the animation */
 .stats-section {
-    position: relative;
-    z-index: 2; /* Sit above the canvas */
-    background: transparent !important; /* IMPORTANT: Remove the solid background */
-    color: var(--white);
-    padding: 60px 0;
-    margin-top: 0;
+  position: relative;
+  z-index: 2; /* Sit above the canvas */
+  background: transparent !important; /* IMPORTANT: Remove the solid background */
+  color: var(--white);
+  padding: 60px 0;
+  margin-top: 0;
 }
-
-
- 
-
