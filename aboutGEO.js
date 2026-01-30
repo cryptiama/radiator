@@ -5,18 +5,20 @@
    4. ABOUT US - HEXAGON SIDE PANEL LOGIC
    ========================================= */
 const instituteData = {
-    "Petre Melikishvili": {
+    "პეტრე მელიქიშვილი": {
         content: `
           <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; max-width: 900px; margin: auto; border: 1px solid #e1e4e8; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); background-color: #fff;">
             
     <!-- HEADER SECTION: BIOGRAPHY -->
-    <div style="text-align: center; border-bottom: 3px double #2c3e50; padding-bottom: 20px; margin-bottom: 30px;">
-        <h1 style="color: #1a2a6c; margin-bottom: 5px; font-size: 2rem; text-transform: uppercase; letter-spacing: 2px;">პეტრე მელიქიშვილი</h1>
+   
+
+    <!-- MAIN PROFILE BOX -->
+    <div style="background-color: #f4f7f9; padding: 15px; border-radius: 8px; border-left: 6px solid #1a2a6c; margin-bottom: 15px;">
+ <div style="text-align: center; padding-bottom: 10px; margin-bottom: 5px;">
+        <h4 style="color: #1a2a6c; margin-bottom: 5px; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">პეტრე მელიქიშვილი</h4>
         <p style="font-size: 1.3rem; color: #7f8c8d; font-weight: 300;">1850 — 1927</p>
     </div>
 
-    <!-- MAIN PROFILE BOX -->
-    <div style="background-color: #f4f7f9; padding: 25px; border-radius: 8px; border-left: 6px solid #1a2a6c; margin-bottom: 35px;">
         <p style="text-align: justify; font-size: 1.1rem; margin-top: 0;">
             მსოფლიო დონის მეცნიერი-ქიმიკოსი, <strong>თბილისის სახელმწიფო უნივერსიტეტის</strong> ერთ-ერთი დამფუძნებელი და მისი <strong>პირველი რექტორი</strong> (1918 წ.). 
         </p>

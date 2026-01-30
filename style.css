@@ -70,6 +70,20 @@
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+@font-face {
+  font-family: "grigolia";
+  src: url('fonts/grigolia.ttf') format('truetype');
+}
+
+.grigolia {
+  font-family: "grigolia", sans-serif !important;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  letter-spacing: 6px; 
+}
+
+ 
+
 .btn {
   padding: 12px 35px;
   border-radius: 30px;
@@ -106,12 +120,13 @@
   
   /* new */
   
-filter: sepia(100%) hue-rotate(160deg) saturate(350%) brightness(0.7);
+/* filter: sepia(100%) hue-rotate(160deg) saturate(350%) brightness(1.0); */
   
   /* filter: sepia(100%) hue-rotate(175deg) saturate(450%) brightness(0.4); */
   
   
   
+  filter: sepia(100%) hue-rotate(190deg) saturate(500%);
   
   
   
@@ -305,11 +320,55 @@ filter: sepia(100%) hue-rotate(160deg) saturate(350%) brightness(0.7);
   text-align: right; /* aligns text to the right */
   color: #af0000;
   margin-bottom: 260px; 
+  padding-top: 70px;
 }
 
 .readmore a:hover {
   color: #d70000; /* Change color */
 }
+
+
+
+
+
+/* 1. Hide the extra content */
+.full-text-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 1s ease-in-out, opacity 0.8s ease;
+}
+
+/* 2. When the "expanded" class is added via JS */
+.manuscript-body.is-expanded .full-text-content {
+    max-height: 2000px; /* A large enough value to fit all text */
+    opacity: 1;
+    margin-bottom: 40px;
+}
+
+/* 3. Hide the "read more" link and the "..." text after clicking */
+.manuscript-body.is-expanded .readmore,
+.manuscript-body.is-expanded .meore {
+    display: none;
+}
+
+/* Optional: Smoothly adjust the margin of the text inside */
+.full-text-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .manuscript-body {
   font-family: "EkaHandwritten", cursive, sans-serif;
@@ -418,12 +477,22 @@ filter: sepia(100%) hue-rotate(160deg) saturate(350%) brightness(0.7);
   font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 5px;
-  color: #7a7a7a;
+  color: #a4a4a4;
+  
+
+background: linear-gradient(to bottom,  #7a7a7a 0%, #e0e0e0 100%);
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+color: transparent;
+
+
 }
 .stat-item p {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   opacity: 0.8;
-  color: #bababa;
+  color: #e0e0e0;
 }
 
 /* =========================================

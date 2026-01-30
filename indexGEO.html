@@ -22,73 +22,49 @@
 <body>
 
     <!-- NAVIGATION HEADER -->
-    <header class="main-header">
-        <div class="container nav-container">
-            <!-- Inside <div class="container nav-container"> -->
-
-            <!-- REPLACE THE OLD LOGO DIV WITH THIS LINK BLOCK -->
-            <a href="index.html" class="logo-area">
-                <!-- Image Logo -->
-                <img src="images/logo.png" alt="PMIOC Logo" class="logo-img">
-
-                <!-- Text -->
-                <div class="logo-text">
-                    <span>Melikishvili Institute</span>
-                </div>
-            </a>
-            <nav class="main-nav">
-                <!-- Inside <nav class="main-nav"> -->
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-
-                    <!-- DROPDOWN MENU START -->
-                    <li class="nav-item-dropdown">
-                        <a href="#">Laboratories <i class="fa-solid fa-chevron-down"
-                                style="font-size: 0.65em; margin-left: 8px; opacity: 0.7;"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Physical-Chemical Processes</a></li>
-                            <li><a href="#">Organic Compound Chemistry</a></li>
-                            <li><a href="#">High Molecular Compounds</a></li>
-                            <li><a href="#">Agrarian Chemistry</a></li>
-                            <li><a href="#">Chemical Ecology</a></li>
-                            <li><a href="#">Petrochemistry</a></li>
-                        </ul>
-                    </li>
-                    <!-- DROPDOWN MENU END -->
-
-                    <li><a href="equipment.html" class="active">Equipment</a></li>
-                    <li><a href="structure.html">Structure</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="slide-line"></div>
-            </nav>
-
-            <!-- SEARCH FOR THIS BLOCK IN index.html AND REPLACE IT -->
-            <!-- SEARCH FOR "header-actions" in your HTML and paste this -->
-            <div class="header-actions">
-
-                <!-- GEORGIAN BUTTON (Added ID) -->
-                <a href="indexGEO.html" class="lang-btn" id="lang-geo">
-                    <!-- The Map Container -->
-                    <div class="geo-icon"></div>
-                    GEO
-                </a>
-
-                <span class="divider">|</span>
-
-                <!-- ENGLISH BUTTON (Added ID) -->
-                <a href="index.html" class="lang-btn active-lang" id="lang-eng">
-                    ENG
-                </a>
-
-            </div>
-
-            <div class="mobile-menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-area">
+        <img src="images/logo.png" alt="PMIOC Logo" class="logo-img" />
+        <div class="logo-text">
+          <span>მელიქიშვილის ინსტიტუტი</span>
         </div>
-    </header>
+      </a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="indexGEO.html">მთავარი</a></li>
+          <li><a href="about-usGEO.html">ჩვენს შესახებ</a></li>
+          <li class="nav-item-dropdown">
+            <a href="#">ლაბორატორიები
+              <i class="fa-solid fa-chevron-down" style="font-size: 0.65em; margin-left: 8px; opacity: 0.7"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">ფიზიკურ-ქიმიური პროცესები</a></li>
+              <li><a href="#">ორგანულ ნაერთთა ქიმია</a></li>
+              <li><a href="#">მაღალმოლეკულური ნაერთები</a></li>
+              <li><a href="#">აგრარული ქიმია</a></li>
+              <li><a href="#">ქიმიური ეკოლოგია</a></li>
+              <li><a href="#">ნავთობქიმია</a></li>
+            </ul>
+          </li>
+          <li><a href="equipmentGEO.html">აპარატურა</a></li>
+          <li><a href="structureGEO.html" class="active">სტრუქტურა</a></li>
+          <li><a href="contactGEO.html">კონტაქტი</a></li>
+        </ul>
+        <div class="slide-line"></div> 
+      </nav>
+      <div class="header-actions">
+        <a href="indexGEO.html" class="lang-btn active-lang" id="lang-geo">
+          <div class="geo-icon"></div>
+          ქარ
+        </a>
+        <span class="divider">|</span>
+        <a href="index.html" class="lang-btn" id="lang-eng">ENG</a>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
 
     <!-- HERO SECTION -->
     <section class="hero-section">
@@ -96,10 +72,11 @@
 
         <div class="hero-content">
             <!-- This keeps the default font -->
-            <span class="hero-subtitle">Since 1929</span>
+            <span class="hero-subtitle">1929 წლიდან</span>
 
             <!-- Added class "hero-title" for the custom font -->
-            <h1 class="Nulshock">Advancing Chemistry <br> for a Better Future</h1>
+            <!-- <h1 class="Nulshock grigolia"  >ვანვითარებთ ქიმიას <br> უკეთესი მომავლისთვის</h1> -->
+            <h1 class="Nulshock grigolia"  > dfydbsfht,s xbvbfc  <br>ertstcb vjvfdkbcsdbc </h1>
         </div>
 
 
@@ -367,53 +344,52 @@ Tu Tqven flobT Sesabamis unarebs da gsurT gaxdeT Cveni gundis wevri, gTxovT gamo
 
 
     <div class="overfooterglobal"></div>
-    <footer class="main-footer main-footer--with-ocean">
-        <div class="container footer-centered-wrapper">
-            <!-- REPLACE YOUR EXISTING FOOTER-GRID WITH THIS -->
-            <div class="footer-grid">
-                <!-- COLUMN 1: INSTITUTION INFO -->
-                <div class="footer-col">
-                    <h3>Since 1929</h3>
-                    <ul class="footer-custom-list">
-                        <li>Petre Melikishvili Institute</li>
-                        <li>Of Physical and</li>
-                        <li>Organic Chemistry</li>
-                    </ul>
-                </div>
-
-                <!-- COLUMN 2: QUICK LINKS -->
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-custom-list footer-links">
-                        <li><a href="about-us.html">About Institute</a></li>
-                        <li><a href="equipment.html">Equipment List</a></li>
-                        <li><a href="structure.html">Organizational Structure</a></li>
-                    </ul>
-                </div>
-
-                <!-- COLUMN 3: CONTACT US -->
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <div class="contact-info">
-                        <p>
-                            <i class="fa-solid fa-location-dot"></i> 31 Politkovskaya St,
-                            Tbilisi
-                        </p>
-                        <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
-                        <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; Developed by I.Chachava</p>
-            </div>
+  <footer class="main-footer main-footer--with-ocean">
+    <div class="container footer-centered-wrapper">
+      <div class="footer-grid">
+        <!-- COLUMN 1: INSTITUTION INFO -->
+        <div class="footer-col">
+          <h3>1929 წლიდან</h3>
+          <ul class="footer-custom-list">
+            <li>პეტრე მელიქიშვილის სახელობის</li>
+            <li>ფიზიკური და</li>
+            <li>ორგანული ქიმიის ინსტიტუტი</li>
+          </ul>
         </div>
-        <div class="overocean"></div>
-        <div class="footer-ocean" aria-hidden="true">
-            <div id="footer_wave"></div>
+
+        <!-- COLUMN 2: QUICK LINKS -->
+        <div class="footer-col">
+          <h3>სწრაფი ბმულები</h3>
+          <ul class="footer-custom-list footer-links">
+            <li><a href="about-us.html">ინსტიტუტის შესახებ</a></li>
+            <li><a href="equipment.html">აპარატურის ჩამონათვალი</a></li>
+            <li><a href="structure.html">ორგანიზაციული სტრუქტურა</a></li>
+          </ul>
         </div>
-    </footer>
+
+        <!-- COLUMN 3: CONTACT US -->
+        <div class="footer-col">
+          <h3>კონტაქტი</h3>
+          <div class="contact-info">
+            <p>
+              <i class="fa-solid fa-location-dot"></i> პოლიტკოვსკაიას ქ. 31, თბილისი
+            </p>
+            <p><i class="fa-solid fa-phone"></i> +995 32 2 30 00 00</p>
+            <p><i class="fa-solid fa-envelope"></i> info@melikishvili.ge</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy;eveloped by I.Chachava</p>
+      </div>
+    </div>
+    <div class="overocean"></div>
+    <div class="footer-ocean" aria-hidden="true">
+      <div id="footer_wave"></div>
+    </div>
+  </footer>
+
     <!-- ... End of Footer ... -->
 
     <!-- 1. Load Three.js Library (ONLY ONCE) -->
