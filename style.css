@@ -70,19 +70,35 @@
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-@font-face {
-  font-family: "grigolia";
-  src: url('fonts/grigolia.ttf') format('truetype');
-}
+ 
 
-.grigolia {
-  font-family: "grigolia", sans-serif !important;
+ @font-face {
+  font-family: "grigoliah";
+  src: url('fonts/grigoliah.ttf') format('truetype');
+}
+.grigoliah {
+   font-family: "x" !important;
   font-size: 3.5rem;
   line-height: 1.2;
   letter-spacing: 6px; 
+  padding-top: 30px;
 }
 
- 
+
+
+
+ @font-face {
+  font-family: "x";
+  src: url('fonts/x.ttf') format('truetype');
+}
+.partner-text{
+   font-family: "x" !important;
+   font-size: 0.85rem !important;
+}
+
+
+
+
 
 .btn {
   padding: 12px 35px;
