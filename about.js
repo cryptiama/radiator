@@ -182,7 +182,7 @@ const instituteData = {
 </div> `
     },
   "Institute Statute": {
-    pdf: "pdfs/statute.pdf",
+     pdf: "PDFs/melikishvili_statue.pdf",
     content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             
@@ -496,7 +496,7 @@ const instituteData = {
         </div>`
 },
    "Decree": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="background-color: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 6px solid #2c3e50;">
@@ -513,7 +513,7 @@ const instituteData = {
         </div>`
 },
 "Preamble": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.8; font-family: 'Helvetica Neue', Arial, sans-serif;">
             <h2 style="color: #1a2a6c; border-bottom: 2px solid #1a2a6c; display: inline-block; padding-bottom: 5px;">Preamble</h2>
@@ -525,7 +525,7 @@ const instituteData = {
         </div>`
 },
 "General Provisions": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase; letter-spacing: 1px;">Article 1. General Provisions</h3>
@@ -538,7 +538,7 @@ const instituteData = {
         </div>`
 },
 "Goals and Activity": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 2. Goals, Functions, and Subject of Activity</h3>
@@ -555,7 +555,7 @@ const instituteData = {
         </div>`
 },
 "Structure": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6; font-family: Arial, sans-serif;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 3. Structure of the Institute</h3>
@@ -582,7 +582,7 @@ const instituteData = {
         </div>`
 },
 "Scientific Council": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 4. Scientific Council of the Institute</h3>
@@ -602,7 +602,7 @@ const instituteData = {
         </div>`
 },
 "Chairman": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 5. Chairman of the Scientific Council</h3>
@@ -619,7 +619,7 @@ const instituteData = {
         </div>`
 },
 "Director": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 6. Director of the Institute</h3>
@@ -638,7 +638,7 @@ const instituteData = {
         </div>`
 },
 "Head of Unit": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 7. Head of Structural Units</h3>
@@ -650,7 +650,7 @@ const instituteData = {
         </div>`
 },
 "Personnel": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 8. Personnel of the Institute</h3>
@@ -676,7 +676,7 @@ const instituteData = {
         </div>`
 },
 "Rights and Duties": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 9. Rights and Duties of Scientific Personnel</h3>
@@ -703,7 +703,7 @@ const instituteData = {
         </div>`
 },
 "Occupational Rules": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 10. Rules for Occupying a Scientific Position</h3>
@@ -717,7 +717,7 @@ const instituteData = {
         </div>`
 },
 "Property": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 11. Property and Finance</h3>
@@ -733,7 +733,7 @@ const instituteData = {
         </div>`
 },
 "Liquidation": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 12. Liquidation of the Institute</h3>
@@ -745,7 +745,7 @@ const instituteData = {
         </div>`
 },
 "Final Provisions": {
-    pdf: "pdfs/statute.pdf", 
+     pdf: "PDFs/melikishvili_statue.pdf", 
     content: `
         <div style="line-height: 1.6;">
             <h3 style="color: #2c3e50; text-transform: uppercase;">Article 13. Final Provisions</h3>

@@ -186,7 +186,7 @@ const instituteData = {
     },
   
     "ინსტიტუტის დებულება ": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
     
@@ -501,7 +501,7 @@ const instituteData = {
         `
     },
     "დადგენილება": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="background-color: #f0f4f8; padding: 25px; border-radius: 8px; border-left: 6px solid #2c3e50; margin-bottom: 30px;">
@@ -519,7 +519,7 @@ const instituteData = {
         `
     },
     "პრეამბულა": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 40px;">
@@ -534,7 +534,7 @@ const instituteData = {
         `
     },
     "ზოგადი დებულებები": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -550,7 +550,7 @@ const instituteData = {
         `
     },
     "მიზნები, საქმიანობა": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -574,7 +574,7 @@ const instituteData = {
         `
     },
     "სტრუქტურა": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -604,7 +604,7 @@ const instituteData = {
         `
     },
     "სამეცნიერო საბჭო": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -637,7 +637,7 @@ const instituteData = {
         `
     },
     "თავმჯდომარე": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -660,7 +660,7 @@ const instituteData = {
         `
     },
     "დირექტორი": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -709,7 +709,7 @@ const instituteData = {
         `
     },
     "ხელმძღვანელი": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -736,7 +736,7 @@ const instituteData = {
         `
     },
     "პერსონალი": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -773,7 +773,7 @@ const instituteData = {
         `
     },
     "უფლება-მოვალეობები": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -808,7 +808,7 @@ const instituteData = {
         `
     },
     "დაკავების წესი": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -829,7 +829,7 @@ const instituteData = {
         `
     },
     "ქონება": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -851,7 +851,7 @@ const instituteData = {
         `
     },
     "ლიკვიდაცია": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 35px;">
@@ -866,7 +866,7 @@ const instituteData = {
         `
     },
     "დასკვნითი დებულებები": {
-        pdf: "pdfs/statute.pdf",
+          pdf: "PDFs/melikishvili_debuleba.pdf",
         content: `
         <div style="line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333;">
             <div style="margin-bottom: 40px;">
